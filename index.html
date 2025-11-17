@@ -267,6 +267,50 @@
             color: #B0F9FE;
         }
 
+        .warning-box {
+            background: rgba(248, 143, 110, 0.1);
+            border: 2px solid #f88f6e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h3 {
+            color: #f88f6e;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-box ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .warning-box li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #e5e5e5;
+        }
+
+        .warning-box li::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+
+        .warning-box p {
+            color: #e5e5e5;
+            margin-bottom: 0.8rem;
+        }
+
+        .warning-box strong {
+            color: #ffdea1;
+        }
+
         footer {
             text-align: center;
             margin-top: 3rem;
@@ -395,6 +439,19 @@
             <h2>Wallet App Data</h2>
 
             <p class="description">Product-specific data for the Qubic wallet application.</p>
+
+            <div class="warning-box">
+                <h3>⚠️ IMPORTANT WARNING - Internal Use Only</h3>
+                <p>The <strong>wallet-app</strong> data is <strong>NOT intended for public consumption or third-party use</strong>. This data is maintained <strong>exclusively for the official Qubic Wallet application</strong>.</p>
+                <ul>
+                    <li><strong>No stability guarantee</strong> - Breaking changes may occur at any time without notice</li>
+                    <li><strong>No support</strong> - We do not provide support for third-party usage</li>
+                    <li><strong>No responsibility</strong> - We are NOT responsible for issues arising from third-party use</li>
+                    <li><strong>No API contract</strong> - Structure and content may change without warning</li>
+                </ul>
+                <p><strong>If you need this data:</strong> Fork the repository and maintain your own copy. You assume all risks.</p>
+            </div>
+
             <div class="base-url">v1/wallet-app/</div>
 
             <div class="endpoint-group" id="dapp-explorer">

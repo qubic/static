@@ -14,11 +14,24 @@ Available at: **https://static.qubic.org/v1/general/data/**
 
 ### Product-Specific Data
 
-**Wallet App**
+#### Wallet App
 Available at: **https://static.qubic.org/v1/wallet-app/**
 
 - **DApp Explorer** - Curated list of DApps with multilingual support (7 languages: EN, DE, ES, FR, RU, TR, ZH)
 - Mobile wallet configuration files
+
+> **⚠️ IMPORTANT WARNING**
+>
+> The `wallet-app` data is **NOT intended for public consumption or third-party use**. This data is maintained **exclusively for the official Qubic Wallet application**.
+>
+> - ❌ **No stability guarantee** - Breaking changes may occur at any time without notice
+> - ❌ **No support** - We do not provide support for third-party usage
+> - ❌ **No responsibility** - We are NOT responsible for issues arising from third-party use
+> - ❌ **No API contract** - Structure and content may change without warning
+>
+> **If you need this data:** Fork the repository and maintain your own copy. You assume all risks.
+>
+> See [products/wallet-app/README.md](products/wallet-app/README.md) for full details.
 
 _Note: Currently, wallet-app is the only product-specific data. Additional products may be added in the future as the ecosystem grows._
 
