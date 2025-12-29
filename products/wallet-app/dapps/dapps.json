@@ -46,7 +46,10 @@
             "nameId": "qxtrade_name",
             "icon": "",
             "url": "https://qubictrade.com/",
-            "descriptionId": "qxtrade_description"
+            "descriptionId": "qxtrade_description",
+            "excludedPlatforms": [
+                "ios"
+            ]
         },
         {
             "id": "qbay_app_id",
