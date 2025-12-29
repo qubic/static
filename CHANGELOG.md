@@ -1,3 +1,10 @@
+# [1.11.0-rc.2](https://github.com/qubic/static/compare/v1.11.0-rc.1...v1.11.0-rc.2) (2025-12-29)
+
+
+### Bug Fixes
+
+* **dapps:** exclude QXTrade from iOS platform ([657edc2](https://github.com/qubic/static/commit/657edc2b2559ea408415900bd17b8ef94a2b908a))
+
 # [1.11.0-rc.1](https://github.com/qubic/static/compare/v1.10.0...v1.11.0-rc.1) (2025-12-27)
 
 
