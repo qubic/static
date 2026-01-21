@@ -634,6 +634,40 @@
           "fee": 100
         }
       ]
+    },
+    {
+      "filename": "qRWA.h",
+      "name": "QRWA",
+      "label": "QRWA",
+      "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/qRWA.h",
+      "contractIndex": 20,
+      "address": "UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHQEE",
+      "procedures": [
+        {
+          "id": 3,
+          "name": "Donate to Treasury"
+        },
+        {
+          "id": 4,
+          "name": "Vote Gov Params"
+        },
+        {
+          "id": 5,
+          "name": "Create Asset Release Poll"
+        },
+        {
+          "id": 6,
+          "name": "Vote Asset Release"
+        },
+        {
+          "id": 7,
+          "name": "Deposit General Asset"
+        },
+        {
+          "id": 8,
+          "name": "Revoke Asset Management Rights"
+        }
+      ]
     }
   ]
 }
