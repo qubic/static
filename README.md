@@ -252,7 +252,7 @@ Paths:
 - `data/qbi/index.json`
 - `data/qbi/registry/{Contract}.json`
 
-Regenerate QBI registry:
+Regenerate QBI registry (qbiVersion is the generation date in YYYY-MM-DD):
 ```
 python scripts/generate_qbi_registry.py --core-revision <sha>
 python scripts/validate_qbi_registry.py

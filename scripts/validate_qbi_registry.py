@@ -17,8 +17,12 @@ def validate_qbi_file(path: Path) -> List[str]:
     data = load_json(path)
     if not isinstance(data, dict):
         return [f"{path}: top-level must be an object"]
-    if data.get("qbiVersion") != "0.1":
-        errors.append(f"{path}: qbiVersion must be '0.1'")
+    qbi_version = data.get("qbiVersion")
+    if not isinstance(qbi_version, str) or not qbi_version:
+        errors.append(f"{path}: qbiVersion must be a non-empty string")
+    else:
+        if len(qbi_version) != 10 or qbi_version[4] != "-" or qbi_version[7] != "-":
+            errors.append(f"{path}: qbiVersion should be a YYYY-MM-DD date")
     contract = data.get("contract")
     if not isinstance(contract, dict):
         errors.append(f"{path}: contract must be an object")

@@ -2,6 +2,7 @@ import argparse
 import json
 import re
 import subprocess
+from datetime import datetime, timezone
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -484,7 +485,12 @@ def normalize_no_data(type_ref: Dict[str, Any], expected_size: int) -> Dict[str,
     return {"type": "nodata", "expectedSize": expected_size}
 
 
-def compile_contract_header(header_source: str, contract_name: str, contract_index: Optional[int]) -> Dict[str, Any]:
+def compile_contract_header(
+    header_source: str,
+    contract_name: str,
+    contract_index: Optional[int],
+    generated_date: str,
+) -> Dict[str, Any]:
     warnings: List[str] = []
     constants = extract_numeric_constants(header_source)
     aliases = extract_type_aliases(header_source)
@@ -530,7 +536,7 @@ def compile_contract_header(header_source: str, contract_name: str, contract_ind
             pass
 
     return {
-        "qbiVersion": "0.1",
+        "qbiVersion": generated_date,
         "contract": {"name": contract_name, "contractIndex": contract_index},
         "entries": compiled,
     }
@@ -547,9 +553,26 @@ def generate_registry(contract_def_path: Path, contracts_dir: Path, out_dir: Pat
     static = json.loads(static_path.read_text(encoding="utf-8"))
     static_filenames = {sc["filename"] for sc in static.get("smart_contracts", []) if "filename" in sc}
 
+    generated_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     out_dir.mkdir(parents=True, exist_ok=True)
     excluded_dir = out_dir / "_excluded"
     excluded_dir.mkdir(parents=True, exist_ok=True)
+
+    index_path = out_dir.parent / "index.json"
+    index = {
+        "qbiVersion": generated_date,
+        "contracts": [
+            {
+                "filename": c["filename"],
+                "contractIndex": c.get("contractIndex"),
+                "qbiFile": f"{Path(c['filename']).stem}.json",
+                "contractName": Path(c["filename"]).stem,
+            }
+            for c in static.get("smart_contracts", [])
+            if isinstance(c, dict) and c.get("filename")
+        ],
+    }
+    index_path.write_text(json.dumps(index, indent=2), encoding="utf-8")
 
     for header_name, contract_index in headers.items():
         if header_name == "qpi.h":
@@ -560,7 +583,7 @@ def generate_registry(contract_def_path: Path, contracts_dir: Path, out_dir: Pat
         source = header.read_text(encoding="utf-8")
         source_with_qpi = f"{qpi}\n{source}"
         contract_name = header.stem
-        qbi = compile_contract_header(source_with_qpi, contract_name, contract_index)
+        qbi = compile_contract_header(source_with_qpi, contract_name, contract_index, generated_date)
 
         out_name = f"{contract_name}.json"
         if header.name in static_filenames:
