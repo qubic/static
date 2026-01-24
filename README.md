@@ -44,6 +44,10 @@ Base URL: `https://static.qubic.org/v1/general/data/`
   - [smart_contracts.json](https://static.qubic.org/v1/general/data/smart_contracts.json)
   - [smart_contracts.min.json](https://static.qubic.org/v1/general/data/smart_contracts.min.json)
 
+  - **QBI Registry**
+    - `qbi/index.json` (registry index)
+    - `qbi/registry/{Contract}.json` (per-contract schema)
+
 - **Exchanges**
   - [exchanges.json](https://static.qubic.org/v1/general/data/exchanges.json)
   - [exchanges.min.json](https://static.qubic.org/v1/general/data/exchanges.min.json)
@@ -68,6 +72,7 @@ Each JSON file is available in two formats:
 - **`.min.json`** — Minified (no whitespace), optimized for bandwidth
 
 The **bundle** files combine all data files into a single file for convenience, useful when you need all data in one request.
+QBI registry files are not included in the bundle.
 
 - **Version Tracking**
   - [version.json](https://static.qubic.org/v1/general/data/version.json) - Contains file hashes and sizes for cache invalidation
@@ -238,6 +243,20 @@ Contributions are welcome! Here's how you can help:
 **Smart Contract Custom Data**
 - Add custom fields or metadata to existing smart contracts in `data/smart_contracts.json`
 - Note: Core fields (name, contractIndex, address, procedures) are auto-generated. Open an Issue for corrections to these fields rather than submitting PRs
+
+## QBI Registry
+
+The QBI registry provides per-contract input/output schemas. Each smart contract includes a `qbiFile` field pointing to its registry entry.
+
+Paths:
+- `data/qbi/index.json`
+- `data/qbi/registry/{Contract}.json`
+
+Regenerate QBI registry:
+```
+python scripts/generate_qbi_registry.py --core-revision <sha>
+python scripts/validate_qbi_registry.py
+```
 
 ### Submitting Changes
 
