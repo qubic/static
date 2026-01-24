@@ -1,0 +1,1090 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "Nostromo",
+    "contractIndex": 14
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "getStats",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epochRevenue",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalPoolWeight",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfRegister",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfCreatedProject",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfFundraising",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 32
+    },
+    {
+      "kind": "procedure",
+      "name": "registerInTier",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tierLevel",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tierLevel",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getTierLevelByUser",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "userId",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tierLevel",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "logoutFromTier",
+      "inputType": 2,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "result",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "createProject",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tokenName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "supply",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "startYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "startMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "startDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "startHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfProject",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getUserVoteStatus",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "userId",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numberOfVotedProjects",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "projectIndexList",
+            "typeRef": {
+              "type": "array",
+              "length": 128,
+              "item": {
+                "type": "u32"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 516
+    },
+    {
+      "kind": "function",
+      "name": "checkTokenCreatability",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tokenName",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "result",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "voteInProject",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfProject",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "decision",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 8,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "createFundraising",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tokenPrice",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "soldAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "requiredFunds",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "indexOfProject",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "firstPhaseStartYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "firstPhaseStartMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "firstPhaseStartDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "firstPhaseStartHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "firstPhaseEndYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "firstPhaseEndMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "firstPhaseEndDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "firstPhaseEndHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "secondPhaseStartYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "secondPhaseStartMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "secondPhaseStartDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "secondPhaseStartHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "secondPhaseEndYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "secondPhaseEndMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "secondPhaseEndDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "secondPhaseEndHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "thirdPhaseStartYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "thirdPhaseStartMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "thirdPhaseStartDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "thirdPhaseStartHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "thirdPhaseEndYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "thirdPhaseEndMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "thirdPhaseEndDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "thirdPhaseEndHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "listingStartYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "listingStartMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "listingStartDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "listingStartHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "cliffEndYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "cliffEndMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "cliffEndDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "cliffEndHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "vestingEndYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "vestingEndMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "vestingEndDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "vestingEndHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "threshold",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "TGE",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "stepOfVesting",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 176,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "getNumberOfInvestedProjects",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "userId",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numberOfInvestedProjects",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getProjectByIndex",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfProject",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "project",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "creator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "tokenName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "supplyOfToken",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "startDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "endDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "numberOfYes",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "numberOfNo",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "isCreatedFundarasing",
+                  "typeRef": {
+                    "type": "bool"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 72
+    },
+    {
+      "kind": "procedure",
+      "name": "investInProject",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfFundraising",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 4,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "claimToken",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "indexOfFundraising",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "claimedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 16,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "getFundarasingByIndex",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfFundarasing",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "fundarasing",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "tokenPrice",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "soldAmount",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "requiredFunds",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "raisedFunds",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "indexOfProject",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "firstPhaseStartDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "firstPhaseEndDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "secondPhaseStartDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "secondPhaseEndDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "thirdPhaseStartDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "thirdPhaseEndDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "listingStartDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "cliffEndDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "vestingEndDate",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "threshold",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "TGE",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "stepOfVesting",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "isCreatedToken",
+                  "typeRef": {
+                    "type": "bool"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 80
+    },
+    {
+      "kind": "function",
+      "name": "getProjectIndexListByCreator",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexListForProjects",
+            "typeRef": {
+              "type": "array",
+              "length": 128,
+              "item": {
+                "type": "u32"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 512
+    },
+    {
+      "kind": "procedure",
+      "name": "upgradeTier",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newTierLevel",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 4,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareManagementRights",
+      "inputType": 9,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "getInfoUserInvested",
+      "inputType": 9,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "investorId",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "listUserInvested",
+            "typeRef": {
+              "type": "array",
+              "length": 128,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "investedAmount",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "claimedAmount",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "indexOfFundraising",
+                    "typeRef": {
+                      "type": "u32"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 3072
+    },
+    {
+      "kind": "function",
+      "name": "getMaxClaimAmount",
+      "inputType": 10,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "investorId",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "indexOfFundraising",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 8
+    }
+  ]
+}

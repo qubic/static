@@ -1,0 +1,320 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "GeneralQuorumProposal",
+    "contractIndex": 6
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "GetProposalIndices",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "activeProposals",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "prevProposalIndex",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numOfIndices",
+            "typeRef": {
+              "type": "u16"
+            }
+          },
+          {
+            "name": "indices",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u16"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 130
+    },
+    {
+      "kind": "procedure",
+      "name": "SetProposal",
+      "inputType": 1,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          },
+          {
+            "name": "okay",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "GetProposal",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "okay",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "_padding0",
+            "typeRef": {
+              "type": "array",
+              "length": 4,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "_padding1",
+            "typeRef": {
+              "type": "array",
+              "length": 2,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "_padding2",
+            "typeRef": {
+              "type": "array",
+              "length": 1,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "proposerPubicKey",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "proposal",
+            "typeRef": {
+              "type": "bytes",
+              "length": 328
+            }
+          }
+        ]
+      },
+      "inputSize": 2,
+      "outputSize": 368
+    },
+    {
+      "kind": "procedure",
+      "name": "Vote",
+      "inputType": 2,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetVote",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "voter",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "okay",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "vote",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "proposalIndex",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalType",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalTick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "voteValue",
+                  "typeRef": {
+                    "type": "i64"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 24
+    },
+    {
+      "kind": "function",
+      "name": "GetVotingResults",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "okay",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "results",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "proposalIndex",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "optionCount",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalTick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "totalVotesAuthorized",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "totalVotesCasted",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "resultBytes",
+                  "typeRef": {
+                    "type": "bytes",
+                    "length": 32
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 2,
+      "outputSize": 52
+    },
+    {
+      "kind": "function",
+      "name": "GetRevenueDonation",
+      "inputType": 5,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    }
+  ]
+}

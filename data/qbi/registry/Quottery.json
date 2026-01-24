@@ -1,0 +1,540 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "Quottery",
+    "contractIndex": 2
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "basicInfo",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "feePerSlotPerHour",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "gameOperatorFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "shareholderFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "minBetSlotAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "burnFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "nIssuedBet",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "moneyFlow",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "moneyFlowThroughIssueBet",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "moneyFlowThroughJoinBet",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "moneyFlowThroughFinalizeBet",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "earnedAmountForShareHolder",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "paidAmountForShareHolder",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "earnedAmountForBetWinner",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "distributedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "burnedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "gameOperator",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 152
+    },
+    {
+      "kind": "procedure",
+      "name": "issueBet",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "betDesc",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "optionDesc",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          },
+          {
+            "name": "oracleProviderId",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          },
+          {
+            "name": "oracleFees",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "u32"
+              }
+            }
+          },
+          {
+            "name": "closeDate",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endDate",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "amountPerSlot",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "maxBetSlotPerOption",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfOption",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 600,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "getBetInfo",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "betId",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "betId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "nOption",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "creator",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "betDesc",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "optionDesc",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          },
+          {
+            "name": "oracleProviderId",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          },
+          {
+            "name": "oracleFees",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "u32"
+              }
+            }
+          },
+          {
+            "name": "openDate",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "closeDate",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endDate",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "minBetAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "maxBetSlotPerOption",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "currentBetState",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "u32"
+              }
+            }
+          },
+          {
+            "name": "betResultWonOption",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "i8"
+              }
+            }
+          },
+          {
+            "name": "betResultOPId",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "i8"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 696
+    },
+    {
+      "kind": "procedure",
+      "name": "joinBet",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "betId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfSlot",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "option",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "_placeHolder",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 16,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "cancelBet",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "betId",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 4,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "getBetOptionDetail",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "betId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "betOption",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "bettor",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 32768
+    },
+    {
+      "kind": "function",
+      "name": "getActiveBet",
+      "inputType": 4,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "activeBetId",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "u32"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 4100
+    },
+    {
+      "kind": "procedure",
+      "name": "publishResult",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "betId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "option",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 8,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "getBetByCreator",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "betId",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "u32"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 4100
+    }
+  ]
+}

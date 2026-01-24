@@ -1,0 +1,1033 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "QUtil",
+    "contractIndex": 4
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "GetSendToManyV1Fee",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "fee",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "SendToManyV1",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "dst0",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst4",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst5",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst6",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst7",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst8",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst9",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst10",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst11",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst12",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst13",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst14",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst15",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst16",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst17",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst18",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst19",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst20",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst21",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst22",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst23",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "dst24",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "amt0",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt1",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt2",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt3",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt4",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt5",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt6",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt7",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt8",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt9",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt10",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt11",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt12",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt13",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt14",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt15",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt16",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt17",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt18",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt19",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt20",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt21",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt22",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt23",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amt24",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1000,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "BurnQubic",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetTotalNumberOfAssetShares",
+      "inputType": 2,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetCurrentResult",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "poll_id",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "result",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u64"
+              }
+            }
+          },
+          {
+            "name": "voter_count",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u64"
+              }
+            }
+          },
+          {
+            "name": "is_active",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 1032
+    },
+    {
+      "kind": "procedure",
+      "name": "SendToManyBenchmark",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "dstCount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numTransfersEach",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "dstCount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          },
+          {
+            "name": "total",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 16,
+      "outputSize": 24
+    },
+    {
+      "kind": "procedure",
+      "name": "CreatePoll",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "poll_name",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "poll_type",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "min_amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "github_link",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "allowed_assets",
+            "typeRef": {
+              "type": "array",
+              "length": 16,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "issuer",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "assetName",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "num_assets",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "poll_id",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 952,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetPollsByCreator",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "poll_ids",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u64"
+              }
+            }
+          },
+          {
+            "name": "count",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 520
+    },
+    {
+      "kind": "function",
+      "name": "GetCurrentPollId",
+      "inputType": 5,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "current_poll_id",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "active_poll_ids",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u64"
+              }
+            }
+          },
+          {
+            "name": "active_count",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 528
+    },
+    {
+      "kind": "procedure",
+      "name": "Vote",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "poll_id",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "address",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "chosen_option",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "success",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "CancelPoll",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "poll_id",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "success",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetPollInfo",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "poll_id",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "found",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "poll_info",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "poll_name",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "poll_type",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "min_amount",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "is_active",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "creator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "allowed_assets",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 16,
+                    "item": {
+                      "type": "struct",
+                      "fields": [
+                        {
+                          "name": "issuer",
+                          "typeRef": {
+                            "type": "m256i"
+                          }
+                        },
+                        {
+                          "name": "assetName",
+                          "typeRef": {
+                            "type": "u64"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "name": "num_assets",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "poll_link",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "u8"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 1000
+    },
+    {
+      "kind": "procedure",
+      "name": "DistributeQuToShareholders",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "shareholders",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "totalShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amountPerShare",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "fees",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 32
+    },
+    {
+      "kind": "function",
+      "name": "GetFees",
+      "inputType": 7,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "smt1InvocationFee",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "pollCreationFee",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "pollVoteFee",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "distributeQuToShareholderFeePerShareholder",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "shareholderProposalFee",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "_futureFeePlaceholder0",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "_futureFeePlaceholder1",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "_futureFeePlaceholder2",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "_futureFeePlaceholder3",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "_futureFeePlaceholder4",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "_futureFeePlaceholder5",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 88
+    },
+    {
+      "kind": "procedure",
+      "name": "BurnQubicForContract",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "contractIndexBurnedFor",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "QueryFeeReserve",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "contractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "reserveAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 8
+    }
+  ]
+}

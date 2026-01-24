@@ -1,0 +1,820 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "QBond",
+    "contractIndex": 17
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "GetFees",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "stakeFeePercent",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "tradeFeePercent",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "transferFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 24
+    },
+    {
+      "kind": "procedure",
+      "name": "Stake",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "quMillions",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 8,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetEarnedFees",
+      "inputType": 2,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "stakeFees",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "tradeFees",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 16
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferMBondOwnershipAndPossession",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newOwnerAndPossessor",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfMBonds",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredMBonds",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "AddAskOrder",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfMBonds",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "addedMBondsAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 24,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetInfoPerEpoch",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "stakersAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalStaked",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "apy",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 24
+    },
+    {
+      "kind": "function",
+      "name": "GetOrders",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "askOrdersOffset",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "bidOrdersOffset",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfMBonds",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "askOrders",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "owner",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "epoch",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "numberOfMBonds",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "price",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "bidOrders",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "owner",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "epoch",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "numberOfMBonds",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "price",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 24,
+      "outputSize": 28696
+    },
+    {
+      "kind": "procedure",
+      "name": "RemoveAskOrder",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfMBonds",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "removedMBondsAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 24,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "AddBidOrder",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfMBonds",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "addedMBondsAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 24,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetUserOrders",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "askOrdersOffset",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "bidOrdersOffset",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfMBonds",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "askOrders",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "owner",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "epoch",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "numberOfMBonds",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "price",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "bidOrders",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "owner",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "epoch",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "numberOfMBonds",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "price",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 28696
+    },
+    {
+      "kind": "function",
+      "name": "GetMBondsTable",
+      "inputType": 6,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "totalStakedQBond",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "totalStakedQEarn",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "apy",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "info",
+            "typeRef": {
+              "type": "array",
+              "length": 512,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "epoch",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "totalStakedQBond",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "totalStakedQEarn",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "apy",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 16408
+    },
+    {
+      "kind": "procedure",
+      "name": "RemoveBidOrder",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfMBonds",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "removedMBondsAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 24,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "BurnQU",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetUserMBonds",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "totalMBondsAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "apy",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "mbonds",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "epoch",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "amount",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "apy",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 6168
+    },
+    {
+      "kind": "function",
+      "name": "GetCFA",
+      "inputType": 8,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "commissionFreeAddresses",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 32768
+    },
+    {
+      "kind": "procedure",
+      "name": "UpdateCFA",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "operation",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "result",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 1
+    }
+  ]
+}

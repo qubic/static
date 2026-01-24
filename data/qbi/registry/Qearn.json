@@ -1,0 +1,417 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "Qearn",
+    "contractIndex": 9
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "getLockInfoPerEpoch",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "Epoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "lockedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "bonusAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "currentLockedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "currentBonusAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "yield",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 40
+    },
+    {
+      "kind": "procedure",
+      "name": "lock",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getUserLockedInfo",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "lockedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "unlock",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "lockedEpoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 16,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getStateOfRound",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "state",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getUserLockStatus",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "getEndedStatus",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "fullyUnlockedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "fullyRewardedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "earlyUnlockedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "earlyRewardedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 32
+    },
+    {
+      "kind": "function",
+      "name": "getStatsPerEpoch",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "earlyUnlockedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "earlyUnlockedPercent",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalLockedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "averageAPY",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 32
+    },
+    {
+      "kind": "function",
+      "name": "getBurnedAndBoostedStats",
+      "inputType": 7,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "burnedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "averageBurnedPercent",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "boostedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "averageBoostedPercent",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "rewardedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "averageRewardedPercent",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 48
+    },
+    {
+      "kind": "function",
+      "name": "getBurnedAndBoostedStatsPerEpoch",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "burnedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "burnedPercent",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "boostedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "boostedPercent",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "rewardedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "rewardedPercent",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 48
+    }
+  ]
+}

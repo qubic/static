@@ -1,0 +1,553 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "ComputorControlledFund",
+    "contractIndex": 8
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "GetProposalIndices",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "activeProposals",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "prevProposalIndex",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numOfIndices",
+            "typeRef": {
+              "type": "u16"
+            }
+          },
+          {
+            "name": "indices",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u16"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 130
+    },
+    {
+      "kind": "procedure",
+      "name": "SetProposal",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposal",
+            "typeRef": {
+              "type": "bytes",
+              "length": 304
+            }
+          },
+          {
+            "name": "isSubscription",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "weeksPerPeriod",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "_padding0",
+            "typeRef": {
+              "type": "array",
+              "length": 2,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "startEpoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "amountPerPeriod",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfPeriods",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "inputSize": 328,
+      "outputSize": 2
+    },
+    {
+      "kind": "function",
+      "name": "GetProposal",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "subscriptionDestination",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "okay",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "hasSubscriptionProposal",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "hasActiveSubscription",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "_padding0",
+            "typeRef": {
+              "type": "array",
+              "length": 1,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "_padding1",
+            "typeRef": {
+              "type": "array",
+              "length": 4,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "proposerPublicKey",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "proposal",
+            "typeRef": {
+              "type": "bytes",
+              "length": 304
+            }
+          },
+          {
+            "name": "subscription",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "destination",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "url",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 256,
+                    "item": {
+                      "type": "u8"
+                    }
+                  }
+                },
+                {
+                  "name": "weeksPerPeriod",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "_padding1",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 1,
+                    "item": {
+                      "type": "u8"
+                    }
+                  }
+                },
+                {
+                  "name": "_padding2",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 2,
+                    "item": {
+                      "type": "u8"
+                    }
+                  }
+                },
+                {
+                  "name": "numberOfPeriods",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "amountPerPeriod",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "startEpoch",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "currentPeriod",
+                  "typeRef": {
+                    "type": "i32"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "subscriptionProposal",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "proposerId",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "destination",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "url",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 256,
+                    "item": {
+                      "type": "u8"
+                    }
+                  }
+                },
+                {
+                  "name": "weeksPerPeriod",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "_padding0",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 1,
+                    "item": {
+                      "type": "u8"
+                    }
+                  }
+                },
+                {
+                  "name": "_padding1",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 2,
+                    "item": {
+                      "type": "u8"
+                    }
+                  }
+                },
+                {
+                  "name": "numberOfPeriods",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "amountPerPeriod",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "startEpoch",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 1000
+    },
+    {
+      "kind": "procedure",
+      "name": "Vote",
+      "inputType": 2,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetVote",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "voter",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "okay",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "vote",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "proposalIndex",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalType",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalTick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "voteValue",
+                  "typeRef": {
+                    "type": "i64"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 24
+    },
+    {
+      "kind": "function",
+      "name": "GetVotingResults",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "okay",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "results",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "proposalIndex",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "optionCount",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalTick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "totalVotesAuthorized",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "totalVotesCasted",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "resultBytes",
+                  "typeRef": {
+                    "type": "bytes",
+                    "length": 32
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 2,
+      "outputSize": 52
+    },
+    {
+      "kind": "function",
+      "name": "GetLatestTransfers",
+      "inputType": 5,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetProposalFee",
+      "inputType": 6,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "GetRegularPayments",
+      "inputType": 7,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    }
+  ]
+}

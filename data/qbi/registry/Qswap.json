@@ -1,0 +1,872 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "Qswap",
+    "contractIndex": 13
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "Fees",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuanceFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "poolCreationFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "transferFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "swapFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "shareholderFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "investRewardsFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "qxFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "burnFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 32
+    },
+    {
+      "kind": "procedure",
+      "name": "IssueAsset",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "unitOfMeasurement",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfDecimalPlaces",
+            "typeRef": {
+              "type": "i8"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuedNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetPoolBasicState",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "poolExists",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "reservedQuAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "reservedAssetAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "totalLiquidity",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 32
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareOwnershipAndPossession",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "newOwnerAndPossessor",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 80,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "CreatePool",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "success",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetLiquidityOf",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "account",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "liquidity",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 72,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "AddLiquidity",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assetAmountDesired",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "quAmountMin",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "assetAmountMin",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "userIncreaseLiquidity",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "quAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "assetAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 64,
+      "outputSize": 24
+    },
+    {
+      "kind": "function",
+      "name": "QuoteExactQuInput",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "quAmountIn",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetAmountOut",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "QuoteExactQuOutput",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "quAmountOut",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetAmountIn",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "RemoveLiquidity",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "burnLiquidity",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "quAmountMin",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "assetAmountMin",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "quAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "assetAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 64,
+      "outputSize": 16
+    },
+    {
+      "kind": "function",
+      "name": "QuoteExactAssetInput",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assetAmountIn",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "quAmountOut",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "SwapExactQuForAsset",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assetAmountOutMin",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetAmountOut",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "QuoteExactAssetOutput",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assetAmountOut",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "quAmountIn",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "SwapQuForExactAsset",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assetAmountOut",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "quAmountIn",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "InvestRewardsInfo",
+      "inputType": 8,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "investRewardsFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "investRewardsId",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 40
+    },
+    {
+      "kind": "procedure",
+      "name": "SwapExactAssetForQu",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assetAmountIn",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "quAmountOutMin",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "quAmountOut",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "SwapAssetForExactQu",
+      "inputType": 9,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assetAmountInMax",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "quAmountOut",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetAmountIn",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "SetInvestRewardsInfo",
+      "inputType": 10,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newInvestRewardsId",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "success",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareManagementRights",
+      "inputType": 11,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    }
+  ]
+}

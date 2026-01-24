@@ -1,0 +1,411 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "RandomLottery",
+    "contractIndex": 16
+  },
+  "entries": [
+    {
+      "kind": "procedure",
+      "name": "BuyTicket",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetFees",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "teamFeePercent",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "distributionFeePercent",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "winnerFeePercent",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "burnPercent",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 5
+    },
+    {
+      "kind": "function",
+      "name": "GetPlayers",
+      "inputType": 2,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "players",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          },
+          {
+            "name": "playerCounter",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 32784
+    },
+    {
+      "kind": "procedure",
+      "name": "SetPrice",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newPrice",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetWinners",
+      "inputType": 3,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "winners",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "winnerAddress",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "revenue",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "tick",
+                    "typeRef": {
+                      "type": "u32"
+                    }
+                  },
+                  {
+                    "name": "epoch",
+                    "typeRef": {
+                      "type": "u16"
+                    }
+                  },
+                  {
+                    "name": "dayOfWeek",
+                    "typeRef": {
+                      "type": "u8"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "winnersCounter",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 49168
+    },
+    {
+      "kind": "procedure",
+      "name": "SetSchedule",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newSchedule",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetTicketPrice",
+      "inputType": 4,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "ticketPrice",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetMaxNumberOfPlayers",
+      "inputType": 5,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numberOfPlayers",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetState",
+      "inputType": 6,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "currentState",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetBalance",
+      "inputType": 7,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "balance",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetNextEpochData",
+      "inputType": 8,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "nextEpochData",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "newPrice",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "schedule",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 16
+    },
+    {
+      "kind": "function",
+      "name": "GetDrawHour",
+      "inputType": 9,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "drawHour",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetSchedule",
+      "inputType": 10,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "schedule",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    }
+  ]
+}

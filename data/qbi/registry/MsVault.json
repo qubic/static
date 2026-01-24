@@ -1,0 +1,1212 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "MsVault",
+    "contractIndex": 11
+  },
+  "entries": [
+    {
+      "kind": "procedure",
+      "name": "registerVault",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultName",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "owners",
+            "typeRef": {
+              "type": "array",
+              "length": 16,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          },
+          {
+            "name": "requiredApprovals",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 552,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "deposit",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "releaseTo",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "destination",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "resetRelease",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "getVaults",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "publicKey",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numberOfVaults",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "vaultIds",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "u64"
+              }
+            }
+          },
+          {
+            "name": "vaultNames",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 328
+    },
+    {
+      "kind": "function",
+      "name": "getReleaseStatus",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "amounts",
+            "typeRef": {
+              "type": "array",
+              "length": 16,
+              "item": {
+                "type": "u64"
+              }
+            }
+          },
+          {
+            "name": "destinations",
+            "typeRef": {
+              "type": "array",
+              "length": 16,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 648
+    },
+    {
+      "kind": "function",
+      "name": "getBalanceOf",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "balance",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 16
+    },
+    {
+      "kind": "function",
+      "name": "getVaultName",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "vaultName",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 40
+    },
+    {
+      "kind": "function",
+      "name": "getRevenueInfo",
+      "inputType": 9,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numberOfActiveVaults",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalRevenue",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalDistributedToShareholders",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "burnedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 32
+    },
+    {
+      "kind": "function",
+      "name": "getFees",
+      "inputType": 10,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "registeringFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "releaseFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "releaseResetFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "holdingFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "depositFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "burnFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 48
+    },
+    {
+      "kind": "function",
+      "name": "getVaultOwners",
+      "inputType": 11,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfOwners",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "owners",
+            "typeRef": {
+              "type": "array",
+              "length": 16,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          },
+          {
+            "name": "requiredApprovals",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 536
+    },
+    {
+      "kind": "function",
+      "name": "isShareHolder",
+      "inputType": 12,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "candidate",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "result",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "voteFeeChange",
+      "inputType": 13,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newRegisteringFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "newReleaseFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "newReleaseResetFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "newHoldingFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "newDepositFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "burnFee",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "getFeeVotes",
+      "inputType": 14,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfFeeVotes",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "feeVotes",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "registeringFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "releaseFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "releaseResetFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "holdingFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "depositFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "burnFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 3088
+    },
+    {
+      "kind": "function",
+      "name": "getFeeVotesOwner",
+      "inputType": 15,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfFeeVotes",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "feeVotesOwner",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 2064
+    },
+    {
+      "kind": "function",
+      "name": "getFeeVotesScore",
+      "inputType": 16,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfFeeVotes",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "feeVotesScore",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u64"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 528
+    },
+    {
+      "kind": "function",
+      "name": "getUniqueFeeVotes",
+      "inputType": 17,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfUniqueFeeVotes",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "uniqueFeeVotes",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "registeringFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "releaseFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "releaseResetFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "holdingFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "depositFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  },
+                  {
+                    "name": "burnFee",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 3088
+    },
+    {
+      "kind": "function",
+      "name": "getUniqueFeeVotesRanking",
+      "inputType": 18,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfUniqueFeeVotes",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "uniqueFeeVotesRanking",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u64"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 528
+    },
+    {
+      "kind": "procedure",
+      "name": "depositAsset",
+      "inputType": 19,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "releaseAssetTo",
+      "inputType": 20,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "destination",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 88,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "resetAssetRelease",
+      "inputType": 21,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "getVaultAssetBalances",
+      "inputType": 22,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfAssetTypes",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assetBalances",
+            "typeRef": {
+              "type": "array",
+              "length": 8,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "asset",
+                    "typeRef": {
+                      "type": "struct",
+                      "fields": [
+                        {
+                          "name": "issuer",
+                          "typeRef": {
+                            "type": "m256i"
+                          }
+                        },
+                        {
+                          "name": "assetName",
+                          "typeRef": {
+                            "type": "u64"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "balance",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 400
+    },
+    {
+      "kind": "function",
+      "name": "getAssetReleaseStatus",
+      "inputType": 23,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "vaultId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assets",
+            "typeRef": {
+              "type": "array",
+              "length": 16,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "issuer",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "assetName",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "amounts",
+            "typeRef": {
+              "type": "array",
+              "length": 16,
+              "item": {
+                "type": "u64"
+              }
+            }
+          },
+          {
+            "name": "destinations",
+            "typeRef": {
+              "type": "array",
+              "length": 16,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 1288
+    },
+    {
+      "kind": "function",
+      "name": "getManagedAssetBalance",
+      "inputType": 24,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "owner",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "balance",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 72,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "revokeAssetManagementRights",
+      "inputType": 25,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 16
+    }
+  ]
+}

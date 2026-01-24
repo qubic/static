@@ -1,0 +1,637 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "TestExampleB",
+    "contractIndex": null
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "CallFunctionOfTestExampleA",
+      "inputType": 1,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "IssueAsset",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "unitOfMeasurement",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfDecimalPlaces",
+            "typeRef": {
+              "type": "i8"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuedNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareOwnershipAndPossession",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newOwnerAndPossessor",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 80,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareManagementRights",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "SetPreReleaseSharesOutput",
+      "inputType": 4,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "SetPreAcquireSharesOutput",
+      "inputType": 5,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "AcquireShareManagementRights",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "ownerAndPossessor",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "oldManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 88,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "GetTestExampleAShareManagementRights",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "IncomingTransferAmounts",
+      "inputType": 20,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "standardTransactionAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "procedureTransactionAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "qpiTransferAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "qpiDistributeDividendsAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "revenueDonationAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "ipoBidRefundAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 48
+    },
+    {
+      "kind": "procedure",
+      "name": "QpiTransfer",
+      "inputType": 20,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "destinationPublicKey",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 40,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "QpiDistributeDividends",
+      "inputType": 21,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amountPerShare",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 8,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetIpoBid",
+      "inputType": 30,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "ipoContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "bidIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "publicKey",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 40
+    },
+    {
+      "kind": "procedure",
+      "name": "QpiBidInIpo",
+      "inputType": 30,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "ipoContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "pricePerShare",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 24,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "SetProposalInOtherContractAsShareholder",
+      "inputType": 40,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalDataBuffer",
+            "typeRef": {
+              "type": "array",
+              "length": 512,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "otherContractIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "inputSize": 514,
+      "outputSize": 2
+    },
+    {
+      "kind": "procedure",
+      "name": "SetVotesInOtherContractAsShareholder",
+      "inputType": 41,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "voteData",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "proposalIndex",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalType",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalTick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "voteValues",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 8,
+                    "item": {
+                      "type": "i64"
+                    }
+                  }
+                },
+                {
+                  "name": "voteCounts",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 8,
+                    "item": {
+                      "type": "u32"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "otherContractIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "success",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 112,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "TestInterContractCallError",
+      "inputType": 50,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "dummy",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "errorCode",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "callSucceeded",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 2
+    }
+  ]
+}

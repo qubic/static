@@ -1,0 +1,517 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "QIP",
+    "contractIndex": 18
+  },
+  "entries": [
+    {
+      "kind": "procedure",
+      "name": "createICO",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address4",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address5",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address6",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address7",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address8",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address9",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address10",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price1",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price2",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price3",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "saleAmountForPhase1",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "saleAmountForPhase2",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "saleAmountForPhase3",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "percent1",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent2",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent3",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent4",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent5",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent6",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent7",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent8",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent9",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent10",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "startEpoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 456,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getICOInfo",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfICO",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "creatorOfICO",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "issuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address4",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address5",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address6",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address7",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address8",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address9",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "address10",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price1",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price2",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price3",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "saleAmountForPhase1",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "saleAmountForPhase2",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "saleAmountForPhase3",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "remainingAmountForPhase1",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "remainingAmountForPhase2",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "remainingAmountForPhase3",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "percent1",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent2",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent3",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent4",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent5",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent6",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent7",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent8",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent9",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "percent10",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "startEpoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 512
+    },
+    {
+      "kind": "procedure",
+      "name": "buyToken",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfICO",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 16,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareManagementRights",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    }
+  ]
+}

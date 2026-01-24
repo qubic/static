@@ -1,0 +1,1482 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "Qbay",
+    "contractIndex": 12
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "getNumberOfNFTForUser",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numberOfNFT",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "settingCFBAndQubicPrice",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "CFBPrice",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "QubicPrice",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 16,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "createCollection",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "priceForDropMint",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "volume",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "royalty",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "maxSizePerOneId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "URI",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "typeOfCollection",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 88,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getInfoOfNFTUserPossessed",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "NFTNumber",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "possessor",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "askUser",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "creatorOfAuction",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "salePrice",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "askMaxPrice",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "currentPriceOfAuction",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "royalty",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "NFTidForExchange",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "URI",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "statusOfAuction",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "yearAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "monthAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "dayAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "hourAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "minuteAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "secondAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "yearAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "monthAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "dayAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "hourAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "minuteAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "secondAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "statusOfSale",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "statusOfAsk",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "paymentMethodOfAsk",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "statusOfExchange",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "paymentMethodOfAuction",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 248
+    },
+    {
+      "kind": "function",
+      "name": "getInfoOfMarketplace",
+      "inputType": 3,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "priceOfCFB",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "priceOfQubic",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfNFTIncoming",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "earnedQubic",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "earnedCFB",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfCollection",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfNFT",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "statusOfMarketPlace",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 56
+    },
+    {
+      "kind": "procedure",
+      "name": "mint",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "royalty",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "collectionId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "URI",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "typeOfMint",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 76,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getInfoOfCollectionByCreator",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "orderOfCollection",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "priceForDropMint",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "idOfCollection",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "royalty",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "currentSize",
+            "typeRef": {
+              "type": "i32"
+            }
+          },
+          {
+            "name": "maxSizeHoldingPerOneId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "URI",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "typeOfCollection",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 96
+    },
+    {
+      "kind": "procedure",
+      "name": "mintOfDrop",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "collectionId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "URI",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u8"
+              }
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 68,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getInfoOfCollectionById",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "idOfCollection",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "priceForDropMint",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "royalty",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "currentSize",
+            "typeRef": {
+              "type": "i32"
+            }
+          },
+          {
+            "name": "maxSizeHoldingPerOneId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "URI",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "typeOfCollection",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 120
+    },
+    {
+      "kind": "procedure",
+      "name": "transfer",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "receiver",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "NFTid",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getIncomingAuctions",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "offset",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "count",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "NFTId",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "u32"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 4096
+    },
+    {
+      "kind": "procedure",
+      "name": "listInMarket",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "NFTid",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 16,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "buy",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "NFTid",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "methodOfPayment",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getInfoOfNFTById",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "NFTId",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "possessor",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "askUser",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "creatorOfAuction",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "salePrice",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "askMaxPrice",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "currentPriceOfAuction",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "royalty",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "NFTidForExchange",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "URI",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "statusOfAuction",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "yearAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "monthAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "dayAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "hourAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "minuteAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "secondAuctionStarted",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "yearAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "monthAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "dayAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "hourAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "minuteAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "secondAuctionEnded",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "statusOfSale",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "statusOfAsk",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "paymentMethodOfAsk",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "statusOfExchange",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "paymentMethodOfAuction",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 248
+    },
+    {
+      "kind": "procedure",
+      "name": "cancelSale",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "NFTid",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getUserCreatedCollection",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "offset",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "count",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "collectionId",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "u32"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 4096
+    },
+    {
+      "kind": "function",
+      "name": "getUserCreatedNFT",
+      "inputType": 9,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "offset",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "count",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "NFTId",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "u32"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 4096
+    },
+    {
+      "kind": "procedure",
+      "name": "listInExchange",
+      "inputType": 9,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "possessedNFT",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "anotherNFT",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "cancelExchange",
+      "inputType": 10,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "possessedNFT",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "anotherNFT",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "makeOffer",
+      "inputType": 11,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "askPrice",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "NFTid",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "paymentMethod",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 16,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "acceptOffer",
+      "inputType": 12,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "NFTid",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "cancelOffer",
+      "inputType": 13,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "NFTid",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "createTraditionalAuction",
+      "inputType": 14,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "minPrice",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "NFTId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "startYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "startMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "startDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "startHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endYear",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endMonth",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endDay",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "endHour",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "paymentMethodOfAuction",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "bidOnTraditionalAuction",
+      "inputType": 15,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "NFTId",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "paymentMethod",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 16,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareManagementRights",
+      "inputType": 16,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 16
+    },
+    {
+      "kind": "procedure",
+      "name": "changeStatusOfMarketPlace",
+      "inputType": 17,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 4
+    }
+  ]
+}

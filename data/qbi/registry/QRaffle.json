@@ -1,0 +1,876 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "QRaffle",
+    "contractIndex": 19
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "getRegisters",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "offset",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "limit",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "register1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register4",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register5",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register6",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register7",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register8",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register9",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register10",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register11",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register12",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register13",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register14",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register15",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register16",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register17",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register18",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register19",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "register20",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 648
+    },
+    {
+      "kind": "procedure",
+      "name": "registerInSystem",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "useQXMR",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getAnalytics",
+      "inputType": 2,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "currentQuRaffleAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalBurnAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalCharityAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalShareholderAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalRegisterAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalFeeAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalWinnerAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "largestWinnerAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfRegisters",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfProposals",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfQuRaffleMembers",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfActiveTokenRaffle",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfEndedTokenRaffle",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "numberOfEntryAmountSubmitted",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 96
+    },
+    {
+      "kind": "procedure",
+      "name": "logoutInSystem",
+      "inputType": 2,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getActiveProposal",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfProposal",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tokenIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "proposer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "tokenName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "entryAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "nYes",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "nNo",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 96
+    },
+    {
+      "kind": "procedure",
+      "name": "submitEntryAmount",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getEndedTokenRaffle",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfRaffle",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epochWinner",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "tokenIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "tokenName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "entryAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfMembers",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "winnerIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 96
+    },
+    {
+      "kind": "procedure",
+      "name": "submitProposal",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tokenIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "tokenName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "entryAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getEndedQuRaffle",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epochWinner",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "receivedAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "entryAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfMembers",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "winnerIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 64
+    },
+    {
+      "kind": "procedure",
+      "name": "voteInProposal",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfProposal",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "yes",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 4
+    },
+    {
+      "kind": "procedure",
+      "name": "depositInQuRaffle",
+      "inputType": 6,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getActiveTokenRaffle",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfTokenRaffle",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tokenIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "tokenName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "entryAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfMembers",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 56
+    },
+    {
+      "kind": "procedure",
+      "name": "depositInTokenRaffle",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "indexOfTokenRaffle",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 4
+    },
+    {
+      "kind": "function",
+      "name": "getEpochRaffleIndexes",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "StartIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "EndIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 12
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareManagementRights",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tokenIssuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "tokenName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "getQuRaffleEntryAmountPerUser",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "entryAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 16
+    },
+    {
+      "kind": "function",
+      "name": "getQuRaffleEntryAverageAmount",
+      "inputType": 9,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "entryAverageAmount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "returnCode",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 16
+    }
+  ]
+}

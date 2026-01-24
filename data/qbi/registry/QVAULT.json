@@ -1,0 +1,463 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "QVAULT",
+    "contractIndex": 10
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "getData",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numberOfBannedAddress",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "shareholderDividend",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "QCAPHolderPermille",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "reinvestingPermille",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "devPermille",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "authAddress1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "authAddress2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "authAddress3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "reinvestingAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "adminAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newAuthAddress1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newAuthAddress2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newAuthAddress3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newReinvestingAddress1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newReinvestingAddress2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newReinvestingAddress3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newAdminAddress1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newAdminAddress2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newAdminAddress3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "bannedAddress1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "bannedAddress2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "bannedAddress3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "unbannedAddress1",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "unbannedAddress2",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "unbannedAddress3",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 664
+    },
+    {
+      "kind": "procedure",
+      "name": "submitAuthAddress",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "changeAuthAddress",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numberOfChangedAddress",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 4,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "submitDistributionPermille",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newQCAPHolderPermille",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "newReinvestingPermille",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "newDevPermille",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 12,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "changeDistributionPermille",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newQCAPHolderPermille",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "newReinvestingPermille",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "newDevPermille",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 12,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "submitReinvestingAddress",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "changeReinvestingAddress",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "submitAdminAddress",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "changeAdminAddress",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "newAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "submitBannedAddress",
+      "inputType": 9,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "bannedAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "saveBannedAddress",
+      "inputType": 10,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "bannedAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "submitUnbannedAddress",
+      "inputType": 11,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "unbannedAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "unblockBannedAddress",
+      "inputType": 12,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "unbannedAddress",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 32,
+      "outputSize": 1
+    }
+  ]
+}

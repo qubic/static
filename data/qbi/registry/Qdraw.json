@@ -1,0 +1,137 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "Qdraw",
+    "contractIndex": 15
+  },
+  "entries": [
+    {
+      "kind": "procedure",
+      "name": "buyTicket",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "ticketCount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "inputSize": 8,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "getInfo",
+      "inputType": 2,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "pot",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "participantCount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "lastWinner",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "lastWinAmount",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "lastDrawHour",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "currentHour",
+            "typeRef": {
+              "type": "u8"
+            }
+          },
+          {
+            "name": "nextDrawHour",
+            "typeRef": {
+              "type": "u8"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 64
+    },
+    {
+      "kind": "function",
+      "name": "getParticipants",
+      "inputType": 3,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "participantCount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "uniqueParticipantCount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "participants",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "m256i"
+              }
+            }
+          },
+          {
+            "name": "ticketCounts",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "u64"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 40976
+    }
+  ]
+}

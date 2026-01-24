@@ -1,0 +1,1201 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "TestExampleA",
+    "contractIndex": null
+  },
+  "entries": [
+    {
+      "kind": "procedure",
+      "name": "IssueAsset",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "unitOfMeasurement",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfDecimalPlaces",
+            "typeRef": {
+              "type": "i8"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuedNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "QueryQpiFunctions",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "data",
+            "typeRef": {
+              "type": "array",
+              "length": 128,
+              "item": {
+                "type": "i8"
+              }
+            }
+          },
+          {
+            "name": "signature",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "i8"
+              }
+            }
+          },
+          {
+            "name": "entity",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "qpiFunctionsOutput",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "arbitrator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "computor0",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "invocator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "originator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "invocationReward",
+                  "typeRef": {
+                    "type": "i64"
+                  }
+                },
+                {
+                  "name": "numberOfTickTransactions",
+                  "typeRef": {
+                    "type": "i32"
+                  }
+                },
+                {
+                  "name": "tick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "epoch",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "millisecond",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "year",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "month",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "day",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "hour",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "minute",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "second",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "dayOfWeek",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "inputDataK12",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "inputSignatureValid",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 224,
+      "outputSize": 200
+    },
+    {
+      "kind": "function",
+      "name": "ReturnQpiFunctionsOutputBeginTick",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tick",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "qpiFunctionsOutput",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "arbitrator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "computor0",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "invocator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "originator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "invocationReward",
+                  "typeRef": {
+                    "type": "i64"
+                  }
+                },
+                {
+                  "name": "numberOfTickTransactions",
+                  "typeRef": {
+                    "type": "i32"
+                  }
+                },
+                {
+                  "name": "tick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "epoch",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "millisecond",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "year",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "month",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "day",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "hour",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "minute",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "second",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "dayOfWeek",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 160
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareOwnershipAndPossession",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newOwnerAndPossessor",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 80,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "ReturnQpiFunctionsOutputEndTick",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tick",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "qpiFunctionsOutput",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "arbitrator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "computor0",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "invocator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "originator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "invocationReward",
+                  "typeRef": {
+                    "type": "i64"
+                  }
+                },
+                {
+                  "name": "numberOfTickTransactions",
+                  "typeRef": {
+                    "type": "i32"
+                  }
+                },
+                {
+                  "name": "tick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "epoch",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "millisecond",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "year",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "month",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "day",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "hour",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "minute",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "second",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "dayOfWeek",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 160
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareManagementRights",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "ReturnQpiFunctionsOutputUserProc",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "tick",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "qpiFunctionsOutput",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "arbitrator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "computor0",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "invocator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "originator",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "invocationReward",
+                  "typeRef": {
+                    "type": "i64"
+                  }
+                },
+                {
+                  "name": "numberOfTickTransactions",
+                  "typeRef": {
+                    "type": "i32"
+                  }
+                },
+                {
+                  "name": "tick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "epoch",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "millisecond",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "year",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "month",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "day",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "hour",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "minute",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "second",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                },
+                {
+                  "name": "dayOfWeek",
+                  "typeRef": {
+                    "type": "u8"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 4,
+      "outputSize": 160
+    },
+    {
+      "kind": "procedure",
+      "name": "SetPreReleaseSharesOutput",
+      "inputType": 4,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "ErrorTriggerFunction",
+      "inputType": 5,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "SetPreAcquireSharesOutput",
+      "inputType": 5,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "AcquireShareManagementRights",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "ownerAndPossessor",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "oldManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 88,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "QueryQpiFunctionsToState",
+      "inputType": 7,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "RunHeavyComputation",
+      "inputType": 8,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "SetProposalInOtherContractAsShareholder",
+      "inputType": 40,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalDataBuffer",
+            "typeRef": {
+              "type": "array",
+              "length": 512,
+              "item": {
+                "type": "u8"
+              }
+            }
+          },
+          {
+            "name": "otherContractIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "inputSize": 514,
+      "outputSize": 2
+    },
+    {
+      "kind": "procedure",
+      "name": "SetVotesInOtherContractAsShareholder",
+      "inputType": 41,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "voteData",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "proposalIndex",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalType",
+                  "typeRef": {
+                    "type": "u16"
+                  }
+                },
+                {
+                  "name": "proposalTick",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "voteValues",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 8,
+                    "item": {
+                      "type": "i64"
+                    }
+                  }
+                },
+                {
+                  "name": "voteCounts",
+                  "typeRef": {
+                    "type": "array",
+                    "length": 8,
+                    "item": {
+                      "type": "u32"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "otherContractIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "success",
+            "typeRef": {
+              "type": "bool"
+            }
+          }
+        ]
+      },
+      "inputSize": 112,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetShareholderProposalFees",
+      "inputType": 65531,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "setProposalFee",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "setVoteFee",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 16
+    },
+    {
+      "kind": "function",
+      "name": "GetShareholderProposalIndices",
+      "inputType": 65532,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "activeProposals",
+            "typeRef": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "prevProposalIndex",
+            "typeRef": {
+              "type": "i32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "numOfIndices",
+            "typeRef": {
+              "type": "u16"
+            }
+          },
+          {
+            "name": "indices",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u16"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 130
+    },
+    {
+      "kind": "function",
+      "name": "GetShareholderProposal",
+      "inputType": 65533,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposal",
+            "typeRef": {
+              "type": "bytes",
+              "length": 304
+            }
+          },
+          {
+            "name": "proposerPubicKey",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "inputSize": 2,
+      "outputSize": 336
+    },
+    {
+      "kind": "function",
+      "name": "GetShareholderVotes",
+      "inputType": 65534,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "voter",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 40,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "SetShareholderProposal",
+      "inputType": 65534,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalData",
+            "typeRef": {
+              "type": "bytes",
+              "length": 304
+            }
+          },
+          {
+            "name": "multiVarData",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "dummyStateVariable2",
+                  "typeRef": {
+                    "type": "u32"
+                  }
+                },
+                {
+                  "name": "dummyStateVariable3",
+                  "typeRef": {
+                    "type": "i8"
+                  }
+                },
+                {
+                  "name": "optionYesValues",
+                  "typeRef": {
+                    "type": "struct",
+                    "fields": [
+                      {
+                        "name": "dummyStateVariable1",
+                        "typeRef": {
+                          "type": "u64"
+                        }
+                      },
+                      {
+                        "name": "dummyStateVariable2",
+                        "typeRef": {
+                          "type": "u32"
+                        }
+                      },
+                      {
+                        "name": "dummyStateVariable3",
+                        "typeRef": {
+                          "type": "i8"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "hasValueDummyStateVariable1",
+                  "typeRef": {
+                    "type": "bool"
+                  }
+                },
+                {
+                  "name": "hasValueDummyStateVariable2",
+                  "typeRef": {
+                    "type": "bool"
+                  }
+                },
+                {
+                  "name": "hasValueDummyStateVariable3",
+                  "typeRef": {
+                    "type": "bool"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 336,
+      "outputSize": 1
+    },
+    {
+      "kind": "function",
+      "name": "GetShareholderVotingResults",
+      "inputType": 65535,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalIndex",
+            "typeRef": {
+              "type": "u16"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 2,
+      "outputSize": 1
+    },
+    {
+      "kind": "procedure",
+      "name": "SetShareholderVotes",
+      "inputType": 65535,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "nodata"
+      },
+      "inputSize": 1,
+      "outputSize": 1
+    }
+  ]
+}

@@ -1,0 +1,688 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "Qx",
+    "contractIndex": 1
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "Fees",
+      "inputType": 1,
+      "input": {
+        "type": "nodata",
+        "expectedSize": 1
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetIssuanceFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "transferFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          },
+          {
+            "name": "tradeFee",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 12
+    },
+    {
+      "kind": "procedure",
+      "name": "IssueAsset",
+      "inputType": 1,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "unitOfMeasurement",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfDecimalPlaces",
+            "typeRef": {
+              "type": "i8"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuedNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 32,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "AssetAskOrders",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "offset",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "orders",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "entity",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "price",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "numberOfShares",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 12304
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareOwnershipAndPossession",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "newOwnerAndPossessor",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 80,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "AssetBidOrders",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "offset",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "orders",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "entity",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "price",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "numberOfShares",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 12304
+    },
+    {
+      "kind": "function",
+      "name": "EntityAskOrders",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "entity",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "offset",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "orders",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "entity",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "price",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "numberOfShares",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 12312
+    },
+    {
+      "kind": "procedure",
+      "name": "AddToAskOrder",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "addedNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "EntityBidOrders",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "entity",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "offset",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "orders",
+            "typeRef": {
+              "type": "array",
+              "length": 256,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "entity",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "price",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  },
+                  {
+                    "name": "numberOfShares",
+                    "typeRef": {
+                      "type": "i64"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 12312
+    },
+    {
+      "kind": "procedure",
+      "name": "AddToBidOrder",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "addedNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "RemoveFromAskOrder",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "removedNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "RemoveFromBidOrder",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "issuer",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "assetName",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "price",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "removedNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "TransferShareManagementRights",
+      "inputType": 9,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "newManagingContractIndex",
+            "typeRef": {
+              "type": "u32"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "inputSize": 56,
+      "outputSize": 8
+    }
+  ]
+}
