@@ -43,6 +43,9 @@ def parse_contract_def_h(source: str) -> List[ContractDefEntry]:
             continue
         st = re.match(r"^\s*#define\s+CONTRACT_STATE_TYPE\s+([A-Za-z_][A-Za-z0-9_]*)\s*$", line)
         if st:
+            # If we already captured a header, flush the previous entry before state changes.
+            if current_header is not None:
+                flush()
             current_state_type = st.group(1)
             continue
         inc = re.match(r'^\s*#include\s+"contracts/([^"]+)"\s*$', line)
@@ -548,20 +551,15 @@ def generate_registry(contract_def_path: Path, contracts_dir: Path, out_dir: Pat
     excluded_dir = out_dir / "_excluded"
     excluded_dir.mkdir(parents=True, exist_ok=True)
 
-    for header in contracts_dir.iterdir():
-        if not header.is_file():
+    for header_name, contract_index in headers.items():
+        if header_name == "qpi.h":
             continue
-        if not header.name.endswith(".h"):
+        header = contracts_dir / header_name
+        if not header.exists():
             continue
-        if not re.match(r"^[A-Z].*\.h$", header.name):
-            continue
-        if header.name == "qpi.h":
-            continue
-
         source = header.read_text(encoding="utf-8")
         source_with_qpi = f"{qpi}\n{source}"
         contract_name = header.stem
-        contract_index = headers.get(header.name)
         qbi = compile_contract_header(source_with_qpi, contract_name, contract_index)
 
         out_name = f"{contract_name}.json"

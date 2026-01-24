@@ -18,3 +18,7 @@ Thumbs.db
 
 # Generated tool checkouts
 tools/
+
+# Python
+__pycache__/
+*.pyc

@@ -1,0 +1,857 @@
+{
+  "qbiVersion": "0.1",
+  "contract": {
+    "name": "qRWA",
+    "contractIndex": 20
+  },
+  "entries": [
+    {
+      "kind": "function",
+      "name": "GetGovParams",
+      "inputType": 1,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "params",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "mAdminAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "electricityAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "maintenanceAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "reinvestmentAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "qmineDevAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "electricityPercent",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "maintenancePercent",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "reinvestmentPercent",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 184
+    },
+    {
+      "kind": "function",
+      "name": "GetGovPoll",
+      "inputType": 2,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposal",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "proposalId",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "status",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "score",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "params",
+                  "typeRef": {
+                    "type": "struct",
+                    "fields": [
+                      {
+                        "name": "mAdminAddress",
+                        "typeRef": {
+                          "type": "m256i"
+                        }
+                      },
+                      {
+                        "name": "electricityAddress",
+                        "typeRef": {
+                          "type": "m256i"
+                        }
+                      },
+                      {
+                        "name": "maintenanceAddress",
+                        "typeRef": {
+                          "type": "m256i"
+                        }
+                      },
+                      {
+                        "name": "reinvestmentAddress",
+                        "typeRef": {
+                          "type": "m256i"
+                        }
+                      },
+                      {
+                        "name": "qmineDevAddress",
+                        "typeRef": {
+                          "type": "m256i"
+                        }
+                      },
+                      {
+                        "name": "electricityPercent",
+                        "typeRef": {
+                          "type": "u64"
+                        }
+                      },
+                      {
+                        "name": "maintenancePercent",
+                        "typeRef": {
+                          "type": "u64"
+                        }
+                      },
+                      {
+                        "name": "reinvestmentPercent",
+                        "typeRef": {
+                          "type": "u64"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 216
+    },
+    {
+      "kind": "procedure",
+      "name": "DonateToTreasury",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetAssetReleasePoll",
+      "inputType": 3,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposal",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "proposalId",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "proposalName",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "asset",
+                  "typeRef": {
+                    "type": "struct",
+                    "fields": [
+                      {
+                        "name": "issuer",
+                        "typeRef": {
+                          "type": "m256i"
+                        }
+                      },
+                      {
+                        "name": "assetName",
+                        "typeRef": {
+                          "type": "u64"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "amount",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "destination",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "status",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "votesYes",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "votesNo",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 8,
+      "outputSize": 152
+    },
+    {
+      "kind": "function",
+      "name": "GetTreasuryBalance",
+      "inputType": 4,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "balance",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "VoteGovParams",
+      "inputType": 4,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposal",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "mAdminAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "electricityAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "maintenanceAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "reinvestmentAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "qmineDevAddress",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "electricityPercent",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "maintenancePercent",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                },
+                {
+                  "name": "reinvestmentPercent",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 184,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "CreateAssetReleasePoll",
+      "inputType": 5,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalName",
+            "typeRef": {
+              "type": "m256i"
+            }
+          },
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "destination",
+            "typeRef": {
+              "type": "m256i"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "proposalId",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 112,
+      "outputSize": 16
+    },
+    {
+      "kind": "function",
+      "name": "GetDividendBalances",
+      "inputType": 5,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "revenuePoolA",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "revenuePoolB",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "qmineDividendPool",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "qrwaDividendPool",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 32
+    },
+    {
+      "kind": "function",
+      "name": "GetTotalDistributed",
+      "inputType": 6,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "totalQmineDistributed",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "totalQRWADistributed",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 16
+    },
+    {
+      "kind": "procedure",
+      "name": "VoteAssetRelease",
+      "inputType": 6,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "proposalId",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "option",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 16,
+      "outputSize": 8
+    },
+    {
+      "kind": "procedure",
+      "name": "DepositGeneralAsset",
+      "inputType": 7,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 8
+    },
+    {
+      "kind": "function",
+      "name": "GetActiveAssetReleasePollIds",
+      "inputType": 7,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "ids",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u64"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 520
+    },
+    {
+      "kind": "function",
+      "name": "GetActiveGovPollIds",
+      "inputType": 8,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "ids",
+            "typeRef": {
+              "type": "array",
+              "length": 64,
+              "item": {
+                "type": "u64"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 520
+    },
+    {
+      "kind": "procedure",
+      "name": "RevokeAssetManagementRights",
+      "inputType": 8,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "numberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "transferredNumberOfShares",
+            "typeRef": {
+              "type": "i64"
+            }
+          },
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 48,
+      "outputSize": 16
+    },
+    {
+      "kind": "function",
+      "name": "GetGeneralAssetBalance",
+      "inputType": 9,
+      "input": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "typeRef": {
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "issuer",
+                  "typeRef": {
+                    "type": "m256i"
+                  }
+                },
+                {
+                  "name": "assetName",
+                  "typeRef": {
+                    "type": "u64"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "balance",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "status",
+            "typeRef": {
+              "type": "u64"
+            }
+          }
+        ]
+      },
+      "inputSize": 40,
+      "outputSize": 16
+    },
+    {
+      "kind": "function",
+      "name": "GetGeneralAssets",
+      "inputType": 10,
+      "input": {
+        "type": "nodata"
+      },
+      "output": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "typeRef": {
+              "type": "u64"
+            }
+          },
+          {
+            "name": "assets",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "issuer",
+                    "typeRef": {
+                      "type": "m256i"
+                    }
+                  },
+                  {
+                    "name": "assetName",
+                    "typeRef": {
+                      "type": "u64"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "balances",
+            "typeRef": {
+              "type": "array",
+              "length": 1024,
+              "item": {
+                "type": "u64"
+              }
+            }
+          }
+        ]
+      },
+      "inputSize": 1,
+      "outputSize": 49160
+    }
+  ]
+}
