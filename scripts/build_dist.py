@@ -58,6 +58,9 @@ def build_bundle_flat(root_dir: Path, bundle_name: str = "bundle.json") -> Tuple
     for p in sorted(root_dir.rglob("*.json")):
         if p.name.endswith(".min.json") or p.name == "version.json":
             continue
+        rel = p.relative_to(root_dir).as_posix()
+        if rel.startswith("qbi/"):
+            continue
         try:
             data = json.loads(p.read_text(encoding="utf-8"))
             if isinstance(data, dict):
