@@ -37,7 +37,8 @@
           "name": "Transfer Share Management Rights",
           "fee": 0
         }
-      ]
+      ],
+      "qbiFile": "Qx.json"
     },
     {
       "filename": "Quottery.h",
@@ -64,7 +65,8 @@
           "name": "Publish Result"
         }
       ],
-      "website": "https://quottery.org/"
+      "website": "https://quottery.org/",
+      "qbiFile": "Quottery.json"
     },
     {
       "filename": "Random.h",
@@ -78,7 +80,8 @@
           "id": 1,
           "name": "Reveal and Commit"
         }
-      ]
+      ],
+      "qbiFile": "Random.json"
     },
     {
       "filename": "QUtil.h",
@@ -120,7 +123,8 @@
           "id": 8,
           "name": "Burn Qubic for Contract"
         }
-      ]
+      ],
+      "qbiFile": "QUtil.json"
     },
     {
       "filename": "MyLastMatch.h",
@@ -129,7 +133,8 @@
       "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/MyLastMatch.h",
       "contractIndex": 5,
       "address": "FAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYWJB",
-      "procedures": []
+      "procedures": [],
+      "qbiFile": "MyLastMatch.json"
     },
     {
       "filename": "GeneralQuorumProposal.h",
@@ -147,7 +152,8 @@
           "id": 2,
           "name": "Vote"
         }
-      ]
+      ],
+      "qbiFile": "GeneralQuorumProposal.json"
     },
     {
       "filename": "SupplyWatcher.h",
@@ -156,7 +162,8 @@
       "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/SupplyWatcher.h",
       "contractIndex": 7,
       "address": "HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHYCM",
-      "procedures": []
+      "procedures": [],
+      "qbiFile": "SupplyWatcher.json"
     },
     {
       "filename": "ComputorControlledFund.h",
@@ -175,7 +182,8 @@
           "id": 2,
           "name": "Vote"
         }
-      ]
+      ],
+      "qbiFile": "ComputorControlledFund.json"
     },
     {
       "filename": "Qearn.h",
@@ -195,7 +203,8 @@
           "name": "Unlock"
         }
       ],
-      "website": "https://qearn.org"
+      "website": "https://qearn.org",
+      "qbiFile": "Qearn.json"
     },
     {
       "filename": "QVAULT.h",
@@ -254,7 +263,8 @@
           "id": 12,
           "name": "Unblock Banned Address"
         }
-      ]
+      ],
+      "qbiFile": "QVAULT.json"
     },
     {
       "filename": "MsVault.h",
@@ -301,7 +311,8 @@
           "id": 25,
           "name": "Revoke Asset Management Rights"
         }
-      ]
+      ],
+      "qbiFile": "MsVault.json"
     },
     {
       "filename": "Qbay.h",
@@ -381,7 +392,8 @@
           "id": 17,
           "name": "Change Status of Market Place"
         }
-      ]
+      ],
+      "qbiFile": "Qbay.json"
     },
     {
       "filename": "Qswap.h",
@@ -437,7 +449,8 @@
           "name": "Transfer Share Management Rights",
           "fee": 100
         }
-      ]
+      ],
+      "qbiFile": "Qswap.json"
     },
     {
       "filename": "Nostromo.h",
@@ -485,7 +498,8 @@
           "name": "Transfer Share Management Rights",
           "fee": 100
         }
-      ]
+      ],
+      "qbiFile": "Nostromo.json"
     },
     {
       "filename": "Qdraw.h",
@@ -500,7 +514,8 @@
           "id": 1,
           "name": "Buy Ticket"
         }
-      ]
+      ],
+      "qbiFile": "Qdraw.json"
     },
     {
       "filename": "RandomLottery.h",
@@ -523,7 +538,8 @@
           "id": 3,
           "name": "Set Schedule"
         }
-      ]
+      ],
+      "qbiFile": "RandomLottery.json"
     },
     {
       "filename": "QBond.h",
@@ -566,7 +582,8 @@
           "id": 8,
           "name": "Update CFA"
         }
-      ]
+      ],
+      "qbiFile": "QBond.json"
     },
     {
       "filename": "QIP.h",
@@ -590,7 +607,8 @@
           "name": "Transfer Share Management Rights",
           "fee": 100
         }
-      ]
+      ],
+      "qbiFile": "QIP.json"
     },
     {
       "filename": "QRaffle.h",
@@ -633,7 +651,8 @@
           "name": "Transfer Share Management Rights",
           "fee": 100
         }
-      ]
+      ],
+      "qbiFile": "QRaffle.json"
     },
     {
       "filename": "qRWA.h",
@@ -667,7 +686,8 @@
           "id": 8,
           "name": "Revoke Asset Management Rights"
         }
-      ]
+      ],
+      "qbiFile": "qRWA.json"
     }
   ]
 }

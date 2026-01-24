@@ -1,0 +1,125 @@
+{
+  "qbiVersion": "0.1",
+  "contracts": [
+    {
+      "filename": "Qx.h",
+      "contractIndex": 1,
+      "qbiFile": "Qx.json",
+      "contractName": "Qx"
+    },
+    {
+      "filename": "Quottery.h",
+      "contractIndex": 2,
+      "qbiFile": "Quottery.json",
+      "contractName": "Quottery"
+    },
+    {
+      "filename": "Random.h",
+      "contractIndex": 3,
+      "qbiFile": "Random.json",
+      "contractName": "Random"
+    },
+    {
+      "filename": "QUtil.h",
+      "contractIndex": 4,
+      "qbiFile": "QUtil.json",
+      "contractName": "QUtil"
+    },
+    {
+      "filename": "MyLastMatch.h",
+      "contractIndex": 5,
+      "qbiFile": "MyLastMatch.json",
+      "contractName": "MyLastMatch"
+    },
+    {
+      "filename": "GeneralQuorumProposal.h",
+      "contractIndex": 6,
+      "qbiFile": "GeneralQuorumProposal.json",
+      "contractName": "GeneralQuorumProposal"
+    },
+    {
+      "filename": "SupplyWatcher.h",
+      "contractIndex": 7,
+      "qbiFile": "SupplyWatcher.json",
+      "contractName": "SupplyWatcher"
+    },
+    {
+      "filename": "ComputorControlledFund.h",
+      "contractIndex": 8,
+      "qbiFile": "ComputorControlledFund.json",
+      "contractName": "ComputorControlledFund"
+    },
+    {
+      "filename": "Qearn.h",
+      "contractIndex": 9,
+      "qbiFile": "Qearn.json",
+      "contractName": "Qearn"
+    },
+    {
+      "filename": "QVAULT.h",
+      "contractIndex": 10,
+      "qbiFile": "QVAULT.json",
+      "contractName": "QVAULT"
+    },
+    {
+      "filename": "MsVault.h",
+      "contractIndex": 11,
+      "qbiFile": "MsVault.json",
+      "contractName": "MsVault"
+    },
+    {
+      "filename": "Qbay.h",
+      "contractIndex": 12,
+      "qbiFile": "Qbay.json",
+      "contractName": "Qbay"
+    },
+    {
+      "filename": "Qswap.h",
+      "contractIndex": 13,
+      "qbiFile": "Qswap.json",
+      "contractName": "Qswap"
+    },
+    {
+      "filename": "Nostromo.h",
+      "contractIndex": 14,
+      "qbiFile": "Nostromo.json",
+      "contractName": "Nostromo"
+    },
+    {
+      "filename": "Qdraw.h",
+      "contractIndex": 15,
+      "qbiFile": "Qdraw.json",
+      "contractName": "Qdraw"
+    },
+    {
+      "filename": "RandomLottery.h",
+      "contractIndex": 16,
+      "qbiFile": "RandomLottery.json",
+      "contractName": "RandomLottery"
+    },
+    {
+      "filename": "QBond.h",
+      "contractIndex": 17,
+      "qbiFile": "QBond.json",
+      "contractName": "QBond"
+    },
+    {
+      "filename": "QIP.h",
+      "contractIndex": 18,
+      "qbiFile": "QIP.json",
+      "contractName": "QIP"
+    },
+    {
+      "filename": "QRaffle.h",
+      "contractIndex": 19,
+      "qbiFile": "QRaffle.json",
+      "contractName": "QRaffle"
+    },
+    {
+      "filename": "qRWA.h",
+      "contractIndex": 20,
+      "qbiFile": "qRWA.json",
+      "contractName": "qRWA"
+    }
+  ]
+}
