@@ -837,6 +837,63 @@
       "allowTransferShares": false,
       "firstUseEpoch": 199,
       "sharesAuctionEpoch": 198
+    },
+    {
+      "filename": "Pulse.h",
+      "name": "PULSE",
+      "label": "Pulse",
+      "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/Pulse.h",
+      "contractIndex": 24,
+      "address": "YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMSME",
+      "allowTransferShares": false,
+      "procedures": [
+        {
+          "id": 1,
+          "name": "Buy Ticket"
+        },
+        {
+          "id": 2,
+          "name": "Set Price"
+        },
+        {
+          "id": 3,
+          "name": "Set Schedule"
+        },
+        {
+          "id": 4,
+          "name": "Set Draw Hour"
+        },
+        {
+          "id": 5,
+          "name": "Set Fees"
+        },
+        {
+          "id": 6,
+          "name": "Set Qheart Hold Limit"
+        },
+        {
+          "id": 7,
+          "name": "Buy Random Tickets"
+        },
+        {
+          "id": 8,
+          "name": "Deposit Auto Participation"
+        },
+        {
+          "id": 9,
+          "name": "Withdraw Auto Participation"
+        },
+        {
+          "id": 10,
+          "name": "Set Auto Config"
+        },
+        {
+          "id": 11,
+          "name": "Set Auto Limits"
+        }
+      ],
+      "firstUseEpoch": 204,
+      "sharesAuctionEpoch": 203
     }
   ]
 }
