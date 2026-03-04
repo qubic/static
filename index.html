@@ -618,16 +618,26 @@
 
             // Update base URL displays
             document.querySelectorAll('.base-url').forEach(el => {
-                // Extract just the path after v1/
-                const path = el.textContent.replace(/https:\/\/static\.qubic\.org\/(staging\/|dev\/)?v1\//, '').replace(/^v1\//, '');
-                el.textContent = baseUrl + path;
+                const path = el.getAttribute('data-path');
+                if (path) el.textContent = baseUrl + path;
             });
 
             // Update all endpoint links
             document.querySelectorAll('.endpoints a').forEach(link => {
-                // Extract just the path after v1/
-                const path = link.getAttribute('href').replace(/https:\/\/static\.qubic\.org\/(staging\/|dev\/)?v1\//, '').replace(/^v1\//, '');
-                link.setAttribute('href', baseUrl + path);
+                const path = link.getAttribute('data-path');
+                if (path) link.setAttribute('href', baseUrl + path);
+            });
+        }
+
+        // Store relative paths in data-path attributes on page load
+        function initPaths() {
+            document.querySelectorAll('.base-url').forEach(el => {
+                const path = el.textContent.replace(/https:\/\/static\.qubic\.org\/(staging\/|dev\/)?v1\//, '').replace(/^v1\//, '');
+                el.setAttribute('data-path', path);
+            });
+            document.querySelectorAll('.endpoints a').forEach(link => {
+                const path = link.getAttribute('href').replace(/^v1\//, '');
+                link.setAttribute('data-path', path);
             });
         }
 
@@ -672,6 +682,7 @@
         }
 
         // Initialize on page load
+        initPaths();
         updateLinks();
         addCopyButtons();
         fetchVersion();
