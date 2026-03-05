@@ -76,6 +76,16 @@
             "platformVersions": {
                 "ios": "none"
             }
+        },
+        {
+            "id": "qubicswap_app_id",
+            "nameId": "qubicswap_name",
+            "icon": "",
+            "url": "https://qubicswap.com/",
+            "descriptionId": "qubicswap_description",
+            "platformVersions": {
+                "ios": "none"
+            }
         }
     ]
 }

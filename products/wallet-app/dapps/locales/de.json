@@ -17,5 +17,7 @@
     "qbay_name": "QubicBay",
     "qbay_description": "Dein Tor zum NFT-Universum",
     "qbond_name": "QBond",
-    "qbond_description": "Ertrag erzielen. Liquide bleiben. Jederzeit handeln"
+    "qbond_description": "Ertrag erzielen. Liquide bleiben. Jederzeit handeln",
+    "qubicswap_name": "QUBICSwap",
+    "qubicswap_description": "Eine Börse für den Handel über die QX- und QSwap-Smart-Contracts."
 }

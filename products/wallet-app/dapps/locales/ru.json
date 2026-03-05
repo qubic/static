@@ -17,5 +17,7 @@
     "qbay_name": "QubicBay",
     "qbay_description": "Ваш портал во вселенную NFT",
     "qbond_name": "QBond",
-    "qbond_description": "Получайте доход. Сохраняйте ликвидность. Торгуйте в любое время"
+    "qbond_description": "Получайте доход. Сохраняйте ликвидность. Торгуйте в любое время",
+    "qubicswap_name": "QUBICSwap",
+    "qubicswap_description": "Биржа для торговли через смарт-контракты QX и QSwap."
 }

@@ -17,5 +17,7 @@
     "qbay_name": "QubicBay",
     "qbay_description": "Your Gateway to the NFT Universe",
     "qbond_name": "QBond",
-    "qbond_description": "Earn yield. Stay liquid. Trade anytime"
+    "qbond_description": "Earn yield. Stay liquid. Trade anytime",
+    "qubicswap_name": "QUBICSwap",
+    "qubicswap_description": "An exchange allowing trades for the QX and QSwap smart contracts."
 }
