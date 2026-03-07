@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/qubic/static/compare/v1.19.0...v1.19.1) (2026-03-07)
+
+
+### Bug Fixes
+
+* add fee for Qswap Transfer Share Management Rights ([a93410b](https://github.com/qubic/static/commit/a93410b557c36b6072cc27c5870b8c94fbde2e0f))
+
 # [1.19.0](https://github.com/qubic/static/compare/v1.18.0...v1.19.0) (2026-03-04)
 
 
