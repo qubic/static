@@ -14,8 +14,7 @@
         },
         {
           "id": 2,
-          "name": "Transfer Share Ownership and Possession",
-          "fee": 100
+          "name": "Transfer Share Ownership and Possession"
         },
         {
           "id": 5,
@@ -129,6 +128,18 @@
         {
           "id": 8,
           "name": "Burn Qubic for Contract"
+        },
+        {
+          "id": 100,
+          "name": "Query Price Oracle"
+        },
+        {
+          "id": 101,
+          "name": "Subscribe Price Oracle"
+        },
+        {
+          "id": 102,
+          "name": "Unsubscribe Oracle"
         }
       ],
       "allowTransferShares": false,
@@ -409,8 +420,7 @@
         },
         {
           "id": 16,
-          "name": "Transfer Share Management Rights",
-          "fee": 100
+          "name": "Transfer Share Management Rights"
         },
         {
           "id": 17,
@@ -472,8 +482,7 @@
         },
         {
           "id": 11,
-          "name": "Transfer Share Management Rights",
-          "fee": 100
+          "name": "Transfer Share Management Rights"
         }
       ],
       "allowTransferShares": true,
@@ -523,8 +532,7 @@
         },
         {
           "id": 9,
-          "name": "Transfer Share Management Rights",
-          "fee": 100
+          "name": "Transfer Share Management Rights"
         }
       ],
       "allowTransferShares": true,
@@ -640,8 +648,7 @@
         },
         {
           "id": 3,
-          "name": "Transfer Share Management Rights",
-          "fee": 100
+          "name": "Transfer Share Management Rights"
         }
       ],
       "allowTransferShares": true,
