@@ -10,33 +10,40 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Issue Asset"
+          "name": "Issue Asset",
+          "sourceIdentifier": "IssueAsset"
         },
         {
           "id": 2,
           "name": "Transfer Share Ownership and Possession",
-          "fee": 100
+          "fee": 100,
+          "sourceIdentifier": "TransferShareOwnershipAndPossession"
         },
         {
           "id": 5,
-          "name": "Add to Ask Order"
+          "name": "Add to Ask Order",
+          "sourceIdentifier": "AddToAskOrder"
         },
         {
           "id": 6,
-          "name": "Add to Bid Order"
+          "name": "Add to Bid Order",
+          "sourceIdentifier": "AddToBidOrder"
         },
         {
           "id": 7,
-          "name": "Remove from Ask Order"
+          "name": "Remove from Ask Order",
+          "sourceIdentifier": "RemoveFromAskOrder"
         },
         {
           "id": 8,
-          "name": "Remove from Bid Order"
+          "name": "Remove from Bid Order",
+          "sourceIdentifier": "RemoveFromBidOrder"
         },
         {
           "id": 9,
           "name": "Transfer Share Management Rights",
-          "fee": 0
+          "fee": 0,
+          "sourceIdentifier": "TransferShareManagementRights"
         }
       ],
       "allowTransferShares": true,
@@ -53,19 +60,23 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Issue Bet"
+          "name": "Issue Bet",
+          "sourceIdentifier": "issueBet"
         },
         {
           "id": 2,
-          "name": "Join Bet"
+          "name": "Join Bet",
+          "sourceIdentifier": "joinBet"
         },
         {
           "id": 3,
-          "name": "Cancel Bet"
+          "name": "Cancel Bet",
+          "sourceIdentifier": "cancelBet"
         },
         {
           "id": 4,
-          "name": "Publish Result"
+          "name": "Publish Result",
+          "sourceIdentifier": "publishResult"
         }
       ],
       "website": "https://quottery.org/",
@@ -83,7 +94,8 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Reveal and Commit"
+          "name": "Reveal and Commit",
+          "sourceIdentifier": "RevealAndCommit"
         }
       ],
       "allowTransferShares": false,
@@ -100,35 +112,58 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Send to Many v1"
+          "name": "Send to Many v1",
+          "sourceIdentifier": "SendToManyV1"
         },
         {
           "id": 2,
-          "name": "Burn Qubic"
+          "name": "Burn Qubic",
+          "sourceIdentifier": "BurnQubic"
         },
         {
           "id": 3,
-          "name": "Send to Many Benchmark"
+          "name": "Send to Many Benchmark",
+          "sourceIdentifier": "SendToManyBenchmark"
         },
         {
           "id": 4,
-          "name": "Create Poll"
+          "name": "Create Poll",
+          "sourceIdentifier": "CreatePoll"
         },
         {
           "id": 5,
-          "name": "Vote"
+          "name": "Vote",
+          "sourceIdentifier": "Vote"
         },
         {
           "id": 6,
-          "name": "Cancel Poll"
+          "name": "Cancel Poll",
+          "sourceIdentifier": "CancelPoll"
         },
         {
           "id": 7,
-          "name": "Distribute Qu to Shareholders"
+          "name": "Distribute Qu to Shareholders",
+          "sourceIdentifier": "DistributeQuToShareholders"
         },
         {
           "id": 8,
-          "name": "Burn Qubic for Contract"
+          "name": "Burn Qubic for Contract",
+          "sourceIdentifier": "BurnQubicForContract"
+        },
+        {
+          "id": 100,
+          "name": "Query Price Oracle",
+          "sourceIdentifier": "QueryPriceOracle"
+        },
+        {
+          "id": 101,
+          "name": "Subscribe Price Oracle",
+          "sourceIdentifier": "SubscribePriceOracle"
+        },
+        {
+          "id": 102,
+          "name": "Unsubscribe Oracle",
+          "sourceIdentifier": "UnsubscribeOracle"
         }
       ],
       "allowTransferShares": false,
@@ -157,11 +192,13 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Set Proposal"
+          "name": "Set Proposal",
+          "sourceIdentifier": "SetProposal"
         },
         {
           "id": 2,
-          "name": "Vote"
+          "name": "Vote",
+          "sourceIdentifier": "Vote"
         }
       ],
       "allowTransferShares": false,
@@ -191,11 +228,13 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Set Proposal"
+          "name": "Set Proposal",
+          "sourceIdentifier": "SetProposal"
         },
         {
           "id": 2,
-          "name": "Vote"
+          "name": "Vote",
+          "sourceIdentifier": "Vote"
         }
       ],
       "allowTransferShares": false,
@@ -213,11 +252,13 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Lock"
+          "name": "Lock",
+          "sourceIdentifier": "lock"
         },
         {
           "id": 2,
-          "name": "Unlock"
+          "name": "Unlock",
+          "sourceIdentifier": "unlock"
         }
       ],
       "website": "https://qearn.org",
@@ -236,54 +277,67 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Submit Auth Address"
+          "name": "Lock Qcap",
+          "sourceIdentifier": "stake"
         },
         {
           "id": 2,
-          "name": "Change Auth Address"
+          "name": "Unlock Qcap",
+          "sourceIdentifier": "unStake"
         },
         {
           "id": 3,
-          "name": "Submit Distribution Permille"
+          "name": "Submit General Proposal",
+          "sourceIdentifier": "submitGP"
         },
         {
           "id": 4,
-          "name": "Change Distribution Permille"
+          "name": "Submit Quorum Requirement Proposal",
+          "sourceIdentifier": "submitQCP"
         },
         {
           "id": 5,
-          "name": "Submit Reinvesting Address"
+          "name": "Submit IPO Participation Proposal",
+          "sourceIdentifier": "submitIPOP"
         },
         {
           "id": 6,
-          "name": "Change Reinvesting Address"
+          "name": "Submit Qearn Participation Proposal",
+          "sourceIdentifier": "submitQEarnP"
         },
         {
           "id": 7,
-          "name": "Submit Admin Address"
+          "name": "Submit Fundraising Proposal",
+          "sourceIdentifier": "submitFundP"
         },
         {
           "id": 8,
-          "name": "Change Admin Address"
+          "name": "Submit Marketplace Proposal",
+          "sourceIdentifier": "submitMKTP"
         },
         {
           "id": 9,
-          "name": "Submit Banned Address"
-        },
-        {
-          "id": 10,
-          "name": "Save Banned Address"
+          "name": "Submit Allocation Percentage",
+          "sourceIdentifier": "submitAlloP"
         },
         {
           "id": 11,
-          "name": "Submit Unbanned Address"
+          "name": "Vote in Proposal",
+          "sourceIdentifier": "voteInProposal"
         },
         {
           "id": 12,
-          "name": "Unblock Banned Address"
+          "name": "Buy Qcap",
+          "sourceIdentifier": "buyQcap"
+        },
+        {
+          "id": 13,
+          "name": "Transfer Share Management Rights",
+          "sourceIdentifier": "TransferShareManagementRights",
+          "fee": 100
         }
       ],
-      "allowTransferShares": false,
+      "allowTransferShares": true,
       "firstUseEpoch": 138,
       "sharesAuctionEpoch": 137
     },
@@ -298,40 +352,49 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Register Vault"
+          "name": "Register Vault",
+          "sourceIdentifier": "registerVault"
         },
         {
           "id": 2,
-          "name": "Deposit"
+          "name": "Deposit",
+          "sourceIdentifier": "deposit"
         },
         {
           "id": 3,
-          "name": "Release To"
+          "name": "Release To",
+          "sourceIdentifier": "releaseTo"
         },
         {
           "id": 4,
-          "name": "Reset Release"
+          "name": "Reset Release",
+          "sourceIdentifier": "resetRelease"
         },
         {
           "id": 13,
-          "name": "Vote Fee Change"
+          "name": "Vote Fee Change",
+          "sourceIdentifier": "voteFeeChange"
         },
         {
           "id": 19,
-          "name": "Deposit Asset"
+          "name": "Deposit Asset",
+          "sourceIdentifier": "depositAsset"
         },
         {
           "id": 20,
-          "name": "Release Asset To"
+          "name": "Release Asset To",
+          "sourceIdentifier": "releaseAssetTo"
         },
         {
           "id": 21,
-          "name": "Reset Asset Release"
+          "name": "Reset Asset Release",
+          "sourceIdentifier": "resetAssetRelease"
         },
         {
           "id": 25,
           "name": "Revoke Asset Management Rights",
-          "fee": 100
+          "fee": 100,
+          "sourceIdentifier": "revokeAssetManagementRights"
         }
       ],
       "allowTransferShares": true,
@@ -349,72 +412,89 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Setting CFB and Qubic Price"
+          "name": "Setting CFB and Qubic Price",
+          "sourceIdentifier": "settingCFBAndQubicPrice"
         },
         {
           "id": 2,
-          "name": "Create Collection"
+          "name": "Create Collection",
+          "sourceIdentifier": "createCollection"
         },
         {
           "id": 3,
-          "name": "Mint"
+          "name": "Mint",
+          "sourceIdentifier": "mint"
         },
         {
           "id": 4,
-          "name": "Mint of Drop"
+          "name": "Mint of Drop",
+          "sourceIdentifier": "mintOfDrop"
         },
         {
           "id": 5,
-          "name": "Transfer"
+          "name": "Transfer",
+          "sourceIdentifier": "transfer"
         },
         {
           "id": 6,
-          "name": "List in Market"
+          "name": "List in Market",
+          "sourceIdentifier": "listInMarket"
         },
         {
           "id": 7,
-          "name": "Buy"
+          "name": "Buy",
+          "sourceIdentifier": "buy"
         },
         {
           "id": 8,
-          "name": "Cancel Sale"
+          "name": "Cancel Sale",
+          "sourceIdentifier": "cancelSale"
         },
         {
           "id": 9,
-          "name": "List in Exchange"
+          "name": "List in Exchange",
+          "sourceIdentifier": "listInExchange"
         },
         {
           "id": 10,
-          "name": "Cancel Exchange"
+          "name": "Cancel Exchange",
+          "sourceIdentifier": "cancelExchange"
         },
         {
           "id": 11,
-          "name": "Make Offer"
+          "name": "Make Offer",
+          "sourceIdentifier": "makeOffer"
         },
         {
           "id": 12,
-          "name": "Accept Offer"
+          "name": "Accept Offer",
+          "sourceIdentifier": "acceptOffer"
         },
         {
           "id": 13,
-          "name": "Cancel Offer"
+          "name": "Cancel Offer",
+          "sourceIdentifier": "cancelOffer"
         },
         {
           "id": 14,
-          "name": "Create Traditional Auction"
+          "name": "Create Traditional Auction",
+          "sourceIdentifier": "createTraditionalAuction"
         },
         {
           "id": 15,
-          "name": "Bid on Traditional Auction"
+          "name": "Bid on Traditional Auction",
+          "sourceIdentifier": "bidOnTraditionalAuction"
         },
         {
           "id": 16,
           "name": "Transfer Share Management Rights",
-          "fee": 100
+          "fee": 100,
+          "sourceIdentifier": "TransferShareManagementRights"
         },
         {
           "id": 17,
-          "name": "Change Status of Market Place"
+          "name": "Change Status of Market Place",
+          "sourceIdentifier": "changeStatusOfMarketPlace"
         }
       ],
       "allowTransferShares": true,
@@ -432,48 +512,59 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Issue Asset"
+          "name": "Issue Asset",
+          "sourceIdentifier": "IssueAsset"
         },
         {
           "id": 2,
-          "name": "Transfer Share Ownership and Possession"
+          "name": "Transfer Share Ownership and Possession",
+          "sourceIdentifier": "TransferShareOwnershipAndPossession"
         },
         {
           "id": 3,
-          "name": "Create Pool"
+          "name": "Create Pool",
+          "sourceIdentifier": "CreatePool"
         },
         {
           "id": 4,
-          "name": "Add Liquidity"
+          "name": "Add Liquidity",
+          "sourceIdentifier": "AddLiquidity"
         },
         {
           "id": 5,
-          "name": "Remove Liquidity"
+          "name": "Remove Liquidity",
+          "sourceIdentifier": "RemoveLiquidity"
         },
         {
           "id": 6,
-          "name": "Swap Exact Qu for Asset"
+          "name": "Swap Exact Qu for Asset",
+          "sourceIdentifier": "SwapExactQuForAsset"
         },
         {
           "id": 7,
-          "name": "Swap Qu for Exact Asset"
+          "name": "Swap Qu for Exact Asset",
+          "sourceIdentifier": "SwapQuForExactAsset"
         },
         {
           "id": 8,
-          "name": "Swap Exact Asset for Qu"
+          "name": "Swap Exact Asset for Qu",
+          "sourceIdentifier": "SwapExactAssetForQu"
         },
         {
           "id": 9,
-          "name": "Swap Asset for Exact Qu"
+          "name": "Swap Asset for Exact Qu",
+          "sourceIdentifier": "SwapAssetForExactQu"
         },
         {
           "id": 10,
-          "name": "Set Team Info"
+          "name": "Set Invest Rewards Info",
+          "sourceIdentifier": "SetInvestRewardsInfo"
         },
         {
           "id": 11,
           "name": "Transfer Share Management Rights",
-          "fee": 100
+          "fee": 100,
+          "sourceIdentifier": "TransferShareManagementRights"
         }
       ],
       "allowTransferShares": true,
@@ -491,40 +582,49 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Register in Tier"
+          "name": "Register in Tier",
+          "sourceIdentifier": "registerInTier"
         },
         {
           "id": 2,
-          "name": "Logout from Tier"
+          "name": "Logout from Tier",
+          "sourceIdentifier": "logoutFromTier"
         },
         {
           "id": 3,
-          "name": "Create Project"
+          "name": "Create Project",
+          "sourceIdentifier": "createProject"
         },
         {
           "id": 4,
-          "name": "Vote in Project"
+          "name": "Vote in Project",
+          "sourceIdentifier": "voteInProject"
         },
         {
           "id": 5,
-          "name": "Create Fundraising"
+          "name": "Create Fundraising",
+          "sourceIdentifier": "createFundraising"
         },
         {
           "id": 6,
-          "name": "Invest in Project"
+          "name": "Invest in Project",
+          "sourceIdentifier": "investInProject"
         },
         {
           "id": 7,
-          "name": "Claim Token"
+          "name": "Claim Token",
+          "sourceIdentifier": "claimToken"
         },
         {
           "id": 8,
-          "name": "Upgrade Tier"
+          "name": "Upgrade Tier",
+          "sourceIdentifier": "upgradeTier"
         },
         {
           "id": 9,
           "name": "Transfer Share Management Rights",
-          "fee": 100
+          "fee": 100,
+          "sourceIdentifier": "TransferShareManagementRights"
         }
       ],
       "allowTransferShares": true,
@@ -542,7 +642,8 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Buy Ticket"
+          "name": "Buy Ticket",
+          "sourceIdentifier": "buyTicket"
         }
       ],
       "allowTransferShares": false,
@@ -560,15 +661,18 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Buy Ticket"
+          "name": "Buy Ticket",
+          "sourceIdentifier": "BuyTicket"
         },
         {
           "id": 2,
-          "name": "Set Price"
+          "name": "Set Price",
+          "sourceIdentifier": "SetPrice"
         },
         {
           "id": 3,
-          "name": "Set Schedule"
+          "name": "Set Schedule",
+          "sourceIdentifier": "SetSchedule"
         }
       ],
       "allowTransferShares": false,
@@ -586,35 +690,43 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Stake"
+          "name": "Stake",
+          "sourceIdentifier": "Stake"
         },
         {
           "id": 2,
-          "name": "Transfer MBond Ownership and Possession"
+          "name": "Transfer MBond Ownership and Possession",
+          "sourceIdentifier": "TransferMBondOwnershipAndPossession"
         },
         {
           "id": 3,
-          "name": "Add Ask Order"
+          "name": "Add Ask Order",
+          "sourceIdentifier": "AddAskOrder"
         },
         {
           "id": 4,
-          "name": "Remove Ask Order"
+          "name": "Remove Ask Order",
+          "sourceIdentifier": "RemoveAskOrder"
         },
         {
           "id": 5,
-          "name": "Add Bid Order"
+          "name": "Add Bid Order",
+          "sourceIdentifier": "AddBidOrder"
         },
         {
           "id": 6,
-          "name": "Remove Bid Order"
+          "name": "Remove Bid Order",
+          "sourceIdentifier": "RemoveBidOrder"
         },
         {
           "id": 7,
-          "name": "Burn QU"
+          "name": "Burn QU",
+          "sourceIdentifier": "BurnQU"
         },
         {
           "id": 8,
-          "name": "Update CFA"
+          "name": "Update CFA",
+          "sourceIdentifier": "UpdateCFA"
         }
       ],
       "allowTransferShares": true,
@@ -632,16 +744,19 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Create ICO"
+          "name": "Create ICO",
+          "sourceIdentifier": "createICO"
         },
         {
           "id": 2,
-          "name": "Buy Token"
+          "name": "Buy Token",
+          "sourceIdentifier": "buyToken"
         },
         {
           "id": 3,
           "name": "Transfer Share Management Rights",
-          "fee": 100
+          "fee": 100,
+          "sourceIdentifier": "TransferShareManagementRights"
         }
       ],
       "allowTransferShares": true,
@@ -658,36 +773,44 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Register in System"
+          "name": "Register in System",
+          "sourceIdentifier": "registerInSystem"
         },
         {
           "id": 2,
-          "name": "Logout in System"
+          "name": "Logout in System",
+          "sourceIdentifier": "logoutInSystem"
         },
         {
           "id": 3,
-          "name": "Submit Entry Amount"
+          "name": "Submit Entry Amount",
+          "sourceIdentifier": "submitEntryAmount"
         },
         {
           "id": 4,
-          "name": "Submit Proposal"
+          "name": "Submit Proposal",
+          "sourceIdentifier": "submitProposal"
         },
         {
           "id": 5,
-          "name": "Vote in Proposal"
+          "name": "Vote in Proposal",
+          "sourceIdentifier": "voteInProposal"
         },
         {
           "id": 6,
-          "name": "Deposit in Qu Raffle"
+          "name": "Deposit in Qu Raffle",
+          "sourceIdentifier": "depositInQuRaffle"
         },
         {
           "id": 7,
-          "name": "Deposit in Token Raffle"
+          "name": "Deposit in Token Raffle",
+          "sourceIdentifier": "depositInTokenRaffle"
         },
         {
           "id": 8,
           "name": "Transfer Share Management Rights",
-          "fee": 100
+          "fee": 100,
+          "sourceIdentifier": "TransferShareManagementRights"
         }
       ],
       "allowTransferShares": true,
@@ -704,28 +827,34 @@
       "procedures": [
         {
           "id": 3,
-          "name": "Donate to Treasury"
+          "name": "Donate to Treasury",
+          "sourceIdentifier": "DonateToTreasury"
         },
         {
           "id": 4,
-          "name": "Vote Gov Params"
+          "name": "Vote Gov Params",
+          "sourceIdentifier": "VoteGovParams"
         },
         {
           "id": 5,
-          "name": "Create Asset Release Poll"
+          "name": "Create Asset Release Poll",
+          "sourceIdentifier": "CreateAssetReleasePoll"
         },
         {
           "id": 6,
-          "name": "Vote Asset Release"
+          "name": "Vote Asset Release",
+          "sourceIdentifier": "VoteAssetRelease"
         },
         {
           "id": 7,
-          "name": "Deposit General Asset"
+          "name": "Deposit General Asset",
+          "sourceIdentifier": "DepositGeneralAsset"
         },
         {
           "id": 8,
           "name": "Revoke Asset Management Rights",
-          "fee": 100
+          "fee": 100,
+          "sourceIdentifier": "RevokeAssetManagementRights"
         }
       ],
       "allowTransferShares": true,
@@ -742,19 +871,23 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Withdraw Reserve"
+          "name": "Withdraw Reserve",
+          "sourceIdentifier": "WithdrawReserve"
         },
         {
           "id": 2,
-          "name": "Add Allowed SC"
+          "name": "Add Allowed SC",
+          "sourceIdentifier": "AddAllowedSC"
         },
         {
           "id": 3,
-          "name": "Remove Allowed SC"
+          "name": "Remove Allowed SC",
+          "sourceIdentifier": "RemoveAllowedSC"
         },
         {
           "id": 4,
-          "name": "Send Reserve"
+          "name": "Send Reserve",
+          "sourceIdentifier": "SendReserve"
         }
       ],
       "allowTransferShares": false,
@@ -771,27 +904,33 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Buy Ticket"
+          "name": "Buy Ticket",
+          "sourceIdentifier": "BuyTicket"
         },
         {
           "id": 2,
-          "name": "Set Price"
+          "name": "Set Price",
+          "sourceIdentifier": "SetPrice"
         },
         {
           "id": 3,
-          "name": "Set Schedule"
+          "name": "Set Schedule",
+          "sourceIdentifier": "SetSchedule"
         },
         {
           "id": 4,
-          "name": "Set Target Jackpot"
+          "name": "Set Target Jackpot",
+          "sourceIdentifier": "SetTargetJackpot"
         },
         {
           "id": 5,
-          "name": "Set Draw Hour"
+          "name": "Set Draw Hour",
+          "sourceIdentifier": "SetDrawHour"
         },
         {
           "id": 6,
-          "name": "Sync Jackpot"
+          "name": "Sync Jackpot",
+          "sourceIdentifier": "SyncJackpot"
         }
       ],
       "allowTransferShares": false,
@@ -808,31 +947,38 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Create Room"
+          "name": "Create Room",
+          "sourceIdentifier": "CreateRoom"
         },
         {
           "id": 2,
-          "name": "Connect to Room"
+          "name": "Connect to Room",
+          "sourceIdentifier": "ConnectToRoom"
         },
         {
           "id": 3,
-          "name": "Set Percent Fees"
+          "name": "Set Percent Fees",
+          "sourceIdentifier": "SetPercentFees"
         },
         {
           "id": 4,
-          "name": "Set TTL Hours"
+          "name": "Set TTL Hours",
+          "sourceIdentifier": "SetTTLHours"
         },
         {
           "id": 5,
-          "name": "Deposit"
+          "name": "Deposit",
+          "sourceIdentifier": "Deposit"
         },
         {
           "id": 6,
-          "name": "Withdraw"
+          "name": "Withdraw",
+          "sourceIdentifier": "Withdraw"
         },
         {
           "id": 7,
-          "name": "Close Room"
+          "name": "Close Room",
+          "sourceIdentifier": "CloseRoom"
         }
       ],
       "allowTransferShares": false,
@@ -850,47 +996,58 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Buy Ticket"
+          "name": "Buy Ticket",
+          "sourceIdentifier": "BuyTicket"
         },
         {
           "id": 2,
-          "name": "Set Price"
+          "name": "Set Price",
+          "sourceIdentifier": "SetPrice"
         },
         {
           "id": 3,
-          "name": "Set Schedule"
+          "name": "Set Schedule",
+          "sourceIdentifier": "SetSchedule"
         },
         {
           "id": 4,
-          "name": "Set Draw Hour"
+          "name": "Set Draw Hour",
+          "sourceIdentifier": "SetDrawHour"
         },
         {
           "id": 5,
-          "name": "Set Fees"
+          "name": "Set Fees",
+          "sourceIdentifier": "SetFees"
         },
         {
           "id": 6,
-          "name": "Set Qheart Hold Limit"
+          "name": "Set QHeart Hold Limit",
+          "sourceIdentifier": "SetQHeartHoldLimit"
         },
         {
           "id": 7,
-          "name": "Buy Random Tickets"
+          "name": "Buy Random Tickets",
+          "sourceIdentifier": "BuyRandomTickets"
         },
         {
           "id": 8,
-          "name": "Deposit Auto Participation"
+          "name": "Deposit Auto Participation",
+          "sourceIdentifier": "DepositAutoParticipation"
         },
         {
           "id": 9,
-          "name": "Withdraw Auto Participation"
+          "name": "Withdraw Auto Participation",
+          "sourceIdentifier": "WithdrawAutoParticipation"
         },
         {
           "id": 10,
-          "name": "Set Auto Config"
+          "name": "Set Auto Config",
+          "sourceIdentifier": "SetAutoConfig"
         },
         {
           "id": 11,
-          "name": "Set Auto Limits"
+          "name": "Set Auto Limits",
+          "sourceIdentifier": "SetAutoLimits"
         }
       ],
       "firstUseEpoch": 204,
