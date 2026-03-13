@@ -17,5 +17,7 @@
     "qbay_name": "QubicBay",
     "qbay_description": "Tu puerta de entrada al universo NFT",
     "qbond_name": "QBond",
-    "qbond_description": "Gana rendimientos. Mantén liquidez. Opera en cualquier momento"
+    "qbond_description": "Gana rendimientos. Mantén liquidez. Opera en cualquier momento",
+    "qubicswap_name": "QUBICSwap",
+    "qubicswap_description": "Un exchange que permite operar con los contratos inteligentes QX y QSwap."
 }
