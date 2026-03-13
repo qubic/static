@@ -44,6 +44,8 @@ Base URL: `https://static.qubic.org/v1/general/data/`
 - **Smart Contracts**
   - [smart_contracts.json](https://static.qubic.org/v1/general/data/smart_contracts.json)
   - [smart_contracts.min.json](https://static.qubic.org/v1/general/data/smart_contracts.min.json)
+  - [contracts_registry.json](https://static.qubic.org/v1/general/data/contracts_registry.json)
+  - [contracts_registry.manifest.json](https://static.qubic.org/v1/general/data/contracts_registry.manifest.json)
 
   **Fields per contract:**
   | Field | Type | Description |
@@ -67,6 +69,10 @@ Base URL: `https://static.qubic.org/v1/general/data/`
   | `fee` | number (optional) | Fee in qus. See note below. |
 
   > **About the `fee` field:** Fees are currently extracted for the following procedures: `Transfer Share Management Rights`, `Revoke Asset Management Rights`, and `Transfer Share Ownership and Possession`. The fee is included only when it can be resolved to a fixed value from the source code. If a procedure does not have a `fee` field, it does not necessarily mean it is free — the fee may be determined dynamically at execution time (e.g., fetched from another contract or calculated based on state).
+
+  **Contracts registry files:**
+  - `contracts_registry.json` uses the `ContractsRegistry` schema from `@qubic.ts/contracts` and includes contract entries plus `ioTypes`.
+  - `contracts_registry.manifest.json` includes `schema_version`, `registry_hash`, `generated_at`, `source_revision`, and Ed25519 `signature` for client-side verification.
 
 - **Exchanges**
   - [exchanges.json](https://static.qubic.org/v1/general/data/exchanges.json)
@@ -138,6 +144,7 @@ Dev:        https://static.qubic.org/dev/v1/{product}/{path-to-file}
 ```
 https://static.qubic.org/v1/general/data/smart_contracts.json
 https://static.qubic.org/staging/v1/general/data/smart_contracts.json
+https://static.qubic.org/v1/general/data/contracts_registry.manifest.json
 ```
 
 **Wallet App:**
@@ -174,6 +181,7 @@ The `version.json` contains SHA-256 hashes and file sizes for all files, enablin
 ```
 data/                              # General/shared source data
   ├── smart_contracts.json
+  ├── contracts_registry.json
   ├── exchanges.json
   ├── tokens.json
   └── address_labels.json
@@ -186,7 +194,8 @@ products/                          # Product-specific source data
 
 scripts/                           # Build and update utilities
   ├── build_dist.py               # Build distribution files
-  └── update_smart_contracts.py   # Update SC data from GitHub
+  ├── update_smart_contracts.py   # Update SC data from GitHub
+  └── update_contracts_registry.py # Update contracts registry from qubic.ts
 
 .github/workflows/                 # CI/CD automation
   ├── commitlint.yml              # Commit message validation
@@ -235,15 +244,18 @@ Semantic-release automatically:
 - Generates changelogs
 - Triggers deployments
 
-### Automated Smart Contracts Updates
+### Automated Contracts Updates
 
-Smart contract data is automatically refreshed every **Wednesday at 14:00 UTC** via a scheduled GitHub Action workflow.
+Contracts data feeds are automatically refreshed every **Wednesday at 14:00 UTC** via a scheduled GitHub Action workflow.
 
 **How it works:**
-1. The workflow runs `scripts/update_smart_contracts.py` which fetches the latest contract data from the [qubic-core](https://github.com/qubic/core) repository
+1. The workflow runs:
+   - `scripts/update_smart_contracts.py` for the curated smart contracts feed
+   - `scripts/update_contracts_registry.py` for the canonical runtime registry feed sourced from [qubic.ts](https://github.com/qubic/qubic.ts) (via token-authenticated GitHub API when required)
 2. If changes are detected (new contracts, updated procedures, etc.), a PR is automatically created to the `main` branch
 3. Once merged, a new release is created and deployed to production
-4. After the release, merge `main` back to `dev` and `staging` to keep branches in sync
+4. During deploy, `contracts_registry.manifest.json` is generated and Ed25519-signed in CI.
+5. After the release, merge `main` back to `dev` and `staging` to keep branches in sync
 
 **Manual trigger:** The workflow can also be triggered manually from the [Actions tab](../../actions/workflows/refresh-smart-contracts.yml) if an immediate update is needed.
 
