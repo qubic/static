@@ -2,7 +2,9 @@
 import argparse
 import hashlib
 import json
+import os
 import shutil
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -108,7 +110,45 @@ def generate_version_file(root_dir: Path, version: str, environment: str) -> Pat
     write_json(version_path, version_data, pretty=True)
     return version_path
 
-def build_product(product_name: str, src_dir: Path, dist_dir: Path, version: str, environment: str) -> None:
+def sign_contracts_registry_if_enabled(root_dir: Path, environment: str) -> None:
+    registry_path = root_dir / "contracts_registry.json"
+    if not registry_path.exists():
+        return
+
+    private_key = os.environ.get("CONTRACTS_REGISTRY_SIGNING_PRIVATE_KEY")
+    if not private_key:
+        raise RuntimeError(
+            "CONTRACTS_REGISTRY_SIGNING_PRIVATE_KEY is required when --sign-contracts-registry is enabled"
+        )
+
+    key_id = os.environ.get("CONTRACTS_REGISTRY_SIGNING_KEY_ID", "default")
+    env_path = "v1" if environment == "production" else ("staging/v1" if environment == "staging" else "dev/v1")
+    registry_url = f"https://static.qubic.org/{env_path}/general/data/contracts_registry.json"
+    manifest_path = root_dir / "contracts_registry.manifest.json"
+
+    cmd = [
+        "node",
+        "scripts/sign_contracts_registry.mjs",
+        "--registry-file",
+        str(registry_path),
+        "--manifest-file",
+        str(manifest_path),
+        "--registry-url",
+        registry_url,
+        "--key-id",
+        key_id,
+    ]
+    subprocess.run(cmd, check=True, cwd=Path.cwd(), env=os.environ.copy())
+    print(f"Signed contracts registry manifest: {manifest_path}")
+
+def build_product(
+    product_name: str,
+    src_dir: Path,
+    dist_dir: Path,
+    version: str,
+    environment: str,
+    sign_contracts_registry: bool,
+) -> None:
     """Build a single product."""
     print(f"\n{'='*60}")
     print(f"Building product: {product_name}")
@@ -126,6 +166,9 @@ def build_product(product_name: str, src_dir: Path, dist_dir: Path, version: str
     bundle_path, bundle_min_path = build_bundle_flat(dist_dir, "bundle.json")
     print(f"Bundle: {bundle_path}")
     print(f"Bundle (min): {bundle_min_path}")
+
+    if sign_contracts_registry and product_name == "general":
+        sign_contracts_registry_if_enabled(dist_dir, environment)
 
     # Generate version.json
     version_path = generate_version_file(dist_dir, version, environment)
@@ -164,6 +207,9 @@ Examples:
   # Build all products (production)
   python3 scripts/build_dist.py --product all --version v1.2.3
 
+  # Build all products and sign contracts registry manifest
+  CONTRACTS_REGISTRY_SIGNING_PRIVATE_KEY=\"...\" python3 scripts/build_dist.py --product all --version v1.2.3 --sign-contracts-registry
+
   # Build for staging environment
   python3 scripts/build_dist.py --product all --version v1.2.3-rc.1 --environment staging
 
@@ -175,6 +221,11 @@ Examples:
     ap.add_argument("--dist-dir", default="dist", help="Path to dist directory (default: dist)")
     ap.add_argument("--environment", default="production", choices=["dev", "staging", "production"], help="Build environment")
     ap.add_argument("--version", required=True, help="Version string (e.g., v1.2.3 or v1.2.3-rc.1)")
+    ap.add_argument(
+        "--sign-contracts-registry",
+        action="store_true",
+        help="Generate contracts_registry.manifest.json with Ed25519 signature for general data",
+    )
     args = ap.parse_args()
 
     base_dir = Path.cwd()
@@ -216,7 +267,14 @@ Examples:
         product_dist_dir.mkdir(parents=True, exist_ok=True)
 
         # Build the product
-        build_product(product_name, src_dir, product_dist_dir, args.version, args.environment)
+        build_product(
+            product_name,
+            src_dir,
+            product_dist_dir,
+            args.version,
+            args.environment,
+            args.sign_contracts_registry,
+        )
 
     # Copy index.html to dist root (for landing page)
     index_html = base_dir / "index.html"
