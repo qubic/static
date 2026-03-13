@@ -17,5 +17,7 @@
     "qbay_name": "QubicBay",
     "qbay_description": "NFT Evrenine Açılan Kapınız",
     "qbond_name": "QBond",
-    "qbond_description": "Gelir elde edin. Likit kalın. İstediğiniz zaman işlem yapın"
+    "qbond_description": "Gelir elde edin. Likit kalın. İstediğiniz zaman işlem yapın",
+    "qubicswap_name": "QUBICSwap",
+    "qubicswap_description": "QX ve QSwap akıllı sözleşmeleri üzerinden işlem yapmayı sağlayan bir borsa."
 }

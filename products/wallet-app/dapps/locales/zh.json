@@ -17,5 +17,7 @@
     "qbay_name": "QubicBay",
     "qbay_description": "您通往 NFT 宇宙的門戶",
     "qbond_name": "QBond",
-    "qbond_description": "賺取收益。保持流動性。隨時交易"
+    "qbond_description": "賺取收益。保持流動性。隨時交易",
+    "qubicswap_name": "QUBICSwap",
+    "qubicswap_description": "一個支援透過 QX 和 QSwap 智能合約進行交易的交易所。"
 }

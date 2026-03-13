@@ -17,5 +17,7 @@
     "qbay_name": "QubicBay",
     "qbay_description": "Votre passerelle vers l'univers NFT",
     "qbond_name": "QBond",
-    "qbond_description": "Gagnez des rendements. Restez liquide. Tradez à tout moment"
+    "qbond_description": "Gagnez des rendements. Restez liquide. Tradez à tout moment",
+    "qubicswap_name": "QUBICSwap",
+    "qubicswap_description": "Un exchange permettant d'échanger via les contrats intelligents QX et QSwap."
 }
