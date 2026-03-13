@@ -277,47 +277,47 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Stake",
+          "name": "Lock Qcap",
           "sourceIdentifier": "stake"
         },
         {
           "id": 2,
-          "name": "Unstake",
+          "name": "Unlock Qcap",
           "sourceIdentifier": "unStake"
         },
         {
           "id": 3,
-          "name": "Submit GP",
+          "name": "Submit General Proposal",
           "sourceIdentifier": "submitGP"
         },
         {
           "id": 4,
-          "name": "Submit QCP",
+          "name": "Submit Quorum Requirement Proposal",
           "sourceIdentifier": "submitQCP"
         },
         {
           "id": 5,
-          "name": "Submit IPOP",
+          "name": "Submit IPO Participation Proposal",
           "sourceIdentifier": "submitIPOP"
         },
         {
           "id": 6,
-          "name": "Submit QEarn P",
+          "name": "Submit Qearn Participation Proposal",
           "sourceIdentifier": "submitQEarnP"
         },
         {
           "id": 7,
-          "name": "Submit Fund P",
+          "name": "Submit Fundraising Proposal",
           "sourceIdentifier": "submitFundP"
         },
         {
           "id": 8,
-          "name": "Submit MKTP",
+          "name": "Submit Marketplace Proposal",
           "sourceIdentifier": "submitMKTP"
         },
         {
           "id": 9,
-          "name": "Submit Allo P",
+          "name": "Submit Allocation Percentage",
           "sourceIdentifier": "submitAlloP"
         },
         {
