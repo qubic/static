@@ -1052,6 +1052,59 @@
       ],
       "firstUseEpoch": 204,
       "sharesAuctionEpoch": 203
+    },
+    {
+      "filename": "VottunBridge.h",
+      "name": "VOTTUN",
+      "label": "Vottun Bridge",
+      "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/VottunBridge.h",
+      "contractIndex": 25,
+      "address": "ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZUQI",
+      "allowTransferShares": false,
+      "procedures": [
+        {
+          "id": 1,
+          "name": "Create Order",
+          "sourceIdentifier": "createOrder"
+        },
+        {
+          "id": 2,
+          "name": "Complete Order",
+          "sourceIdentifier": "completeOrder"
+        },
+        {
+          "id": 3,
+          "name": "Refund Order",
+          "sourceIdentifier": "refundOrder"
+        },
+        {
+          "id": 4,
+          "name": "Transfer to Contract",
+          "sourceIdentifier": "transferToContract"
+        },
+        {
+          "id": 5,
+          "name": "Add Liquidity",
+          "sourceIdentifier": "addLiquidity"
+        },
+        {
+          "id": 6,
+          "name": "Create Proposal",
+          "sourceIdentifier": "createProposal"
+        },
+        {
+          "id": 7,
+          "name": "Approve Proposal",
+          "sourceIdentifier": "approveProposal"
+        },
+        {
+          "id": 8,
+          "name": "Cancel Proposal",
+          "sourceIdentifier": "cancelProposal"
+        }
+      ],
+      "firstUseEpoch": 206,
+      "sharesAuctionEpoch": 205
     }
   ]
 }

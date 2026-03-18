@@ -1,3 +1,23 @@
+# [1.21.0](https://github.com/qubic/static/compare/v1.20.0...v1.21.0) (2026-03-18)
+
+
+### Features
+
+* **smart_contracts:** refresh smart contracts data ([7ed9922](https://github.com/qubic/static/commit/7ed9922dbca3f59e84da2243d2e2989a9c2b7903))
+
+# [1.20.0](https://github.com/qubic/static/compare/v1.19.1...v1.20.0) (2026-03-13)
+
+
+### Bug Fixes
+
+* update QVault procedure labels ([65d6fbe](https://github.com/qubic/static/commit/65d6fbe645775735a52f1d40df5f2761399126e1))
+* update script no longer overwrites fees and handles contract rewrites ([9c09462](https://github.com/qubic/static/commit/9c09462b4c713cb7543413a4041b297de8f497b7))
+
+
+### Features
+
+* add protocol.json with transaction input types and fix environment switcher ([cdee078](https://github.com/qubic/static/commit/cdee078347f2a38562d7de38a2fd476b8353d90f))
+
 # [1.20.0-rc.1](https://github.com/qubic/static/compare/v1.19.1...v1.20.0-rc.1) (2026-03-13)
 
 
