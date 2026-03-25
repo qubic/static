@@ -931,6 +931,16 @@
           "id": 6,
           "name": "Sync Jackpot",
           "sourceIdentifier": "SyncJackpot"
+        },
+        {
+          "id": 7,
+          "name": "Buy Tickets Batch",
+          "sourceIdentifier": "BuyTicketsBatch"
+        },
+        {
+          "id": 8,
+          "name": "Buy Tickets by Selection",
+          "sourceIdentifier": "BuyTicketsBySelection"
         }
       ],
       "allowTransferShares": false,
@@ -1105,6 +1115,39 @@
       ],
       "firstUseEpoch": 206,
       "sharesAuctionEpoch": 205
+    },
+    {
+      "filename": "QSurv.h",
+      "name": "QSURV",
+      "label": "QSurv",
+      "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/QSurv.h",
+      "contractIndex": 26,
+      "address": "BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARMID",
+      "allowTransferShares": false,
+      "procedures": [
+        {
+          "id": 1,
+          "name": "Create Survey",
+          "sourceIdentifier": "createSurvey"
+        },
+        {
+          "id": 2,
+          "name": "Payout",
+          "sourceIdentifier": "payout"
+        },
+        {
+          "id": 3,
+          "name": "Set Oracle",
+          "sourceIdentifier": "setOracle"
+        },
+        {
+          "id": 4,
+          "name": "Abort Survey",
+          "sourceIdentifier": "abortSurvey"
+        }
+      ],
+      "firstUseEpoch": 207,
+      "sharesAuctionEpoch": 206
     }
   ]
 }
