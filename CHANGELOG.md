@@ -1,3 +1,10 @@
+## [1.22.1](https://github.com/qubic/static/compare/v1.22.0...v1.22.1) (2026-04-01)
+
+
+### Bug Fixes
+
+* **smart_contracts:** use little-endian encoding for contract address generation ([c4288f1](https://github.com/qubic/static/commit/c4288f1e0c953d500f2d5be6c0b275268af45151))
+
 # [1.22.0](https://github.com/qubic/static/compare/v1.21.0...v1.22.0) (2026-04-01)
 
 
