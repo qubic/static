@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/qubic/static/compare/v1.21.0...v1.22.0) (2026-04-01)
+
+
+### Features
+
+* **smart_contracts:** refresh smart contracts data ([033ae7c](https://github.com/qubic/static/commit/033ae7caaf64f33a10b88a27ed3c132bac894c9b))
+
 # [1.21.0](https://github.com/qubic/static/compare/v1.20.0...v1.21.0) (2026-03-18)
 
 

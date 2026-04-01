@@ -3,7 +3,7 @@ name: Refresh Smart Contracts
 on:
   schedule:
     # Every Wednesday at 14:00 UTC
-    - cron: '0 14 * * 3'
+    - cron: '0 13 * * 3'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
