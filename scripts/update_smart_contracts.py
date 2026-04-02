@@ -486,21 +486,17 @@ def find_registers(text: str) -> List[Tuple[int, str]]:
 # ---------------------------- Address helpers -------------------------------
 
 def index_to_base56(idx: int) -> str:
-    # Zero-based A..Z digits, big-endian; pad to 56 with 'A'
+    # Zero-based A..Z digits, little-endian; pad to 56 with 'A'
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     if idx <= 0:
         return "A" * 56
-    # Single-letter fast path (covers 1..25 -> B..Z)
-    if idx < len(alphabet):
-        return alphabet[idx] + "A" * 55
-    # General base-26 encoding, big-endian (idx >= 26)
     n = idx
     digits = []
     while n > 0:
         rem = n % 26
-        digits.append(alphabet[rem])  # 0->A, 25->Z
+        digits.append(alphabet[rem])
         n //= 26
-    s = "".join(reversed(digits))
+    s = "".join(digits)
     if len(s) > 56:
         raise ValueError("index too large for 56-char address")
     return s + "A" * (56 - len(s))
