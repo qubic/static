@@ -62,11 +62,15 @@ jobs:
           fi
 
       - name: Build distribution files
+        env:
+          CONTRACTS_REGISTRY_SIGNING_PRIVATE_KEY: ${{ secrets.CONTRACTS_REGISTRY_SIGNING_PRIVATE_KEY }}
+          CONTRACTS_REGISTRY_SIGNING_KEY_ID: ${{ secrets.CONTRACTS_REGISTRY_SIGNING_KEY_ID }}
         run: |
           python3 scripts/build_dist.py \
             --product all \
             --version v${{ steps.get_version.outputs.version }} \
-            --environment ${{ steps.get_environment.outputs.environment }}
+            --environment ${{ steps.get_environment.outputs.environment }} \
+            --sign-contracts-registry
 
       - name: Deploy to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
