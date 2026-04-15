@@ -1063,6 +1063,11 @@
           "id": 12,
           "name": "Transfer Token to Qx",
           "sourceIdentifier": "TransferTokenToQx"
+        },
+        {
+          "id": 13,
+          "name": "Deposit Managed Qheart",
+          "sourceIdentifier": "DepositManagedQHeart"
         }
       ],
       "firstUseEpoch": 204,
@@ -1174,6 +1179,44 @@
       ],
       "firstUseEpoch": 208,
       "sharesAuctionEpoch": 207
+    },
+    {
+      "filename": "Escrow.h",
+      "name": "ESCROW",
+      "label": "Escrow",
+      "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/Escrow.h",
+      "contractIndex": 27,
+      "address": "BBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXPZM",
+      "allowTransferShares": true,
+      "procedures": [
+        {
+          "id": 1,
+          "name": "Create Deal",
+          "sourceIdentifier": "CreateDeal"
+        },
+        {
+          "id": 2,
+          "name": "Accept Deal",
+          "sourceIdentifier": "AcceptDeal"
+        },
+        {
+          "id": 3,
+          "name": "Make Deal Public",
+          "sourceIdentifier": "MakeDealPublic"
+        },
+        {
+          "id": 4,
+          "name": "Cancel Deal",
+          "sourceIdentifier": "CancelDeal"
+        },
+        {
+          "id": 5,
+          "name": "Transfer Share Management Rights",
+          "sourceIdentifier": "TransferShareManagementRights"
+        }
+      ],
+      "firstUseEpoch": 210,
+      "sharesAuctionEpoch": 209
     }
   ]
 }
