@@ -60,27 +60,92 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Issue Bet",
-          "sourceIdentifier": "issueBet"
+          "name": "Create Event",
+          "sourceIdentifier": "CreateEvent"
         },
         {
           "id": 2,
-          "name": "Join Bet",
-          "sourceIdentifier": "joinBet"
+          "name": "Add to Ask Order",
+          "sourceIdentifier": "AddToAskOrder"
         },
         {
           "id": 3,
-          "name": "Cancel Bet",
-          "sourceIdentifier": "cancelBet"
+          "name": "Remove Ask Order",
+          "sourceIdentifier": "RemoveAskOrder"
         },
         {
           "id": 4,
+          "name": "Add to Bid Order",
+          "sourceIdentifier": "AddToBidOrder"
+        },
+        {
+          "id": 5,
+          "name": "Remove Bid Order",
+          "sourceIdentifier": "RemoveBidOrder"
+        },
+        {
+          "id": 6,
           "name": "Publish Result",
-          "sourceIdentifier": "publishResult"
+          "sourceIdentifier": "PublishResult"
+        },
+        {
+          "id": 7,
+          "name": "Try Finalize Event",
+          "sourceIdentifier": "TryFinalizeEvent"
+        },
+        {
+          "id": 8,
+          "name": "Dispute",
+          "sourceIdentifier": "Dispute"
+        },
+        {
+          "id": 9,
+          "name": "Resolve Dispute",
+          "sourceIdentifier": "ResolveDispute"
+        },
+        {
+          "id": 10,
+          "name": "User Claim Reward",
+          "sourceIdentifier": "UserClaimReward"
+        },
+        {
+          "id": 11,
+          "name": "GO Force Claim Reward",
+          "sourceIdentifier": "GOForceClaimReward"
+        },
+        {
+          "id": 12,
+          "name": "Transfer QUSD",
+          "sourceIdentifier": "TransferQUSD"
+        },
+        {
+          "id": 13,
+          "name": "Transfer Share Management Rights",
+          "sourceIdentifier": "TransferShareManagementRights"
+        },
+        {
+          "id": 14,
+          "name": "Clean Memory",
+          "sourceIdentifier": "CleanMemory"
+        },
+        {
+          "id": 15,
+          "name": "Transfer QTRYGOV",
+          "sourceIdentifier": "TransferQTRYGOV"
+        },
+        {
+          "id": 20,
+          "name": "Update Fee Discount List",
+          "sourceIdentifier": "UpdateFeeDiscountList"
+        },
+        {
+          "id": 100,
+          "name": "Proposal Vote",
+          "sourceIdentifier": "ProposalVote"
         }
       ],
       "website": "https://quottery.org/",
-      "allowTransferShares": false,
+      "allowTransferShares": true,
       "firstUseEpoch": 72,
       "sharesAuctionEpoch": 71
     },
@@ -151,6 +216,16 @@
           "sourceIdentifier": "BurnQubicForContract"
         },
         {
+          "id": 9,
+          "name": "Transfer Shares to Many V1",
+          "sourceIdentifier": "TransferSharesToManyV1"
+        },
+        {
+          "id": 10,
+          "name": "Transfer Shares Management Rights",
+          "sourceIdentifier": "TransferSharesManagementRights"
+        },
+        {
           "id": 100,
           "name": "Query Price Oracle",
           "sourceIdentifier": "QueryPriceOracle"
@@ -166,7 +241,7 @@
           "sourceIdentifier": "UnsubscribeOracle"
         }
       ],
-      "allowTransferShares": false,
+      "allowTransferShares": true,
       "firstUseEpoch": 99,
       "sharesAuctionEpoch": 98
     },
