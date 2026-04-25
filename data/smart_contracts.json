@@ -223,7 +223,8 @@
         {
           "id": 10,
           "name": "Transfer Shares Management Rights",
-          "sourceIdentifier": "TransferSharesManagementRights"
+          "sourceIdentifier": "TransferSharesManagementRights",
+          "fee": 100
         },
         {
           "id": 100,
