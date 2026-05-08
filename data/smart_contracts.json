@@ -931,6 +931,16 @@
           "name": "Revoke Asset Management Rights",
           "fee": 100,
           "sourceIdentifier": "RevokeAssetManagementRights"
+        },
+        {
+          "id": 9,
+          "name": "Set Pool Arevenue Address",
+          "sourceIdentifier": "SetPoolARevenueAddress"
+        },
+        {
+          "id": 10,
+          "name": "Set Pool Drevenue Address",
+          "sourceIdentifier": "SetPoolDRevenueAddress"
         }
       ],
       "allowTransferShares": true,
