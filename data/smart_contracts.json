@@ -885,7 +885,7 @@
         {
           "id": 8,
           "name": "Transfer Share Management Rights",
-          "fee": 100,
+          "fee": 200,
           "sourceIdentifier": "TransferShareManagementRights"
         }
       ],
