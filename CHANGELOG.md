@@ -1,3 +1,10 @@
+## [1.26.2](https://github.com/qubic/static/compare/v1.26.1...v1.26.2) (2026-05-22)
+
+
+### Bug Fixes
+
+* **smart_contracts:** set fee for QRaffle Transfer Share Management Rights to 200 ([d4090b8](https://github.com/qubic/static/commit/d4090b881e2b9182a814e823c0bc44e45adf1539))
+
 ## [1.26.1](https://github.com/qubic/static/compare/v1.26.0...v1.26.1) (2026-05-17)
 
 
