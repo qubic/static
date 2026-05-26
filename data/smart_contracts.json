@@ -885,7 +885,7 @@
         {
           "id": 8,
           "name": "Transfer Share Management Rights",
-          "fee": 100,
+          "fee": 200,
           "sourceIdentifier": "TransferShareManagementRights"
         }
       ],
@@ -1298,7 +1298,8 @@
         {
           "id": 5,
           "name": "Transfer Share Management Rights",
-          "sourceIdentifier": "TransferShareManagementRights"
+          "sourceIdentifier": "TransferShareManagementRights",
+          "fee": 100
         }
       ],
       "firstUseEpoch": 210,
