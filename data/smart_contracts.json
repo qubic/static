@@ -833,6 +833,11 @@
           "name": "Transfer Share Management Rights",
           "fee": 100,
           "sourceIdentifier": "TransferShareManagementRights"
+        },
+        {
+          "id": 4,
+          "name": "Return Funds",
+          "sourceIdentifier": "returnFunds"
         }
       ],
       "allowTransferShares": true,
@@ -1304,6 +1309,74 @@
       ],
       "firstUseEpoch": 210,
       "sharesAuctionEpoch": 209
+    },
+    {
+      "filename": "GGWP.h",
+      "name": "GGWP",
+      "label": "GGWP",
+      "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/GGWP.h",
+      "contractIndex": 28,
+      "address": "CBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARUCN",
+      "allowTransferShares": true,
+      "procedures": [
+        {
+          "id": 1,
+          "name": "Deposit Revenue",
+          "sourceIdentifier": "DepositRevenue"
+        },
+        {
+          "id": 2,
+          "name": "Add Clan Member",
+          "sourceIdentifier": "AddClanMember"
+        },
+        {
+          "id": 3,
+          "name": "Remove Clan Member",
+          "sourceIdentifier": "RemoveClanMember"
+        },
+        {
+          "id": 4,
+          "name": "Set Clan Rank",
+          "sourceIdentifier": "SetClanRank"
+        },
+        {
+          "id": 5,
+          "name": "Set Admin",
+          "sourceIdentifier": "SetAdmin"
+        },
+        {
+          "id": 6,
+          "name": "Set Exclude Address",
+          "sourceIdentifier": "SetExcludeAddress"
+        },
+        {
+          "id": 7,
+          "name": "Stake",
+          "sourceIdentifier": "Stake"
+        },
+        {
+          "id": 8,
+          "name": "Request Unstake",
+          "sourceIdentifier": "RequestUnstake"
+        },
+        {
+          "id": 9,
+          "name": "Finalize Unstake",
+          "sourceIdentifier": "FinalizeUnstake"
+        },
+        {
+          "id": 10,
+          "name": "Deposit Staking Rewards",
+          "sourceIdentifier": "DepositStakingRewards"
+        },
+        {
+          "id": 11,
+          "name": "Claim Staking Rewards",
+          "sourceIdentifier": "ClaimStakingRewards"
+        }
+      ],
+      "firstUseEpoch": 217,
+      "sharesAuctionEpoch": 216
     }
   ]
 }
