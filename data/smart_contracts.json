@@ -922,16 +922,6 @@
           "sourceIdentifier": "VoteGovParams"
         },
         {
-          "id": 5,
-          "name": "Create Asset Release Poll",
-          "sourceIdentifier": "CreateAssetReleasePoll"
-        },
-        {
-          "id": 6,
-          "name": "Vote Asset Release",
-          "sourceIdentifier": "VoteAssetRelease"
-        },
-        {
           "id": 7,
           "name": "Deposit General Asset",
           "sourceIdentifier": "DepositGeneralAsset"
