@@ -1,3 +1,11 @@
+## [1.27.1-rc.1](https://github.com/qubic/static/compare/v1.27.0...v1.27.1-rc.1) (2026-06-14)
+
+
+### Bug Fixes
+
+* **smart_contracts:** detect removed procedures in refresh script ([d8ca3dc](https://github.com/qubic/static/commit/d8ca3dc5f3b2d5ffb99aaaf9fe6f3575d10d876a))
+* **smart_contracts:** guard procedure pruning against empty fetches ([be2e4bf](https://github.com/qubic/static/commit/be2e4bf9ee1e370f17b97b2e5e977fa73cd1cdd0))
+
 # [1.27.0](https://github.com/qubic/static/compare/v1.26.2...v1.27.0) (2026-06-11)
 
 
