@@ -19,7 +19,11 @@ Rules:
 - address: computed via Node using your JS helper:
       const publicKey = helper.getIdentityBytes(addr56);  // addr56 built from contractIndex (A..P, LE, len=56)
       const identity  = await helper.getIdentity(publicKey)  // 60-char with checksum
-- Non-destructive merge: adds new contracts and new procedure IDs; preserves manual edits and custom fields.
+- Merge: adds new contracts and new procedure IDs, and removes script-generated procedures
+  (those with a `sourceIdentifier`) that no longer exist in a successfully-fetched source.
+  Manual edits (procedures without `sourceIdentifier`) and custom fields are always preserved.
+  Procedure removal is suppressed for a contract whose source failed to fetch or fetched empty,
+  so a transient/garbage response can't wipe its procedures.
   Authoritative fields (auto-updated from GitHub): filename, name, contractIndex, address, githubUrl,
   firstUseEpoch, sharesAuctionEpoch, allowTransferShares, procedures.
   Preserved fields: label (if already set), and any custom fields (e.g., proposalUrl, etc.).
@@ -603,8 +607,14 @@ def merge_contracts(
         if not isinstance(fname, str):
             continue
 
+        # Transient flag (not persisted): whether the contract source was fetched
+        # successfully this run. Used to safely prune procedures removed upstream.
+        source_fetched = bool(new.pop("_sourceFetched", False))
+
         if fname not in by_filename:
             new["procedures"] = normalize_procs_to_list(new.get("procedures", []))
+            print(f"  {fname}: new contract added (index {new.get('contractIndex')}, "
+                  f"{len(new['procedures'])} procedure(s))")
             existing.append(new)
             by_filename[fname] = new
             continue
@@ -679,14 +689,30 @@ def merge_contracts(
                 merged_procs.append(ex_p)
             else:
                 # New procedure
+                print(f"  {fname}: procedure id {pid} ({new_p.get('sourceIdentifier')}) "
+                      f"added from source")
                 merged_procs.append(new_p)
             seen_ids.add(pid)
 
-        # Keep any existing procedures that are no longer in the fresh list
-        # (in case they were manually added)
+        # Handle existing procedures that are no longer in the fresh list.
+        # Only prune when the fetch yielded at least one procedure. A 200 response
+        # with a truncated/garbage body parses to zero procedures, which would
+        # otherwise wipe a contract's entire procedure list (N -> 0); requiring a
+        # non-empty fresh list still prunes individually removed procedures.
+        fresh_has_procs = len(new_list) > 0
         for pid, p in ex_by_id.items():
-            if pid not in seen_ids:
-                merged_procs.append(p)
+            if pid in seen_ids:
+                continue
+            # A script-generated procedure (has sourceIdentifier) that vanished from a
+            # successfully-fetched source was removed upstream -> drop it. Procedures
+            # without a sourceIdentifier are manual additions and are always preserved.
+            # Guard on source_fetched + fresh_has_procs so a transient fetch failure
+            # or a bad-but-200 response can't wipe procedures.
+            if source_fetched and fresh_has_procs and isinstance(p, dict) and p.get("sourceIdentifier"):
+                print(f"  {fname}: procedure id {pid} ({p.get('sourceIdentifier')}) "
+                      f"removed from source, dropping")
+                continue
+            merged_procs.append(p)
 
         merged_procs.sort(key=lambda x: x["id"])
         ex["procedures"] = merged_procs
@@ -797,6 +823,8 @@ def main():
             "address": addr,
             "allowTransferShares": allow_transfer_shares,
             "procedures": procs,
+            # Transient (popped during merge): did we fetch the source this run?
+            "_sourceFetched": text is not None,
         }
 
         if construction_epoch is not None:
