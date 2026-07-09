@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://static.qubic.org/schemas/contract_manifest.schema.json",
+  "title": "Qubic contract data manifest",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "generator", "sources", "files"],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "generator": {
+      "type": "object",
+      "required": ["name", "version"],
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "commit": { "type": "string" }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "required": ["coreRepo", "latestEpoch"],
+      "additionalProperties": true,
+      "properties": {
+        "coreRepo": { "type": "string", "format": "uri" },
+        "latestEpoch": { "type": "integer", "minimum": 0 },
+        "latestCoreTag": { "type": "string" },
+        "epochRefsHash": { "$ref": "#/$defs/hash" }
+      }
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["hash", "schema"],
+        "additionalProperties": true,
+        "properties": {
+          "hash": { "$ref": "#/$defs/hash" },
+          "schema": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  }
+}

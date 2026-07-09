@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://static.qubic.org/schemas/epoch_refs.schema.json",
+  "title": "Qubic core epoch references",
+  "type": "object",
+  "additionalProperties": {
+    "type": "string",
+    "minLength": 1
+  },
+  "propertyNames": {
+    "pattern": "^[0-9]+$"
+  }
+}

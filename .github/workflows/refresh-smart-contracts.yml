@@ -40,6 +40,9 @@ jobs:
       - name: Run update script
         run: python3 scripts/update_smart_contracts.py
 
+      - name: Validate contract data
+        run: python3 scripts/validate_contract_data.py
+
       - name: Get checksum after update
         id: after
         run: |

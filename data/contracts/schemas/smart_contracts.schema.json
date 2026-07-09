@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://static.qubic.org/schemas/smart_contracts.schema.json",
+  "title": "Qubic smart contracts metadata",
+  "type": "object",
+  "required": ["smart_contracts"],
+  "additionalProperties": true,
+  "properties": {
+    "smart_contracts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/smartContract" }
+    }
+  },
+  "$defs": {
+    "smartContract": {
+      "type": "object",
+      "required": [
+        "filename",
+        "name",
+        "label",
+        "githubUrl",
+        "contractIndex",
+        "address",
+        "procedures",
+        "allowTransferShares",
+        "firstUseEpoch",
+        "sharesAuctionEpoch"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "filename": { "type": "string", "pattern": "^[A-Za-z0-9_]+\\.h$" },
+        "name": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "githubUrl": { "type": "string", "format": "uri" },
+        "contractIndex": { "type": "integer", "minimum": 1 },
+        "address": { "type": "string", "minLength": 56, "maxLength": 60 },
+        "allowTransferShares": { "type": "boolean" },
+        "firstUseEpoch": { "type": "integer", "minimum": 0 },
+        "sharesAuctionEpoch": { "type": "integer", "minimum": 0 },
+        "procedures": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/procedure" }
+        }
+      }
+    },
+    "procedure": {
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "integer", "minimum": 0 },
+        "name": { "type": "string", "minLength": 1 },
+        "sourceIdentifier": { "type": "string", "minLength": 1 },
+        "fee": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

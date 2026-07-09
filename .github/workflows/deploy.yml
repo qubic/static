@@ -61,6 +61,9 @@ jobs:
             echo "environment=dev" >> $GITHUB_OUTPUT
           fi
 
+      - name: Validate contract data
+        run: python3 scripts/validate_contract_data.py
+
       - name: Build distribution files
         run: |
           python3 scripts/build_dist.py \
@@ -76,3 +79,17 @@ jobs:
           password: ${{ github.ref == 'refs/heads/main' && secrets.FTP_PASSWORD_PROD || github.ref == 'refs/heads/staging' && secrets.FTP_PASSWORD_STAGING || secrets.FTP_PASSWORD_DEV }}
           local-dir: dist/
           server-dir: /
+
+      - name: Trigger TypeScript contract sync
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.QUBIC_TYPESCRIPT_REPO_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "QUBIC_TYPESCRIPT_REPO_TOKEN is not configured; skipping sync dispatch."
+            exit 0
+          fi
+
+          gh api repos/qubic/qubic-typescript/dispatches \
+            -f event_type=static-contract-registry-updated \
+            -f client_payload[static_ref]=main
