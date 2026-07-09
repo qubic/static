@@ -10,6 +10,7 @@ that the checked-in schema files are parseable JSON.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -26,6 +27,11 @@ def load_json(path: Path) -> Any:
         raise ValueError(f"{path} does not exist")
     except json.JSONDecodeError as exc:
         raise ValueError(f"{path} is not valid JSON: {exc}") from exc
+
+
+def file_hash(path: Path) -> str:
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    return f"sha256:{digest}"
 
 
 def require(condition: bool, errors: list[str], message: str) -> None:
@@ -172,13 +178,23 @@ def validate_manifest(base_dir: Path, errors: list[str]) -> None:
     if not isinstance(files, dict):
         return
 
+    contracts_dir = base_dir / "data" / "contracts"
+    schema_dir = contracts_dir / "schemas"
     for file_name, metadata in files.items():
         prefix = f"manifest.files.{file_name}"
         require(isinstance(metadata, dict), errors, f"{prefix} must be an object")
         if not isinstance(metadata, dict):
             continue
-        require(isinstance(metadata.get("schema"), str) and metadata["schema"], errors, f"{prefix}.schema must be a non-empty string")
-        require(isinstance(metadata.get("hash"), str) and HASH_RE.match(metadata["hash"]) is not None, errors, f"{prefix}.hash must be a sha256 hash")
+        schema_name = metadata.get("schema")
+        expected_hash = metadata.get("hash")
+        require(isinstance(schema_name, str) and schema_name, errors, f"{prefix}.schema must be a non-empty string")
+        if isinstance(schema_name, str) and schema_name:
+            require((schema_dir / schema_name).exists(), errors, f"{prefix}.schema references missing schema {schema_name}")
+        require(isinstance(expected_hash, str) and HASH_RE.match(expected_hash) is not None, errors, f"{prefix}.hash must be a sha256 hash")
+        file_path = contracts_dir / file_name
+        require(file_path.exists(), errors, f"{prefix} references missing file {file_name}")
+        if file_path.exists() and isinstance(expected_hash, str) and HASH_RE.match(expected_hash):
+            require(file_hash(file_path) == expected_hash, errors, f"{prefix}.hash does not match {file_name}")
 
 
 def main() -> int:

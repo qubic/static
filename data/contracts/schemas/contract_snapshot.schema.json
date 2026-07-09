@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://static.qubic.org/schemas/contract_snapshot.schema.json",
+  "title": "Qubic contract ABI snapshot",
+  "type": "object",
+  "required": ["contractIndex", "contractName", "epoch", "structs", "procedures", "functions"],
+  "additionalProperties": true,
+  "properties": {
+    "contractIndex": { "type": "integer", "minimum": 1 },
+    "contractName": { "type": "string", "minLength": 1 },
+    "contractAddress": { "type": "string", "minLength": 56, "maxLength": 60 },
+    "epoch": { "type": "integer", "minimum": 0 },
+    "coreVersion": { "type": "string" },
+    "coreCommit": { "type": "string" },
+    "structs": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/namedStruct" }
+    },
+    "procedures": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/contractCall" }
+    },
+    "functions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/contractCall" }
+    },
+    "changelog": { "type": "string" }
+  },
+  "$defs": {
+    "fieldType": {
+      "type": "string",
+      "enum": [
+        "uint8",
+        "uint16",
+        "uint32",
+        "uint64",
+        "sint8",
+        "sint16",
+        "sint32",
+        "sint64",
+        "uint128",
+        "id",
+        "bytes",
+        "array",
+        "struct"
+      ]
+    },
+    "binaryField": {
+      "type": "object",
+      "required": ["name", "type", "offset", "byteLength"],
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "type": { "$ref": "#/$defs/fieldType" },
+        "offset": { "type": "integer", "minimum": 0 },
+        "byteLength": { "type": "integer", "minimum": 0 },
+        "description": { "type": "string" },
+        "arrayLength": { "type": "integer", "minimum": 0 },
+        "arrayItemType": { "$ref": "#/$defs/fieldType" },
+        "arrayItemByteLength": { "type": "integer", "minimum": 0 },
+        "arrayItemStructRef": { "type": "string" },
+        "structRef": { "type": "string" }
+      }
+    },
+    "namedStruct": {
+      "type": "object",
+      "required": ["name", "fields", "byteLength"],
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "fields": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/binaryField" }
+        },
+        "byteLength": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "contractCall": {
+      "type": "object",
+      "required": ["kind", "inputType", "name", "inputFields", "outputFields", "inputSize", "outputSize"],
+      "additionalProperties": true,
+      "properties": {
+        "kind": { "type": "string", "enum": ["procedure", "function"] },
+        "inputType": { "type": "integer", "minimum": 0 },
+        "name": { "type": "string", "minLength": 1 },
+        "description": { "type": "string" },
+        "inputFields": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/binaryField" }
+        },
+        "outputFields": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/binaryField" }
+        },
+        "inputSize": { "type": "integer", "minimum": 0 },
+        "outputSize": { "type": "integer", "minimum": 0 },
+        "requiresAmount": { "type": "boolean" },
+        "sourceRef": { "type": "string" }
+      }
+    }
+  }
+}
