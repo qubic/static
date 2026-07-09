@@ -61,6 +61,9 @@ jobs:
             echo "environment=dev" >> $GITHUB_OUTPUT
           fi
 
+      - name: Validate contract data
+        run: python3 scripts/validate_contract_data.py
+
       - name: Build distribution files
         run: |
           python3 scripts/build_dist.py \
