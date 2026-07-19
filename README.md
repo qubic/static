@@ -116,6 +116,13 @@ Base URL: `https://static.qubic.org/v1/wallet-app/`
   - Locales: `dapps/locales/{lang}.json` (en, de, es, fr, ru, tr, zh)
   - **Want to add your DApp?** See [How to Contribute](#how-to-contribute) section below
 
+- **Configuration**
+  - [config.json](https://static.qubic.org/v1/wallet-app/config.json) - Runtime configuration for the wallet app
+
+  | Field | Type | Description |
+  |---|---|---|
+  | `default_tick_offset` | number | Offset added to the current tick when building a transaction's target tick (`targetTick = currentTick + default_tick_offset`). Lets the tick lead time be tuned remotely when the network ticks fast enough that a short offset causes transactions to expire before they are included. The wallet falls back to `5` when the field is absent or invalid. |
+
 ## Environments & URL Structure
 
 This repository supports three deployment environments:
@@ -180,6 +187,7 @@ data/                              # General/shared source data
 
 products/                          # Product-specific source data
   └── wallet-app/
+      ├── config.json
       └── dapps/
           ├── dapps.json
           └── locales/
