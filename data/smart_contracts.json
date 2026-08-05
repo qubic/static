@@ -245,6 +245,11 @@
           "id": 102,
           "name": "Unsubscribe Oracle",
           "sourceIdentifier": "UnsubscribeOracle"
+        },
+        {
+          "id": 103,
+          "name": "Trigger OC",
+          "sourceIdentifier": "TriggerOC"
         }
       ],
       "allowTransferShares": true,
@@ -897,6 +902,21 @@
           "name": "Transfer Share Management Rights",
           "fee": 200,
           "sourceIdentifier": "TransferShareManagementRights"
+        },
+        {
+          "id": 9,
+          "name": "Create Asset Raffle",
+          "sourceIdentifier": "createAssetRaffle"
+        },
+        {
+          "id": 10,
+          "name": "Buy Asset Raffle Ticket",
+          "sourceIdentifier": "buyAssetRaffleTicket"
+        },
+        {
+          "id": 11,
+          "name": "Cancel Asset Raffle",
+          "sourceIdentifier": "cancelAssetRaffle"
         }
       ],
       "allowTransferShares": true,
@@ -1378,6 +1398,11 @@
           "id": 13,
           "name": "Vote Gov Change",
           "sourceIdentifier": "VoteGovChange"
+        },
+        {
+          "id": 14,
+          "name": "Admin Reconcile Stake",
+          "sourceIdentifier": "AdminReconcileStake"
         }
       ],
       "firstUseEpoch": 218,
