@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
-          ssh-key: ${{ secrets.RELEASE_SSH_KEY }}
+          ssh-key: ${{ secrets.RELEASE_SSH_KEY }} # zizmor: ignore[secrets-outside-env] required so semantic-release can push the release commit; the build job performs no deploy
           persist-credentials: true # zizmor: ignore[artipacked]
 
       - name: Setup pnpm
