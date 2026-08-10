@@ -7,30 +7,43 @@ on:
       - staging
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Never cancel a running deploy: a partial FTP upload would leave the CDN in
+  # a mixed state.
+  cancel-in-progress: false
+
+# Secure default: no permissions unless a job opts in below.
+permissions: {}
+
 jobs:
   release-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      issues: write
-      pull-requests: write
+      contents: write # semantic-release pushes tags and the release commit
+      issues: write # semantic-release comments on released issues
+      pull-requests: write # semantic-release comments on released PRs
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+          # semantic-release pushes tags and a release commit from this job, so
+          # git must keep the token. Credentials stay on the runner for the life
+          # of the job only.
+          persist-credentials: true # zizmor: ignore[artipacked]
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4.0.0
+        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '20'
           cache: 'pnpm'
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.x'
 
@@ -48,28 +61,33 @@ jobs:
 
       - name: Get version from package.json
         id: get_version
-        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
       - name: Determine environment
         id: get_environment
+        env:
+          REF_NAME: ${{ github.ref_name }}
         run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "environment=production" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
-            echo "environment=staging" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
-            echo "environment=dev" >> $GITHUB_OUTPUT
+          if [[ "$REF_NAME" == "main" ]]; then
+            echo "environment=production" >> "$GITHUB_OUTPUT"
+          elif [[ "$REF_NAME" == "staging" ]]; then
+            echo "environment=staging" >> "$GITHUB_OUTPUT"
+          elif [[ "$REF_NAME" == "dev" ]]; then
+            echo "environment=dev" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Build distribution files
+        env:
+          VERSION: ${{ steps.get_version.outputs.version }}
+          ENVIRONMENT: ${{ steps.get_environment.outputs.environment }}
         run: |
           python3 scripts/build_dist.py \
             --product all \
-            --version v${{ steps.get_version.outputs.version }} \
-            --environment ${{ steps.get_environment.outputs.environment }}
+            --version "v$VERSION" \
+            --environment "$ENVIRONMENT"
 
       - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@8a24039354ee91000cb948cb4a1dbdf1a1b94a3c # v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ github.ref == 'refs/heads/main' && secrets.FTP_USERNAME_PROD || github.ref == 'refs/heads/staging' && secrets.FTP_USERNAME_STAGING || secrets.FTP_USERNAME_DEV }}
