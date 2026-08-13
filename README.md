@@ -191,12 +191,15 @@ scripts/                           # Build and update utilities
 .github/workflows/                 # CI/CD automation
   ├── commitlint.yml              # Commit message validation
   ├── lint-pr.yml                 # PR title validation
-  └── deploy.yml                  # Automated deployments
+  ├── lint-workflows.yml          # Workflow security linting (actionlint + zizmor)
+  ├── deploy.yml                  # Dev & staging deployments
+  ├── release-please.yml          # Releases + production deployment
+  └── refresh-smart-contracts.yml # Weekly smart contracts refresh
 ```
 
 ## CI/CD & Releases
 
-This repository uses GitHub Actions with semantic-release for automated versioning and deployments.
+This repository uses GitHub Actions with [release-please](https://github.com/googleapis/release-please) for automated versioning and deployments.
 
 ### Commit Convention
 
@@ -217,23 +220,31 @@ docs: update README with new structure
 ### Deployment Workflow
 
 1. **Dev** - Push to `dev` branch → deploys to dev environment (no versioning)
-2. **Staging** - Push to `staging` branch → creates RC tag & GitHub pre-release → deploys to staging
-3. **Production** - Push to `main` branch → creates version tag & GitHub release → deploys to production
+2. **Staging** - Push to `staging` branch → deploys to staging, and release-please opens an RC release PR
+3. **Production** - Deployed only when a stable release is cut (see below), never directly on push
 
 ### Release Workflow
 
+Releases are pull-request based: release-please analyses conventional commits and
+opens a `chore(release): X.Y.Z` PR containing the version bump and changelog. The
+release — and, on `main`, the production deployment — happens when that PR is merged.
+
 1. **Development** - Make changes in feature branches using conventional commit messages
 2. **Dev Testing** - Merge to `dev` branch → auto-deploys to dev environment
-3. **Staging** - Merge to `staging` branch → semantic-release creates RC tag & deploys
+3. **Staging** - Merge to `staging` branch → deploys to staging; release-please opens an RC release PR. Merge it to cut the RC tag & pre-release.
 4. **Testing** - Test on staging environment
-5. **Production** - Merge `staging` to `main` → creates release & deploys to production
+5. **Production** - Merge `staging` to `main` → release-please opens a stable release PR. Merging it creates the tag & GitHub release and deploys to production, after approval of the `production` environment.
 
-Semantic-release automatically:
+release-please automatically:
 - Analyzes commit messages
 - Determines version numbers
-- Creates GitHub releases
+- Opens the release PR, then creates the GitHub release on merge
 - Generates changelogs
-- Triggers deployments
+
+> **Note:** production is deployed only when a release is actually cut, which
+> requires a releasing commit type (`feat:`, `fix:`, `perf:`). A data change
+> merged as `chore:` or `docs:` will **not** reach production — use `feat:` or
+> `fix:` for anything under `data/` or `products/`.
 
 ### Automated Smart Contracts Updates
 
@@ -242,7 +253,7 @@ Smart contract data is automatically refreshed every **Wednesday at 14:00 UTC** 
 **How it works:**
 1. The workflow runs `scripts/update_smart_contracts.py` which fetches the latest contract data from the [qubic-core](https://github.com/qubic/core) repository
 2. If changes are detected (new contracts, updated procedures, etc.), a PR is automatically created to the `main` branch
-3. Once merged, a new release is created and deployed to production
+3. Once merged, release-please opens a release PR; merging that PR creates the release and deploys to production
 4. After the release, merge `main` back to `dev` and `staging` to keep branches in sync
 
 **Manual trigger:** The workflow can also be triggered manually from the [Actions tab](../../actions/workflows/refresh-smart-contracts.yml) if an immediate update is needed.

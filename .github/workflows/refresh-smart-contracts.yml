@@ -6,21 +6,32 @@ on:
     - cron: '0 13 * * 3'
   workflow_dispatch: # Allow manual trigger
 
+concurrency:
+  group: ${{ github.workflow }}
+  # Let a running refresh finish; it pushes a branch and opens a PR.
+  cancel-in-progress: false
+
+# Secure default: no permissions unless a job opts in below.
+permissions: {}
+
 jobs:
   refresh-smart-contracts:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: write # pushes the refresh branch
+      pull-requests: write # opens the refresh PR
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: main
           fetch-depth: 0
+          # This job pushes the refresh branch with git, so the token must stay
+          # available for the life of the job.
+          persist-credentials: true # zizmor: ignore[artipacked]
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.x'
 
@@ -28,14 +39,14 @@ jobs:
         run: pip install requests
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '20'
 
       - name: Get checksum before update
         id: before
         run: |
-          echo "checksum=$(sha256sum data/smart_contracts.json | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
+          echo "checksum=$(sha256sum data/smart_contracts.json | cut -d ' ' -f 1)" >> "$GITHUB_OUTPUT"
 
       - name: Run update script
         run: python3 scripts/update_smart_contracts.py
@@ -43,15 +54,18 @@ jobs:
       - name: Get checksum after update
         id: after
         run: |
-          echo "checksum=$(sha256sum data/smart_contracts.json | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
+          echo "checksum=$(sha256sum data/smart_contracts.json | cut -d ' ' -f 1)" >> "$GITHUB_OUTPUT"
 
       - name: Check for changes
         id: changes
+        env:
+          BEFORE: ${{ steps.before.outputs.checksum }}
+          AFTER: ${{ steps.after.outputs.checksum }}
         run: |
-          if [ "${{ steps.before.outputs.checksum }}" != "${{ steps.after.outputs.checksum }}" ]; then
-            echo "has_changes=true" >> $GITHUB_OUTPUT
+          if [ "$BEFORE" != "$AFTER" ]; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
           else
-            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
             echo "No changes detected in smart_contracts.json"
           fi
 
