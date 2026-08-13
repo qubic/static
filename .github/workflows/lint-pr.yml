@@ -11,13 +11,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event.number }}
   cancel-in-progress: true
 
+# Secure default: no permissions unless a job opts in below.
+permissions: {}
+
 jobs:
   main:
     name: Validate PR title
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: read
+      pull-requests: read # read-only: inspect the PR title
     steps:
-      - uses: amannn/action-semantic-pull-request@v5.2.0
+      - uses: amannn/action-semantic-pull-request@c3cd5d1ea3580753008872425915e343e351ab54 # v5.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

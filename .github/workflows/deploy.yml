@@ -1,78 +1,71 @@
-name: Release and Deploy
+name: Deploy
 
 on:
+  # Only `push` — a merged PR already produces a push to the target branch, so
+  # merges still deploy exactly once. Closing a PR *without* merging changes no
+  # ref, so it produces no push and (correctly) does not deploy.
+  #
+  # `main` is intentionally NOT here: production is deployed by
+  # release-please.yml only when a stable release is cut, so an intermediate
+  # (e.g. rc) version can never be shipped to prod. This workflow deploys the
+  # non-production environments only.
   push:
     branches:
       - dev
       - staging
-      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Do not cancel an in-progress deploy; let it finish to avoid partial uploads.
+  cancel-in-progress: false
+
+# Secure default: no permissions unless a job opts in below.
+permissions: {}
 
 jobs:
-  release-and-deploy:
+  deploy:
+    name: Build and deploy
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      issues: write
-      pull-requests: write
+      contents: read # just checkout + build; no pushes here
+    environment:
+      name: ${{ github.ref_name }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          fetch-depth: 0
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4.0.0
+          persist-credentials: false # this job only builds + deploys, never pushes
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '20'
-          cache: 'pnpm'
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.x'
 
-      - name: Install Python dependencies
-        run: pip install requests
-
-      - name: Install Node.js dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Release
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging'
-        run: pnpm run release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Get version from package.json
         id: get_version
-        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
-
-      - name: Determine environment
-        id: get_environment
-        run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "environment=production" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
-            echo "environment=staging" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
-            echo "environment=dev" >> $GITHUB_OUTPUT
-          fi
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
       - name: Build distribution files
+        env:
+          VERSION: ${{ steps.get_version.outputs.version }}
+          ENVIRONMENT: ${{ github.ref_name }}
         run: |
           python3 scripts/build_dist.py \
             --product all \
-            --version v${{ steps.get_version.outputs.version }} \
-            --environment ${{ steps.get_environment.outputs.environment }}
+            --version "v$VERSION" \
+            --environment "$ENVIRONMENT"
 
       - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@8a24039354ee91000cb948cb4a1dbdf1a1b94a3c # v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
-          username: ${{ github.ref == 'refs/heads/main' && secrets.FTP_USERNAME_PROD || github.ref == 'refs/heads/staging' && secrets.FTP_USERNAME_STAGING || secrets.FTP_USERNAME_DEV }}
-          password: ${{ github.ref == 'refs/heads/main' && secrets.FTP_PASSWORD_PROD || github.ref == 'refs/heads/staging' && secrets.FTP_PASSWORD_STAGING || secrets.FTP_PASSWORD_DEV }}
+          username: ${{ github.ref_name == 'staging' && secrets.FTP_USERNAME_STAGING || secrets.FTP_USERNAME_DEV }}
+          password: ${{ github.ref_name == 'staging' && secrets.FTP_PASSWORD_STAGING || secrets.FTP_PASSWORD_DEV }}
           local-dir: dist/
           server-dir: /
+          protocol: ftps
