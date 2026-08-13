@@ -2,17 +2,18 @@ name: Release Please
 
 # Versioning is PR-based (release-please), not a direct push:
 #   - main:    release-please opens a stable "chore(release): X.Y.Z" PR that a
-#              HUMAN reviews + merges. The bot only opens a PR, never writes to
-#              main, so no ruleset bypass is needed.
-#   - staging: release-please opens an "rc" prerelease PR that is merged by a
-#              HUMAN. It is not auto-merged: the "PR for main, staging and dev"
-#              ruleset requires an approving review on staging, and granting the
-#              App a bypass would give a workflow-mintable token unreviewed push
-#              access — deliberately avoided.
+#              HUMAN reviews + merges. main is protected by classic branch
+#              protection (PR + code-owner review, enforce_admins) and the App
+#              is NOT allowed to bypass it, so production stays human-gated.
+#   - staging: release-please opens an "rc" prerelease PR that is AUTO-MERGED,
+#              so merging into staging still produces an rc release, hands-free.
+#              The "PR for dev and staging" ruleset lets the qubic-release-bot
+#              App bypass the review requirement (bypass_mode: pull_request) on
+#              staging/dev only — never on main.
 #
 # Uses a GitHub App token (not the default GITHUB_TOKEN) so that CI (lint,
 # commitlint) actually runs on the release PR. The token is scoped to
-# contents+pull-requests only and the App is NOT a ruleset bypass actor.
+# contents+pull-requests only.
 
 on:
   push:
@@ -59,6 +60,24 @@ jobs:
           # other's release state.
           config-file: ${{ github.ref_name == 'staging' && 'release-please-config.staging.json' || 'release-please-config.json' }}
           manifest-file: ${{ github.ref_name == 'staging' && '.release-please-manifest.staging.json' || '.release-please-manifest.json' }}
+
+      # Only on staging: auto-merge the rc release PR so an rc is produced
+      # hands-free on every merge into staging. The "PR for dev and staging"
+      # ruleset lets the qubic-release-bot App bypass the review requirement
+      # (bypass_mode: pull_request) — this is NOT allowed on main. The merge is
+      # a push to staging, which re-runs this workflow and creates the rc tag +
+      # release. Interpolations go through env (not the run body) to avoid
+      # template injection.
+      - name: Auto-merge staging rc release PR
+        if: github.ref_name == 'staging' && steps.release.outputs.prs_created == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PRS_JSON: ${{ steps.release.outputs.prs }}
+          TARGET_REPO: ${{ github.repository }}
+        run: |
+          pr_number=$(echo "$PRS_JSON" | jq -r '.[0].number')
+          echo "Auto-merging staging rc release PR #${pr_number}"
+          gh pr merge "$pr_number" --repo "$TARGET_REPO" --merge
 
   # Production deploy. Runs ONLY when a stable release was actually cut on main
   # (release_created == true). The promotion merge into main only opens the
