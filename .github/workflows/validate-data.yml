@@ -1,0 +1,88 @@
+name: Validate Data
+
+on:
+  pull_request:
+    paths:
+      - "data/**"
+      - "products/**"
+      - "scripts/**"
+      - ".github/workflows/validate-data.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate JSON and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      # Catches the most common breakage: a trailing comma, a smart quote, a
+      # truncated paste. Any of these would ship a broken file to the CDN.
+      - name: Validate JSON syntax
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, sys
+
+          files = sorted(
+              list(pathlib.Path("data").rglob("*.json"))
+              + list(pathlib.Path("products").rglob("*.json"))
+          )
+          if not files:
+              sys.exit("No JSON files found — check the paths in this workflow.")
+
+          errors = []
+          for path in files:
+              try:
+                  data = json.loads(path.read_text(encoding="utf-8"))
+              except Exception as exc:
+                  errors.append(f"{path}: {exc}")
+                  continue
+              if not isinstance(data, (dict, list)):
+                  errors.append(f"{path}: top level must be an object or array")
+              elif not data:
+                  errors.append(f"{path}: file is empty")
+
+          if errors:
+              print("Invalid JSON:")
+              for err in errors:
+                  print(f"  - {err}")
+              sys.exit(1)
+
+          print(f"All {len(files)} JSON files are valid.")
+          PY
+
+      # Proves the data still builds end to end — the same script the deploy
+      # workflow runs, so a PR can't merge something deploy would choke on.
+      - name: Build distribution
+        run: |
+          python3 scripts/build_dist.py \
+            --product all \
+            --version v0.0.0-ci \
+            --environment dev \
+            --dist-dir dist-ci
+
+      - name: Validate built output
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, sys
+
+          dist = pathlib.Path("dist-ci")
+          built = sorted(dist.rglob("*.json"))
+          if not built:
+              sys.exit("Build produced no JSON output.")
+
+          for path in built:
+              try:
+                  json.loads(path.read_text(encoding="utf-8"))
+              except Exception as exc:
+                  sys.exit(f"Built file is not valid JSON — {path}: {exc}")
+
+          print(f"Build output OK ({len(built)} files).")
+          PY
