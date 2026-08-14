@@ -63,11 +63,14 @@ jobs:
 
       # Only on staging: auto-merge the rc release PR so an rc is produced
       # hands-free on every merge into staging. The "PR for dev and staging"
-      # ruleset lets the qubic-release-bot App bypass the review requirement
-      # (bypass_mode: pull_request) — this is NOT allowed on main. The merge is
-      # a push to staging, which re-runs this workflow and creates the rc tag +
-      # release. Interpolations go through env (not the run body) to avoid
-      # template injection.
+      # ruleset makes the qubic-release-bot App a bypass actor
+      # (bypass_mode: pull_request), so --admin lets the bot force the merge
+      # past the required review + status check. A plain --merge is refused
+      # while the PR is still BLOCKED (review pending / commitlint not yet
+      # finished). main is NOT bypassable, so production stays human-gated.
+      # The merge is a push to staging, which re-runs this workflow and creates
+      # the rc tag + release. Interpolations go through env (not the run body)
+      # to avoid template injection.
       - name: Auto-merge staging rc release PR
         if: github.ref_name == 'staging' && steps.release.outputs.prs_created == 'true'
         env:
@@ -77,7 +80,7 @@ jobs:
         run: |
           pr_number=$(echo "$PRS_JSON" | jq -r '.[0].number')
           echo "Auto-merging staging rc release PR #${pr_number}"
-          gh pr merge "$pr_number" --repo "$TARGET_REPO" --merge
+          gh pr merge "$pr_number" --repo "$TARGET_REPO" --merge --admin
 
   # Production deploy. Runs ONLY when a stable release was actually cut on main
   # (release_created == true). The promotion merge into main only opens the
