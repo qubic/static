@@ -5,6 +5,21 @@
 
 * **smart_contracts:** refresh smart contracts data ([5ad4609](https://github.com/qubic/static/commit/5ad460913bf912e7f84a86f356b29f25e06908c6))
 
+## [1.30.0](https://github.com/qubic/static/compare/v1.29.0...v1.30.0) (2026-08-14)
+
+
+### Features
+
+* **smart_contracts:** refresh smart contracts data ([fdf462a](https://github.com/qubic/static/commit/fdf462a5a4e6f0eaa869ad6e3cd79782dcde50a0))
+
+## [1.29.0](https://github.com/qubic/static/compare/v1.28.0...v1.29.0) (2026-08-14)
+
+
+### Features
+
+* add Bit2Me exchange address to exchanges.json ([f63a3d1](https://github.com/qubic/static/commit/f63a3d1e7b07143292191ee669392cd7cf1f5df4))
+* **exchanges:** add Bit2Me exchange address ([8337144](https://github.com/qubic/static/commit/8337144f06784bd76887d7a697f4455fbf7c471a))
+
 ## [1.29.0-rc](https://github.com/qubic/static/compare/v1.28.0...v1.29.0-rc) (2026-08-14)
 
 
