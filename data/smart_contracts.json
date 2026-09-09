@@ -1407,6 +1407,64 @@
       ],
       "firstUseEpoch": 218,
       "sharesAuctionEpoch": 217
+    },
+    {
+      "filename": "QPayhub.h",
+      "name": "QPAYHUB",
+      "label": "QPayhub",
+      "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/QPayhub.h",
+      "contractIndex": 29,
+      "address": "DBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHQAH",
+      "allowTransferShares": false,
+      "procedures": [
+        {
+          "id": 1,
+          "name": "Pay",
+          "sourceIdentifier": "Pay"
+        },
+        {
+          "id": 2,
+          "name": "Consume",
+          "sourceIdentifier": "Consume"
+        },
+        {
+          "id": 3,
+          "name": "Subscribe to Price Feed",
+          "sourceIdentifier": "SubscribeToPriceFeed"
+        },
+        {
+          "id": 4,
+          "name": "Set Promo Rate",
+          "sourceIdentifier": "SetPromoRate"
+        },
+        {
+          "id": 5,
+          "name": "Remove Promo Rate",
+          "sourceIdentifier": "RemovePromoRate"
+        },
+        {
+          "id": 6,
+          "name": "Change Operator",
+          "sourceIdentifier": "ChangeOperator"
+        },
+        {
+          "id": 7,
+          "name": "Set Affiliate",
+          "sourceIdentifier": "SetAffiliate"
+        },
+        {
+          "id": 8,
+          "name": "Remove Affiliate",
+          "sourceIdentifier": "RemoveAffiliate"
+        },
+        {
+          "id": 9,
+          "name": "Change Affiliate Registrar",
+          "sourceIdentifier": "ChangeAffiliateRegistrar"
+        }
+      ],
+      "firstUseEpoch": 231,
+      "sharesAuctionEpoch": 230
     }
   ]
 }
