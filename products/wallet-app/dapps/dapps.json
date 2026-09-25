@@ -86,6 +86,26 @@
             "platformVersions": {
                 "ios": "none"
             }
+        },
+        {
+            "id": "nostromo_app_id",
+            "nameId": "nostromo_name",
+            "icon": "https://nostromo-qubic.com/logo.png",
+            "url": "https://nostromo-qubic.com/",
+            "descriptionId": "nostromo_description",
+            "platformVersions": {
+                "ios": "none"
+            }
+        },
+        {
+            "id": "qubic_capital_app_id",
+            "nameId": "qubic_capital_name",
+            "icon": "",
+            "url": "https://www.qubic-capital.org/",
+            "descriptionId": "qubic_capital_description",
+            "platformVersions": {
+                "ios": "none"
+            }
         }
     ]
 }

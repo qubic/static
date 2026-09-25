@@ -19,5 +19,9 @@
     "qbond_name": "QBond",
     "qbond_description": "Earn yield. Stay liquid. Trade anytime",
     "qubicswap_name": "QUBICSwap",
-    "qubicswap_description": "An exchange allowing trades for the QX and QSwap smart contracts."
+    "qubicswap_description": "An exchange allowing trades for the QX and QSwap smart contracts.",
+    "nostromo_name": "Nostromo",
+    "nostromo_description": "Trade assets on Qubic with transparent on-chain auctions.",
+    "qubic_capital_name": "Qubic Capital",
+    "qubic_capital_description": "Community-governed exposure to the Qubic ecosystem."
 }

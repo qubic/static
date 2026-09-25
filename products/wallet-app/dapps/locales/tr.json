@@ -19,5 +19,9 @@
     "qbond_name": "QBond",
     "qbond_description": "Gelir elde edin. Likit kalın. İstediğiniz zaman işlem yapın",
     "qubicswap_name": "QUBICSwap",
-    "qubicswap_description": "QX ve QSwap akıllı sözleşmeleri üzerinden işlem yapmayı sağlayan bir borsa."
+    "qubicswap_description": "QX ve QSwap akıllı sözleşmeleri üzerinden işlem yapmayı sağlayan bir borsa.",
+    "nostromo_name": "Nostromo",
+    "nostromo_description": "Şeffaf zincir üstü açık artırmalarla Qubic'te varlık alım satımı yapın.",
+    "qubic_capital_name": "Qubic Capital",
+    "qubic_capital_description": "Qubic ekosistemine topluluk tarafından yönetilen yatırım imkânı."
 }
