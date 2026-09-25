@@ -19,5 +19,9 @@
     "qbond_name": "QBond",
     "qbond_description": "Получайте доход. Сохраняйте ликвидность. Торгуйте в любое время",
     "qubicswap_name": "QUBICSwap",
-    "qubicswap_description": "Биржа для торговли через смарт-контракты QX и QSwap."
+    "qubicswap_description": "Биржа для торговли через смарт-контракты QX и QSwap.",
+    "nostromo_name": "Nostromo",
+    "nostromo_description": "Торгуйте активами на Qubic с помощью прозрачных ончейн-аукционов.",
+    "qubic_capital_name": "Qubic Capital",
+    "qubic_capital_description": "Управляемое сообществом участие в экосистеме Qubic."
 }

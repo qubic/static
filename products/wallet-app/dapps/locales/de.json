@@ -19,5 +19,9 @@
     "qbond_name": "QBond",
     "qbond_description": "Ertrag erzielen. Liquide bleiben. Jederzeit handeln",
     "qubicswap_name": "QUBICSwap",
-    "qubicswap_description": "Eine Börse für den Handel über die QX- und QSwap-Smart-Contracts."
+    "qubicswap_description": "Eine Börse für den Handel über die QX- und QSwap-Smart-Contracts.",
+    "nostromo_name": "Nostromo",
+    "nostromo_description": "Handle Assets auf Qubic mit transparenten On-Chain-Auktionen.",
+    "qubic_capital_name": "Qubic Capital",
+    "qubic_capital_description": "Gemeinschaftlich verwaltetes Engagement im Qubic-Ökosystem."
 }
