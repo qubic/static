@@ -668,49 +668,54 @@
       "procedures": [
         {
           "id": 1,
-          "name": "Register in Tier",
-          "sourceIdentifier": "registerInTier"
+          "name": "Create Auction",
+          "sourceIdentifier": "CreateAuction"
         },
         {
           "id": 2,
-          "name": "Logout from Tier",
-          "sourceIdentifier": "logoutFromTier"
+          "name": "Place Bid",
+          "sourceIdentifier": "PlaceBid"
         },
         {
           "id": 3,
-          "name": "Create Project",
-          "sourceIdentifier": "createProject"
+          "name": "Cancel Auction",
+          "sourceIdentifier": "CancelAuction"
         },
         {
           "id": 4,
-          "name": "Vote in Project",
-          "sourceIdentifier": "voteInProject"
-        },
-        {
-          "id": 5,
-          "name": "Create Fundraising",
-          "sourceIdentifier": "createFundraising"
-        },
-        {
-          "id": 6,
-          "name": "Invest in Project",
-          "sourceIdentifier": "investInProject"
-        },
-        {
-          "id": 7,
-          "name": "Claim Token",
-          "sourceIdentifier": "claimToken"
-        },
-        {
-          "id": 8,
-          "name": "Upgrade Tier",
-          "sourceIdentifier": "upgradeTier"
-        },
-        {
-          "id": 9,
           "name": "Transfer Share Management Rights",
           "fee": 100,
           "sourceIdentifier": "TransferShareManagementRights"
+        },
+        {
+          "id": 5,
+          "name": "Resolve Pending Standard Auction",
+          "sourceIdentifier": "ResolvePendingStandardAuction"
+        },
+        {
+          "id": 6,
+          "name": "Set Auction Fees",
+          "sourceIdentifier": "SetAuctionFees"
+        },
+        {
+          "id": 7,
+          "name": "Set Auction Fees by Management",
+          "sourceIdentifier": "SetAuctionFeesByManagement"
+        },
+        {
+          "id": 8,
+          "name": "Set Management",
+          "sourceIdentifier": "SetManagement"
+        },
+        {
+          "id": 9,
+          "name": "Set Fee Reserve Guard Config",
+          "sourceIdentifier": "SetFeeReserveGuardConfig"
+        },
+        {
+          "id": 10,
+          "name": "Set Emergency Pause",
+          "sourceIdentifier": "SetEmergencyPause"
         }
       ],
       "allowTransferShares": true,
