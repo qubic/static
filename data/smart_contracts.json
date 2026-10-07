@@ -1281,6 +1281,16 @@
           "id": 8,
           "name": "Redemption QSC to Qubic",
           "sourceIdentifier": "redemptionQSCToQubic"
+        },
+        {
+          "id": 9,
+          "name": "Refill Random Bank",
+          "sourceIdentifier": "refillRandomBank"
+        },
+        {
+          "id": 10,
+          "name": "Coin Flip",
+          "sourceIdentifier": "coinFlip"
         }
       ],
       "firstUseEpoch": 208,
