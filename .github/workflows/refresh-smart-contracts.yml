@@ -18,16 +18,29 @@ jobs:
   refresh-smart-contracts:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # pushes the refresh branch
-      pull-requests: write # opens the refresh PR
+      contents: read # checkout only; the branch push + PR use the App token below
     steps:
+      # Use a GitHub App token (not a PAT, not the default GITHUB_TOKEN) so the
+      # refresh branch push + PR trigger CI (lint, commitlint). The token is
+      # short-lived and scoped to contents+pull-requests. Same App the other
+      # qubic repos use for automation.
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@d72941d797fd3113feb6b93fd0dec494b13a2547 # v1
+        with:
+          app-id: ${{ secrets.RELEASE_APP_ID }} # zizmor: ignore[secrets-outside-env] needed to push the refresh branch + open the PR; scoped to contents+pull-requests
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env] needed to push the refresh branch + open the PR; scoped to contents+pull-requests
+          permission-contents: write
+          permission-pull-requests: write
+
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: main
           fetch-depth: 0
-          # This job pushes the refresh branch with git, so the token must stay
-          # available for the life of the job.
+          # Persist the App token so the later `git push` of the refresh branch
+          # is authenticated as the App (and therefore triggers CI).
+          token: ${{ steps.app-token.outputs.token }}
           persist-credentials: true # zizmor: ignore[artipacked]
 
       - name: Setup Python
@@ -72,7 +85,7 @@ jobs:
       - name: Create branch and PR
         if: steps.changes.outputs.has_changes == 'true'
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           BRANCH_NAME="feat/refresh-smart-contracts-$(date +%Y%m%d-%H%M%S)"
 
