@@ -53,10 +53,22 @@ REGISTER_RE = re.compile(
     \s*\(
         \s* [&\s]* (?P<name>[A-Za-z_][A-Za-z0-9_]*)   # 1st param (symbol), optional &
         \s*,\s*
-        (?P<num>\d+)                                  # 2nd param (number)
+        (?:                                           # 2nd param (procedure id), one of:
+            (?P<num>\d+)                              #   number literal
+          | static_cast\s*<\s*\w+\s*>\s*\(\s*         #   static_cast<T>(Enum::Member)
+                (?P<cast_expr>\w+(?:\s*::\s*\w+)?)
+            \s*\)
+          | (?P<expr>\w+(?:\s*::\s*\w+)?)             #   Enum::Member or constant
+        )
     \s*\)
     """,
     re.VERBOSE | re.DOTALL | re.MULTILINE,
+)
+
+REGISTER_CALL_RE = re.compile(r"REGISTER_USER_PROCEDURE\s*\(")
+
+ENUM_RE = re.compile(
+    r"enum\s+(?:class\s+|struct\s+)?(?P<name>\w+)\s*(?::\s*\w+\s*)?\{(?P<body>[^{}]*)\}",
 )
 
 INCLUDE_RE = re.compile(r'#\s*include\s*["<](?P<path>[^">]+)[">]')
@@ -480,11 +492,66 @@ def extract_allow_transfer_shares(text: str) -> bool:
         return m.group("value") == "true"
     return False
 
-def find_registers(text: str) -> List[Tuple[int, str]]:
+def extract_enum_values(text_nc: str) -> Dict[str, Dict[str, int]]:
+    """
+    Collect enum member values: {enum_name: {member: value}}.
+    Members without an explicit value continue from the previous one (C++ rules).
+    Members whose value can't be resolved (e.g. an expression) are left out.
+    """
+    enums: Dict[str, Dict[str, int]] = {}
+    for m in ENUM_RE.finditer(text_nc):
+        members: Dict[str, int] = {}
+        next_value: Optional[int] = 0
+        for item in m.group("body").split(","):
+            item = item.strip()
+            if not item:
+                continue
+            member, _, value_str = (part.strip() for part in item.partition("="))
+            if value_str:
+                cleaned = re.sub(r"[UuLl]+$", "", value_str)
+                if cleaned.isdigit():
+                    next_value = int(cleaned)
+                elif cleaned in members:
+                    next_value = members[cleaned]
+                else:
+                    next_value = None
+            if next_value is not None:
+                members[member] = next_value
+                next_value += 1
+        enums[m.group("name")] = members
+    return enums
+
+def _resolve_procedure_id(expr: str, enums: Dict[str, Dict[str, int]], constants: Dict[str, int]) -> Optional[int]:
+    """Resolve a REGISTER_USER_PROCEDURE id given as Enum::Member or a named constant."""
+    parts = [p.strip() for p in expr.split("::")]
+    if len(parts) == 2:
+        return enums.get(parts[0], {}).get(parts[1])
+    if parts[0] in constants:
+        return constants[parts[0]]
+    # Unscoped enum member used without its enum name
+    matches = {vals[parts[0]] for vals in enums.values() if parts[0] in vals}
+    return matches.pop() if len(matches) == 1 else None
+
+def find_registers(text: str, source: str = "") -> List[Tuple[int, str]]:
     text_nc = strip_comments(text)
+    enums = extract_enum_values(text_nc)
+    constants = {m.group("name"): int(m.group("value")) for m in CONSTEXPR_RE.finditer(text_nc)}
     out: List[Tuple[int, str]] = []
     for m in REGISTER_RE.finditer(text_nc):
-        out.append((int(m.group("num")), m.group("name")))
+        if m.group("num") is not None:
+            out.append((int(m.group("num")), m.group("name")))
+            continue
+        expr = m.group("cast_expr") or m.group("expr")
+        num = _resolve_procedure_id(expr, enums, constants)
+        if num is None:
+            print(f"  WARNING {source}: could not resolve procedure id '{expr}' for {m.group('name')}")
+            continue
+        out.append((num, m.group("name")))
+    # A registration the regex can't parse would otherwise be skipped silently and
+    # leave the contract's procedures stale, so make the gap visible in the logs.
+    total_calls = len(REGISTER_CALL_RE.findall(text_nc))
+    if total_calls != len(out):
+        print(f"  WARNING {source}: parsed {len(out)} of {total_calls} REGISTER_USER_PROCEDURE calls")
     return out
 
 # ---------------------------- Address helpers -------------------------------
@@ -678,8 +745,13 @@ def merge_contracts(
             if pid in ex_by_id:
                 ex_p = ex_by_id[pid]
                 # If the C++ identifier changed, update name; otherwise preserve manual edits
-                if ex_p.get("sourceIdentifier") != new_p.get("sourceIdentifier"):
+                old_ident = ex_p.get("sourceIdentifier")
+                if old_ident != new_p.get("sourceIdentifier"):
                     ex_p["name"] = new_p["name"]
+                    # A different procedure now owns this id, so a fee recorded for
+                    # the old one no longer applies (a case-only rename keeps it).
+                    if old_ident and old_ident.lower() != str(new_p.get("sourceIdentifier")).lower():
+                        ex_p.pop("fee", None)
                 ex_p["sourceIdentifier"] = new_p.get("sourceIdentifier")
                 # Update fee from fresh data if extracted; preserve existing fee otherwise.
                 # Fees are NOT removed when absent from fresh data, because the script
@@ -783,7 +855,7 @@ def main():
         allow_transfer_shares = False
         proc_fees: Dict[str, int] = {}
         if text:
-            regs = find_registers(text)
+            regs = find_registers(text, basename)
             allow_transfer_shares = extract_allow_transfer_shares(text)
             proc_fees = extract_procedure_fees(text)
 
