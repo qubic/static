@@ -1281,6 +1281,16 @@
           "id": 8,
           "name": "Redemption QSC to Qubic",
           "sourceIdentifier": "redemptionQSCToQubic"
+        },
+        {
+          "id": 9,
+          "name": "Refill Random Bank",
+          "sourceIdentifier": "refillRandomBank"
+        },
+        {
+          "id": 10,
+          "name": "Coin Flip",
+          "sourceIdentifier": "coinFlip"
         }
       ],
       "firstUseEpoch": 208,
@@ -1583,6 +1593,44 @@
       ],
       "firstUseEpoch": 233,
       "sharesAuctionEpoch": 232
+    },
+    {
+      "filename": "QLoan.h",
+      "name": "QLOAN",
+      "label": "QLoan",
+      "githubUrl": "https://github.com/qubic/core/blob/main/src/contracts/QLoan.h",
+      "contractIndex": 31,
+      "address": "FBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAKO",
+      "allowTransferShares": true,
+      "procedures": [
+        {
+          "id": 1,
+          "name": "Place Loan Req",
+          "sourceIdentifier": "PlaceLoanReq"
+        },
+        {
+          "id": 2,
+          "name": "Remove Loan Req",
+          "sourceIdentifier": "RemoveLoanReq"
+        },
+        {
+          "id": 3,
+          "name": "Accept Loan Req",
+          "sourceIdentifier": "AcceptLoanReq"
+        },
+        {
+          "id": 4,
+          "name": "Transfer Share Management Rights",
+          "sourceIdentifier": "TransferShareManagementRights"
+        },
+        {
+          "id": 5,
+          "name": "Pay Loan Debt",
+          "sourceIdentifier": "PayLoanDebt"
+        }
+      ],
+      "firstUseEpoch": 236,
+      "sharesAuctionEpoch": 235
     }
   ]
 }
