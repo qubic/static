@@ -19,5 +19,9 @@
     "qbond_name": "QBond",
     "qbond_description": "Gagnez des rendements. Restez liquide. Tradez à tout moment",
     "qubicswap_name": "QUBICSwap",
-    "qubicswap_description": "Un exchange permettant d'échanger via les contrats intelligents QX et QSwap."
+    "qubicswap_description": "Un exchange permettant d'échanger via les contrats intelligents QX et QSwap.",
+    "nostromo_name": "Nostromo",
+    "nostromo_description": "Échangez des actifs sur Qubic grâce à des enchères on-chain transparentes.",
+    "qubic_capital_name": "Qubic Capital",
+    "qubic_capital_description": "Une exposition à l'écosystème Qubic gouvernée par la communauté."
 }
