@@ -5,6 +5,25 @@
 
 * **smart_contracts:** refresh smart contracts data ([5ad4609](https://github.com/qubic/static/commit/5ad460913bf912e7f84a86f356b29f25e06908c6))
 
+## [1.29.0-rc.2](https://github.com/qubic/static/compare/v1.29.0-rc.1...v1.29.0-rc.2) (2026-10-20)
+
+
+### Features
+
+* add Vitron VTR token metadata ([3717130](https://github.com/qubic/static/commit/3717130591e0f74a4bf06d2e1b68632dc1e9149d))
+* add Vitron VTR token metadata ([a9549d5](https://github.com/qubic/static/commit/a9549d521dec798454f889f5395d974daf75165a))
+* **dapps:** add Nostromo and Qubic Capital dApps ([7914a9c](https://github.com/qubic/static/commit/7914a9c644e56094b9fd7036a20057aae3634f69))
+* **smart_contracts:** refresh smart contracts data ([a83e94e](https://github.com/qubic/static/commit/a83e94e75a9e30316655c1f90ae184235adefde4))
+* **smart_contracts:** refresh smart contracts data ([b79f243](https://github.com/qubic/static/commit/b79f2432e226a78f780b0ce668ab647128116fa7))
+* **smart_contracts:** refresh smart contracts data ([b4a48d3](https://github.com/qubic/static/commit/b4a48d3a2b3187fbb70a0db4cbd382b3016d8f74))
+
+
+### Bug Fixes
+
+* **smart_contracts:** read enum-based procedure ids and update Nostromo ([cee7def](https://github.com/qubic/static/commit/cee7def1cfdbf93a90e3ddde83368f7fcf38a437))
+* **smart_contracts:** resolve enum-based procedure ids in refresh script ([10ebc61](https://github.com/qubic/static/commit/10ebc61d1d81a9f40afbeef4aba2867861fb1e68))
+* **smart_contracts:** update Nostromo procedures after core[#842](https://github.com/qubic/static/issues/842) ([d330cd9](https://github.com/qubic/static/commit/d330cd9ed4cc58fd75e71dac085aabc638510b6b))
+
 ## [1.32.0](https://github.com/qubic/static/compare/v1.31.0...v1.32.0) (2026-10-18)
 
 
