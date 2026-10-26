@@ -19,5 +19,9 @@
     "qbond_name": "QBond",
     "qbond_description": "賺取收益。保持流動性。隨時交易",
     "qubicswap_name": "QUBICSwap",
-    "qubicswap_description": "一個支援透過 QX 和 QSwap 智能合約進行交易的交易所。"
+    "qubicswap_description": "一個支援透過 QX 和 QSwap 智能合約進行交易的交易所。",
+    "nostromo_name": "Nostromo",
+    "nostromo_description": "透過透明的鏈上拍賣在 Qubic 上交易資產。",
+    "qubic_capital_name": "Qubic Capital",
+    "qubic_capital_description": "由社群治理的 Qubic 生態系統投資曝險。"
 }
