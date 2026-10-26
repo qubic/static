@@ -5,6 +5,20 @@
 
 * **smart_contracts:** refresh smart contracts data ([5ad4609](https://github.com/qubic/static/commit/5ad460913bf912e7f84a86f356b29f25e06908c6))
 
+## [1.33.0-rc](https://github.com/qubic/static/compare/v1.32.0...v1.33.0-rc) (2026-10-26)
+
+
+### Features
+
+* add Bitget 3 exchange address ([db88fc6](https://github.com/qubic/static/commit/db88fc604d01273c762406fdfd8d26846b7ed8e6))
+* add Bitget 3 exchange address ([1bc8ef6](https://github.com/qubic/static/commit/1bc8ef60e8cd1f68fce8271437891492d8530d7b))
+
+
+### Bug Fixes
+
+* **release:** make staging rc track the stable version line ([e278477](https://github.com/qubic/static/commit/e278477506f3ae520f4671c59c945b34366bd042))
+* **release:** reseed staging rc manifest to the stable version ([9df4784](https://github.com/qubic/static/commit/9df4784488e2b046cfb562c547a8d154b0e781be))
+
 ## [1.29.0-rc.2](https://github.com/qubic/static/compare/v1.29.0-rc.1...v1.29.0-rc.2) (2026-10-20)
 
 
