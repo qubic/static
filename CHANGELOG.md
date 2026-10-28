@@ -5,6 +5,14 @@
 
 * **smart_contracts:** refresh smart contracts data ([5ad4609](https://github.com/qubic/static/commit/5ad460913bf912e7f84a86f356b29f25e06908c6))
 
+## [1.34.0](https://github.com/qubic/static/compare/v1.33.0...v1.34.0) (2026-10-28)
+
+
+### Features
+
+* **smart_contracts:** refresh smart contracts data ([96cf267](https://github.com/qubic/static/commit/96cf267348d5e666eca446e44eb89a8a93113aeb))
+* **smart_contracts:** refresh smart contracts data ([675cd64](https://github.com/qubic/static/commit/675cd646c73e4346abb2ec063c3845ab1cfd8591))
+
 ## [1.33.0](https://github.com/qubic/static/compare/v1.32.0...v1.33.0) (2026-10-26)
 
 
