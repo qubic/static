@@ -5,6 +5,14 @@
 
 * **smart_contracts:** refresh smart contracts data ([5ad4609](https://github.com/qubic/static/commit/5ad460913bf912e7f84a86f356b29f25e06908c6))
 
+## [1.34.1-rc](https://github.com/qubic/static/compare/v1.34.0...v1.34.1-rc) (2026-11-03)
+
+
+### Bug Fixes
+
+* replace QLOAN with QPUMP ([8189a03](https://github.com/qubic/static/commit/8189a0373b7a99035d42332de0356d4152962e7d))
+* replace QLOAN with QPUMP ([89b9250](https://github.com/qubic/static/commit/89b92505800717101d53d4251e157677490bf29e))
+
 ## [1.34.0](https://github.com/qubic/static/compare/v1.33.0...v1.34.0) (2026-10-28)
 
 
