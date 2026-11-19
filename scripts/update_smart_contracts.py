@@ -27,6 +27,10 @@ Rules:
   Authoritative fields (auto-updated from GitHub): filename, name, contractIndex, address, githubUrl,
   firstUseEpoch, sharesAuctionEpoch, allowTransferShares, procedures.
   Preserved fields: label (if already set), and any custom fields (e.g., proposalUrl, etc.).
+  A contract new to the JSON and in its IPO epoch is added only if the RPC lists an active IPO
+  for its index (proves the release binary compiled it in). A contract is removed only when its
+  file is gone upstream AND a different contract took its index (same name = file rename, kept).
+  A partial contract_def.h parse or duplicate contractIndex values abort the run.
 - Sort: contracts by contractIndex; procedures by id.
 """
 
@@ -44,6 +48,7 @@ import requests
 RAW_BASE_CONTRACTS = "https://raw.githubusercontent.com/qubic/core/main/src/contracts/"
 RAW_CONTRACT_DEF   = "https://raw.githubusercontent.com/qubic/core/main/src/contract_core/contract_def.h"
 QUBIC_STATS_API    = "https://rpc.qubic.org/v1/latest-stats"
+QUBIC_ACTIVE_IPOS_API = "https://rpc.qubic.org/v1/ipos/active"
 
 # ---------------------------- Regexes ---------------------------------------
 
@@ -198,7 +203,40 @@ def fetch_current_epoch() -> Optional[int]:
         print(f"Warning: Failed to fetch current epoch: {e}")
     return None
 
+def fetch_active_ipo_indexes() -> Optional[set]:
+    """Contract indexes with an IPO running right now (None if the API can't be read)."""
+    try:
+        resp = requests.get(QUBIC_ACTIVE_IPOS_API, timeout=30)
+        if resp.status_code == 200:
+            return {int(i["contractIndex"]) for i in resp.json().get("ipos", []) if "contractIndex" in i}
+        print(f"Warning: GET {QUBIC_ACTIVE_IPOS_API} -> {resp.status_code}")
+    except Exception as e:
+        print(f"Warning: Failed to fetch active IPOs: {e}")
+    return None
+
 # ---------------------------- Parse contract_def.h --------------------------
+
+def find_toggled_lines(raw_text: str) -> List[Tuple[str, str]]:
+    """
+    Return (macro, line) for every include / quoted-name line inside an `#ifndef NO_*`
+    block. contract_def.h is parsed as plain text, so a contract excluded from the
+    release binary by such a toggle still looks present; callers log these.
+    """
+    stack: List[Optional[str]] = []
+    out: List[Tuple[str, str]] = []
+    for line in raw_text.splitlines():
+        s = line.strip()
+        if re.match(r"#\s*if", s):
+            m = re.match(r"#\s*ifndef\s+(NO_\w+)", s)
+            stack.append(m.group(1) if m else None)
+        elif re.match(r"#\s*endif", s):
+            if stack:
+                stack.pop()
+        else:
+            macro = next((t for t in reversed(stack) if t), None)
+            if macro and (INCLUDE_RE.search(s) or FIRST_QUOTED_STRING_RE.search(s)):
+                out.append((macro, s))
+    return out
 
 def detect_rewritten_contracts(raw_text: str) -> set:
     """
@@ -661,6 +699,35 @@ def index_by_filename(contracts: List[Dict[str, Any]]) -> Dict[str, Dict[str, An
             out[fn] = sc
     return out
 
+def reconcile_vanished_contracts(
+    existing: List[Dict[str, Any]],
+    upstream_indexes: Dict[str, int],
+    upstream_info: Dict[int, Dict[str, Any]],
+) -> None:
+    """
+    Handle existing entries whose file is gone upstream (requires a full contract_def.h parse):
+    - index now held by another file with the same contract name: upstream renamed the
+      file -> keep the entry and its curated fields under the new filename;
+    - index now held by a different contract: it was replaced before going live, since
+      live indexes are never reused (QLoan -> QPump at 31) -> remove the entry;
+    - index not reused: keep the entry and warn, a human must decide.
+    """
+    for ex in list(existing):
+        fname = ex.get("filename")
+        if not isinstance(fname, str) or fname in upstream_indexes:
+            continue
+        cidx = ex.get("contractIndex")
+        taker = next((f for f, i in upstream_indexes.items() if i == cidx), None)
+        if taker is None:
+            print(f"  WARNING {fname}: gone upstream but index {cidx} not reused; "
+                  f"keeping entry, needs human review")
+        elif upstream_info.get(cidx, {}).get("name") == ex.get("name"):
+            print(f"  {fname}: renamed upstream to {taker}; keeping entry")
+            ex["filename"] = taker
+        else:
+            print(f"  {fname}: gone upstream, index {cidx} now belongs to {taker}; removing")
+            existing.remove(ex)
+
 def merge_contracts(
     existing: List[Dict[str, Any]],
     fresh: List[Dict[str, Any]],
@@ -833,6 +900,39 @@ def main():
 
     idx_to_info = extract_contract_names_from_descriptions(stripped)
 
+    # contract_def.h is parsed as plain text, so a contract behind `#ifndef NO_X` looks
+    # present even when the release binary was built without it. Log them for review.
+    toggled_files: Dict[str, str] = {}
+    for macro, line in find_toggled_lines(contract_def_text):
+        print(f"NOTE: compile toggle {macro} guards: {line}")
+        inc = INCLUDE_RE.search(line)
+        if inc:
+            toggled_files[Path(inc.group("path")).name] = macro
+
+    # Fail closed on a partial parse: every (non-test) description needs its own parsed
+    # include, otherwise names/epochs would be guessed and removals misjudged.
+    expected_idx = {i for i, info in idx_to_info.items() if not info["name"].upper().startswith("TEST")}
+    parsed_idx = sorted(idx_map.values())
+    if not expected_idx or not expected_idx <= set(parsed_idx) or len(set(parsed_idx)) != len(parsed_idx):
+        raise SystemExit(f"Error: contract_def.h parsed partially (includes for {parsed_idx}, "
+                         f"descriptions for {sorted(expected_idx)})")
+
+    try:
+        existing_top = json.loads(data_path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        existing_top = {}
+    except Exception as e:
+        raise SystemExit(f"Error reading {data_path}: {e}")
+    if not isinstance(existing_top, dict):
+        raise SystemExit(f"Error: {data_path} does not contain a JSON object")
+
+    existing_sc = existing_top.get("smart_contracts", [])
+    if not isinstance(existing_sc, list):
+        existing_sc = []
+    reconcile_vanished_contracts(existing_sc, idx_map, idx_to_info)
+    existing_filenames = set(index_by_filename(existing_sc))
+
+    active_ipos: Optional[set] = None
     fresh_entries: List[Dict[str, Any]] = []
     for basename in sorted(basenames):
         cidx = idx_map.get(basename)
@@ -842,11 +942,32 @@ def main():
         # Skip contracts whose shares auction hasn't started yet
         contract_info = idx_to_info.get(cidx, {})
         construction_epoch = contract_info.get("constructionEpoch")
+        if construction_epoch is None:
+            print(f"WARNING {basename}: no contractDescriptions entry for index {cidx}; skipping")
+            continue
         if current_epoch is not None and construction_epoch is not None:
             shares_auction_epoch = construction_epoch - 1
             if shares_auction_epoch > current_epoch:
                 print(f"Skipping {basename}: sharesAuctionEpoch {shares_auction_epoch} > current epoch {current_epoch}")
                 continue
+            # A new contract in its IPO epoch is only real if the network runs its IPO:
+            # that proves the release binary compiled it in (a `#ifndef NO_*` toggle
+            # can leave it in contract_def.h but out of the build).
+            if basename not in existing_filenames and shares_auction_epoch == current_epoch:
+                if active_ipos is None:
+                    active_ipos = fetch_active_ipo_indexes()
+                if active_ipos is None:
+                    print(f"Skipping {basename}: cannot verify IPO (active IPO list unavailable)")
+                    continue
+                if cidx not in active_ipos:
+                    print(f"Skipping {basename}: no active IPO for index {cidx} (compiled out?)")
+                    continue
+            elif basename not in existing_filenames:
+                # Its IPO epoch has passed, so the IPO list can no longer prove it was built.
+                toggle = toggled_files.get(basename)
+                print(f"WARNING {basename}: new contract added after its IPO epoch "
+                      f"{shares_auction_epoch} without IPO verification"
+                      f"{f' and behind toggle {toggle}' if toggle else ''}; needs human review")
 
         url = RAW_BASE_CONTRACTS + basename
         text = fetch_text(url)
@@ -877,12 +998,12 @@ def main():
 
         name_value = contract_info.get("name", stem.upper())
 
-        addr: Optional[str] = None
         identity = run_js_get_identity_from_index(cidx, js_lib_path)
-        if identity and len(identity) == 60:
-            addr = identity
-        else:
-            addr = index_to_base56(cidx)
+        if not identity or len(identity) != 60:
+            # index_to_base56() is only the 56-char input of the identity derivation
+            # (no checksum); writing it as the address would ship a broken address.
+            raise SystemExit(f"Error: could not derive address for {basename} (index {cidx})")
+        addr = identity
 
         githubUrl = f"https://github.com/qubic/core/blob/main/src/contracts/{basename}"
 
@@ -905,21 +1026,18 @@ def main():
 
         fresh_entries.append(entry)
 
-    try:
-        existing_top = json.loads(data_path.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        existing_top = {}
-    except Exception as e:
-        raise SystemExit(f"Error reading {data_path}: {e}")
-    if not isinstance(existing_top, dict):
-        raise SystemExit(f"Error: {data_path} does not contain a JSON object")
-
-    existing_sc = existing_top.get("smart_contracts", [])
-    if not isinstance(existing_sc, list):
-        existing_sc = []
-
     merged_sc = merge_contracts(existing_sc, fresh_entries, rewritten_filenames)
     merged_sc = sort_contracts(merged_sc)
+
+    seen_idx: Dict[int, str] = {}
+    for sc in merged_sc:
+        cidx = sc.get("contractIndex")
+        if cidx is None:
+            continue
+        if cidx in seen_idx:
+            raise SystemExit(f"Error: contractIndex {cidx} is shared by {seen_idx[cidx]} and "
+                             f"{sc.get('filename')}; refusing to write")
+        seen_idx[cidx] = sc.get("filename")
 
     existing_top["smart_contracts"] = merged_sc
 
