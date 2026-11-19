@@ -5,6 +5,14 @@
 
 * **smart_contracts:** refresh smart contracts data ([5ad4609](https://github.com/qubic/static/commit/5ad460913bf912e7f84a86f356b29f25e06908c6))
 
+## [1.34.1-rc.1](https://github.com/qubic/static/compare/v1.34.1-rc...v1.34.1-rc.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* harden smart contracts refresh against toggled and replaced contracts ([44c55f2](https://github.com/qubic/static/commit/44c55f25c3366db6368eefdcad9180e7310d925c))
+* harden smart contracts refresh against toggled and replaced contracts ([e6736a2](https://github.com/qubic/static/commit/e6736a29202444fcc32f7ea6d30f4fc0a288e545))
+
 ## [1.34.1](https://github.com/qubic/static/compare/v1.34.0...v1.34.1) (2026-11-03)
 
 
